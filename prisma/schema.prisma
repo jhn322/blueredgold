@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {  
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   
+  phone       String?  // Optional since not all forms might need phone
+  category    String   // 'api', 'templates', 'careers', etc
+  referenceId String?  // Optional ID reference to specific template/career/etc
+  createdAt   DateTime @default(now())
+
+  @@map("leads") // Maps your collection
+  @@index([category, createdAt]) // For better querying by category
+}
