@@ -12,7 +12,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { href: '/api-dokumentation', label: 'API' },
-  { href: '/dashboard', label: 'Dashboard' },
   { href: '/karriarer', label: 'Karriärer' },
   { href: '/mallar', label: 'Mallar' },
   { href: '/nyheter', label: 'Nyheter' },
