@@ -25,28 +25,28 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: '#FFAE00',
-          foreground: '#282828',
+          DEFAULT: '#D4A017',
+          foreground: '#222222',
         },
         secondary: {
-          DEFAULT: '#2252B1',
-          foreground: '#ffffff',
+          DEFAULT: '#A91D22',
+          foreground: '#FFFFFF',
         },
         accent: {
-          DEFAULT: '#FF7164',
-          foreground: '#ffffff',
+          DEFAULT: '#0A3871',
+          foreground: '#FFFFFF',
         },
         tertiary: {
-          DEFAULT: '#030712',
-          foreground: '#ffffff',
+          DEFAULT: '#222222',
+          foreground: '#FFFFFF',
         },
         destructive: {
           DEFAULT: '#AB2222',
-          foreground: '#ffffff',
+          foreground: '#FFFFFF',
         },
         dark: {
-          DEFAULT: '#282828',
-          foreground: '#ffffff',
+          DEFAULT: '#222222',
+          foreground: '#FFFFFF',
         },
         muted: {
           DEFAULT: '#E4E4E4',
@@ -54,11 +54,19 @@ export default {
         },
         card: {
           DEFAULT: '#F1F1F1',
-          foreground: '#282828',
+          foreground: '#222222',
         },
         success: {
           DEFAULT: '#06643D',
-          foreground: '#282828',
+          foreground: '#222222',
+        },
+        white: {
+          DEFAULT: '#FFFFFF',
+          foreground: '#222222',
+        },
+        black: {
+          DEFAULT: '#222222',
+          foreground: '#FFFFFF',
         },
       },
     },
