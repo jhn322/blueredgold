@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import LeadForm from '@/components/LeadForm';
 import type { Metadata } from 'next';
 import { generateJobPostingSchema } from '../schemaUtils';
 import Script from 'next/script';
@@ -180,26 +179,6 @@ export default async function JobPage({
                 </section>
               </CardContent>
             </Card>
-
-            {/* Ansökningsformulär */}
-            <section aria-labelledby="application-form">
-              <Card>
-                <CardHeader>
-                  <CardTitle id="application-form">Sök tjänsten</CardTitle>
-                  <CardDescription>
-                    Fyll i formuläret nedan så återkommer vi inom kort med mer
-                    information.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <LeadForm
-                    category="careers"
-                    referenceId={job.id}
-                    showPhone={false}
-                  />
-                </CardContent>
-              </Card>
-            </section>
           </div>
         </article>
       </main>

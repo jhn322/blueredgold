@@ -1,4 +1,3 @@
-import LeadForm from '../LeadForm';
 import {
   Card,
   CardContent,
@@ -72,21 +71,6 @@ export default function Hero() {
                 </div>
               </section>
             </CardContent>
-
-            <div className="sm:p-0 sm:w-full">
-              <Card>
-                <CardHeader>
-                  <h3 className="text-xl font-semibold">Anmäl intresse</h3>
-                  <CardDescription>
-                    Fyll i formuläret nedan så återkommer vi inom kort med mer
-                    information.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <LeadForm category="service" />
-                </CardContent>
-              </Card>
-            </div>
           </CardHeader>
 
           <section

@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Metadata } from 'next';
-import LeadForm from '../../components/LeadForm';
 
 export const metadata: Metadata = {
   title: 'Verktyg och resurser',
@@ -80,29 +79,6 @@ export default function ToolsPage() {
           </p>
         </header>
         <Separator className="my-4" role="presentation" />
-
-        <section aria-labelledby="interest-heading">
-          <h2 id="interest-heading" className="sr-only">
-            Anmäl intresse för verktyg
-          </h2>
-          <div className="mx-auto max-w-[580px] w-full">
-            <Card>
-              <CardHeader className="space-y-2">
-                <CardTitle className="text-xl font-semibold">
-                  Anmäl intresse
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  Våra verktyg är fortfarande under konstruktion, lämna din
-                  e-postadress så skickar vi dig ett meddelande när de är
-                  lanserade.
-                </p>
-              </CardHeader>
-              <CardContent>
-                <LeadForm category="tools" showPhone={false} />
-              </CardContent>
-            </Card>
-          </div>
-        </section>
 
         <section aria-labelledby="tools-list-heading" className="mt-16">
           <h2
