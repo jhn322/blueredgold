@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,12 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ArrowRight, Code, Lock, Zap } from 'lucide-react';
+import { Code, Lock, Zap } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 export default function ApiDocumentationContent() {
-  const [showForm, setShowForm] = useState(false);
-
   return (
     <main className="container py-12">
       <div className="flex flex-col gap-6">
@@ -27,16 +23,6 @@ export default function ApiDocumentationContent() {
             tjänster direkt i dina system. Ansök om API-tillgång och skräddarsy
             lösningen efter dina behov.
           </p>
-
-          <Button
-            size="lg"
-            className="bg-primary"
-            onClick={() => setShowForm(true)}
-            aria-label="Ansök om API-tillgång"
-          >
-            Ansök om API-tillgång
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-          </Button>
         </header>
         <Separator className="my-4" aria-hidden="true" />
 

@@ -1,13 +1,7 @@
 // import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { jobs } from '../data';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import type { Metadata } from 'next';
 import { generateJobPostingSchema } from '../schemaUtils';
 import Script from 'next/script';
