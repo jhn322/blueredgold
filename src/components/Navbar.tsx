@@ -26,6 +26,7 @@ import {
   LineChart,
   Newspaper as Press,
   Recycle,
+  Briefcase,
 } from 'lucide-react';
 
 interface NavItemChild {
@@ -119,10 +120,15 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: 'About',
+    name: 'Company',
     icon: <Building2 className="w-5 h-5" />,
     children: [
-      { name: 'Career', path: '/career', icon: <Users className="w-4 h-4" /> },
+      { name: 'About', path: '/about', icon: <Users className="w-4 h-4" /> },
+      {
+        name: 'Career',
+        path: '/career',
+        icon: <Briefcase className="w-4 h-4" />,
+      },
       { name: 'Contact', path: '/contact', icon: <Mail className="w-4 h-4" /> },
       {
         name: 'Investor Relations',
@@ -309,20 +315,38 @@ const Navbar = () => {
 
     return (
       <li className="w-full">
-        <button
-          onClick={() => handleCategoryClick(item)}
-          className={`relative group flex items-center justify-between w-full py-4 px-4 text-2xl hover:font-bold text-primary ${
-            pathname === item.path ? 'font-bold' : ''
-          }`}
-        >
-          <div className="flex items-center">
-            <div className="flex items-center justify-center w-8 h-8 mr-3">
-              {item.icon}
+        {item.path ? (
+          <Link
+            href={item.path}
+            className={`relative group flex items-center justify-between w-full py-4 px-4 text-2xl hover:font-bold text-primary ${
+              pathname === item.path ? 'font-bold' : ''
+            }`}
+            onClick={toggleMenu}
+          >
+            <div className="flex items-center">
+              <div className="flex items-center justify-center w-8 h-8 mr-3">
+                {item.icon}
+              </div>
+              <span>{item.name}</span>
             </div>
-            <span>{item.name}</span>
-          </div>
-          {hasChildren && <ChevronDown className="w-5 h-5 -rotate-90" />}
-        </button>
+            {hasChildren && <ChevronDown className="w-5 h-5 -rotate-90" />}
+          </Link>
+        ) : (
+          <button
+            onClick={() => handleCategoryClick(item)}
+            className={`relative group flex items-center justify-between w-full py-4 px-4 text-2xl hover:font-bold text-primary ${
+              pathname === item.path ? 'font-bold' : ''
+            }`}
+          >
+            <div className="flex items-center">
+              <div className="flex items-center justify-center w-8 h-8 mr-3">
+                {item.icon}
+              </div>
+              <span>{item.name}</span>
+            </div>
+            {hasChildren && <ChevronDown className="w-5 h-5 -rotate-90" />}
+          </button>
+        )}
       </li>
     );
   };
