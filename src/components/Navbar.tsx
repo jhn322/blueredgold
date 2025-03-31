@@ -419,11 +419,8 @@ const Navbar = () => {
                       tabIndex={0}
                     >
                       <ChevronDown className="w-6 h-6 rotate-90" />
-                      <span className="block max-[767px]:block min-[768px]:hidden min-[1201px]:block text-xl">
-                        Back
-                      </span>
                     </button>
-                    <span className="text-2xl font-medium text-primary">
+                    <span className="text-xl font-medium text-primary">
                       {currentCategory?.name}
                     </span>
                   </>
