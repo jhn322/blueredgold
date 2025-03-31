@@ -1,22 +1,148 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, ShoppingBag, User } from 'lucide-react';
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Leaf,
+  Star,
+  Cpu,
+  BookOpen,
+  Building2,
+  Sprout,
+  TestTube2,
+  Database,
+  FileText,
+  Newspaper,
+  UtensilsCrossed,
+  Microscope,
+  Users,
+  Mail,
+  LineChart,
+  Newspaper as Press,
+  Recycle,
+} from 'lucide-react';
 
-const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Career', path: '/career' },
-  { name: 'Press', path: '/press' },
-  { name: 'Food & Beverages', path: '/food-beverages' },
-  { name: 'Medical & Cosmetics', path: '/medical-cosmetics' },
-  { name: 'Sustainability (ESG)', path: '/sustainability' },
-  { name: 'Contact Us', path: '/contact' },
-  { name: 'Log in', path: '/login' },
+interface NavItemChild {
+  name: string;
+  path: string;
+  icon: React.ReactNode;
+}
+
+interface NavItemWithChildren {
+  name: string;
+  path?: string;
+  icon: React.ReactNode;
+  children?: (NavItemChild | NavItemWithChildren)[];
+}
+
+type NavItem = NavItemChild | NavItemWithChildren;
+
+const navItems: NavItem[] = [
+  {
+    name: 'Growing Saffron',
+    path: '/',
+    icon: <Leaf className="w-5 h-5" />,
+  },
+  {
+    name: 'Premium Saffron',
+    icon: <Star className="w-5 h-5" />,
+    children: [
+      {
+        name: 'Food & Beverages',
+        path: '/food-beverages',
+        icon: <UtensilsCrossed className="w-4 h-4" />,
+      },
+      {
+        name: 'Medical & Cosmetics',
+        path: '/medical-cosmetics',
+        icon: <TestTube2 className="w-4 h-4" />,
+      },
+    ],
+  },
+  {
+    name: 'Technology',
+    icon: <Cpu className="w-5 h-5" />,
+    children: [
+      {
+        name: 'Growing',
+        path: '/technology/growing',
+        icon: <Sprout className="w-4 h-4" />,
+      },
+      {
+        name: 'Harvesting',
+        path: '/technology/harvesting',
+        icon: <Leaf className="w-4 h-4" />,
+      },
+      {
+        name: 'Data',
+        icon: <Database className="w-4 h-4" />,
+        children: [
+          {
+            name: 'Batches',
+            path: '/technology/data/batches',
+            icon: <FileText className="w-4 h-4" />,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Blog',
+    icon: <BookOpen className="w-5 h-5" />,
+    children: [
+      {
+        name: 'Updates',
+        path: '/blog/updates',
+        icon: <FileText className="w-4 h-4" />,
+      },
+      {
+        name: 'In the news',
+        path: '/blog/news',
+        icon: <Newspaper className="w-4 h-4" />,
+      },
+      {
+        name: 'Recipes',
+        path: '/blog/recipes',
+        icon: <UtensilsCrossed className="w-4 h-4" />,
+      },
+      {
+        name: 'Science',
+        path: '/blog/science',
+        icon: <Microscope className="w-4 h-4" />,
+      },
+    ],
+  },
+  {
+    name: 'About',
+    icon: <Building2 className="w-5 h-5" />,
+    children: [
+      { name: 'Career', path: '/career', icon: <Users className="w-4 h-4" /> },
+      { name: 'Contact', path: '/contact', icon: <Mail className="w-4 h-4" /> },
+      {
+        name: 'Investor Relations',
+        path: '/investor-relations',
+        icon: <LineChart className="w-4 h-4" />,
+      },
+      { name: 'Press', path: '/press', icon: <Press className="w-4 h-4" /> },
+      {
+        name: 'Sustainability',
+        icon: <Recycle className="w-4 h-4" />,
+        children: [
+          {
+            name: 'ESG',
+            path: '/sustainability/esg',
+            icon: <Recycle className="w-4 h-4" />,
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const socialLinks = [
@@ -93,12 +219,58 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  const NavLink = ({
+    item,
+    className = '',
+  }: {
+    item: NavItem;
+    className?: string;
+  }) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+      <div
+        className={`relative group ${className}`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {item.path ? (
+          <Link
+            href={item.path}
+            className="flex items-center gap-2 px-4 py-2 text-secondary hover:text-accent transition-colors"
+          >
+            {item.icon}
+            <span>{item.name}</span>
+          </Link>
+        ) : (
+          <div className="flex items-center gap-2 px-4 py-2 cursor-pointer text-secondary hover:text-accent transition-colors">
+            {item.icon}
+            <span>{item.name}</span>
+            <ChevronDown
+              className={`w-4 h-4 transition-transform duration-200 ${
+                isHovered ? 'rotate-180' : ''
+              }`}
+            />
+          </div>
+        )}
+
+        {'children' in item && item.children && isHovered && (
+          <div className="absolute left-0 top-full bg-white shadow-lg rounded-md py-2 min-w-[200px] z-50">
+            {item.children.map((child) => (
+              <NavLink key={child.name} item={child} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50">
         <nav
           className={`flex items-center justify-between px-4 md:px-8 py-3 transition-all duration-300 ${
-            isAtTop ? 'bg-transparent' : 'bg-white shadow-md'
+            isAtTop ? 'bg-transparent' : 'bg-primary shadow-md'
           }`}
         >
           {/* Logo */}
@@ -117,44 +289,26 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Right Side Icons */}
-          <div className="flex items-center gap-4">
-            {/* Cart - hide on small screens */}
-            <Link
-              href="/cart"
-              className="hidden sm:flex items-center justify-center transition-opacity duration-300"
-              style={{ opacity: isAtTop ? opacity : 1 }}
-              aria-label="Shopping Cart"
-              tabIndex={0}
-            >
-              <ShoppingBag className="w-6 h-6" />
-            </Link>
-
-            {/* Login Icon */}
-            <Link
-              href="/login"
-              className="flex items-center justify-center transition-opacity duration-300"
-              style={{ opacity: isAtTop ? opacity : 1 }}
-              aria-label="Login"
-              tabIndex={0}
-            >
-              <User className="w-6 h-6" />
-            </Link>
-
-            {/* Menu Icon */}
-            <button
-              className="flex items-center justify-center focus:outline-none"
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
-              tabIndex={0}
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center justify-center flex-1 gap-4">
+            {navItems.map((item) => (
+              <NavLink key={item.name} item={item} />
+            ))}
           </div>
+
+          {/* Menu Icon */}
+          <button
+            className="flex items-center justify-center focus:outline-none text-secondary"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            tabIndex={0}
+          >
+            <Menu className="w-6 h-6" />
+          </button>
         </nav>
       </header>
 
-      {/* Slide-out Menu */}
+      {/* Mobile Menu - Keeping existing implementation */}
       <AnimatePresence>
         {isOpen && (
           <div
@@ -162,16 +316,16 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             <motion.div
-              className="absolute top-0 right-0 h-full bg-white w-full md:w-1/2"
+              className="absolute top-0 right-0 h-full bg-secondary w-full md:w-[40%]"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
-              <div className="flex justify-end p-4 md:p-8 border-b">
+              <div className="flex justify-end p-4 md:p-8 border-b border-primary/10">
                 <button
-                  className="flex items-center justify-center focus:outline-none"
+                  className="flex items-center justify-center focus:outline-none text-primary"
                   onClick={toggleMenu}
                   aria-label="Close menu"
                   tabIndex={0}
@@ -186,8 +340,8 @@ const Navbar = () => {
                   {navItems.map((item) => (
                     <li key={item.path} className="w-full max-w-xs">
                       <Link
-                        href={item.path}
-                        className={`relative group flex items-center py-3 px-4 text-2xl hover:font-bold ${
+                        href={item.path || '#'}
+                        className={`relative group flex items-center py-3 px-4 text-3xl hover:font-bold text-primary ${
                           pathname === item.path ? 'font-bold' : ''
                         }`}
                         onClick={toggleMenu}
@@ -212,14 +366,14 @@ const Navbar = () => {
                 </ul>
 
                 {/* Social Icons */}
-                <div className="flex justify-center gap-8 py-8 border-t mt-4">
+                <div className="flex justify-center gap-8 py-8 border-t border-primary/10 mt-4">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-700 hover:text-gray-900 transition-colors"
+                      className="text-primary hover:text-accent transition-colors"
                       aria-label={social.name}
                       tabIndex={0}
                     >
