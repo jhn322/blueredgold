@@ -222,9 +222,11 @@ const Navbar = () => {
   const NavLink = ({
     item,
     className = '',
+    isNested = false,
   }: {
     item: NavItem;
     className?: string;
+    isNested?: boolean;
   }) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -237,27 +239,52 @@ const Navbar = () => {
         {item.path ? (
           <Link
             href={item.path}
-            className="flex items-center gap-2 px-4 py-2 text-secondary hover:text-accent transition-colors"
+            className={`flex items-center gap-2 px-4 py-2 ${
+              className || 'text-secondary hover:text-accent'
+            } transition-colors`}
           >
             {item.icon}
             <span>{item.name}</span>
           </Link>
         ) : (
-          <div className="flex items-center gap-2 px-4 py-2 cursor-pointer text-secondary hover:text-accent transition-colors">
+          <div
+            className={`flex items-center gap-2 px-4 py-2 cursor-pointer ${
+              className || 'text-secondary hover:text-accent'
+            } transition-colors`}
+          >
             {item.icon}
             <span>{item.name}</span>
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-200 ${
-                isHovered ? 'rotate-180' : ''
+                isNested ? '-rotate-90' : ''
+              } ${
+                isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
               }`}
             />
           </div>
         )}
 
         {'children' in item && item.children && isHovered && (
-          <div className="absolute left-0 top-full bg-white shadow-lg rounded-md py-2 min-w-[200px] z-50">
+          <div
+            className={`absolute ${
+              isNested
+                ? 'left-[calc(100%-1px)] top-[-0.5rem]'
+                : 'left-0 top-[calc(100%-1px)]'
+            } bg-secondary shadow-lg py-2 min-w-[200px] z-50 rounded-xl
+            }`}
+          >
             {item.children.map((child) => (
-              <NavLink key={child.name} item={child} />
+              <NavLink
+                key={child.name}
+                item={{
+                  ...child,
+                  path: child.path,
+                  icon: child.icon,
+                  name: child.name,
+                }}
+                className="text-primary hover:font-bold"
+                isNested={true}
+              />
             ))}
           </div>
         )}
@@ -308,7 +335,7 @@ const Navbar = () => {
         </nav>
       </header>
 
-      {/* Mobile Menu - Keeping existing implementation */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <div
