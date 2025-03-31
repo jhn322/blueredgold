@@ -305,13 +305,13 @@ const Navbar = () => {
             className="transition-opacity duration-300"
             style={{ opacity: isAtTop ? opacity : 1 }}
           >
-            <Link href="/" className="block">
+            <Link href="/" className="block relative w-[120px] h-[70px]">
               <Image
                 src="/logo.svg"
                 alt="BlueRedGold Logo"
-                width={70}
-                height={30}
+                fill
                 priority
+                className="object-contain"
               />
             </Link>
           </div>
@@ -363,7 +363,7 @@ const Navbar = () => {
 
               <div className="flex flex-col h-[calc(100%-5rem)]">
                 {/* Navigation Items */}
-                <ul className="flex flex-col items-center py-8 mb-auto">
+                <ul className="flex flex-col items-center justify-center flex-1 py-8">
                   {navItems.map((item) => (
                     <li key={item.path} className="w-full max-w-xs">
                       <Link
