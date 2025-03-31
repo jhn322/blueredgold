@@ -197,6 +197,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(1);
   const [isAtTop, setIsAtTop] = useState(true);
+  const [navigationStack, setNavigationStack] = useState<NavItemWithChildren[]>(
+    []
+  );
   const pathname = usePathname();
 
   useEffect(() => {
@@ -218,6 +221,20 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleCategoryClick = (item: NavItem) => {
+    if ('children' in item && item.children) {
+      setNavigationStack((prev) => [...prev, item as NavItemWithChildren]);
+    } else if (item.path) {
+      toggleMenu();
+    }
+  };
+
+  const handleBack = () => {
+    setNavigationStack((prev) => prev.slice(0, -1));
+  };
+
+  const currentCategory = navigationStack[navigationStack.length - 1] || null;
 
   const NavLink = ({
     item,
@@ -270,18 +287,12 @@ const Navbar = () => {
               isNested
                 ? 'left-[calc(100%-1px)] top-[-0.5rem]'
                 : 'left-0 top-[calc(100%-1px)]'
-            } bg-secondary shadow-lg py-2 min-w-[200px] z-50 rounded-xl
-            }`}
+            } bg-secondary shadow-lg py-2 min-w-[200px] z-50 rounded-xl`}
           >
             {item.children.map((child) => (
               <NavLink
                 key={child.name}
-                item={{
-                  ...child,
-                  path: child.path,
-                  icon: child.icon,
-                  name: child.name,
-                }}
+                item={child}
                 className="text-primary hover:font-bold"
                 isNested={true}
               />
@@ -289,6 +300,30 @@ const Navbar = () => {
           </div>
         )}
       </div>
+    );
+  };
+
+  const MobileMenuItem = ({ item }: { item: NavItem }) => {
+    const hasChildren =
+      'children' in item && item.children && item.children.length > 0;
+
+    return (
+      <li className="w-full">
+        <button
+          onClick={() => handleCategoryClick(item)}
+          className={`relative group flex items-center justify-between w-full py-4 px-4 text-2xl hover:font-bold text-primary ${
+            pathname === item.path ? 'font-bold' : ''
+          }`}
+        >
+          <div className="flex items-center">
+            <div className="flex items-center justify-center w-8 h-8 mr-3">
+              {item.icon}
+            </div>
+            <span>{item.name}</span>
+          </div>
+          {hasChildren && <ChevronDown className="w-5 h-5 -rotate-90" />}
+        </button>
+      </li>
     );
   };
 
@@ -343,14 +378,34 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             <motion.div
-              className="absolute top-0 right-0 h-full bg-secondary w-full md:w-[40%]"
+              className="absolute top-0 right-0 h-full bg-secondary w-full md:w-[40%] flex flex-col overflow-hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', ease: 'easeInOut', duration: 0.3 }}
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
             >
-              <div className="flex justify-end p-4 md:p-8 border-b border-primary/10">
+              <div className="flex justify-between items-center p-4 md:p-8 border-b border-primary/10">
+                {navigationStack.length > 0 ? (
+                  <>
+                    <button
+                      className="flex items-center gap-2 focus:outline-none text-primary"
+                      onClick={handleBack}
+                      aria-label="Go back"
+                      tabIndex={0}
+                    >
+                      <ChevronDown className="w-6 h-6 rotate-90" />
+                      <span className="block max-[767px]:block min-[768px]:hidden min-[1201px]:block text-xl">
+                        Back
+                      </span>
+                    </button>
+                    <span className="text-2xl font-medium text-primary">
+                      {currentCategory?.name}
+                    </span>
+                  </>
+                ) : (
+                  <div />
+                )}
                 <button
                   className="flex items-center justify-center focus:outline-none text-primary"
                   onClick={toggleMenu}
@@ -361,39 +416,37 @@ const Navbar = () => {
                 </button>
               </div>
 
-              <div className="flex flex-col h-[calc(100%-5rem)]">
+              <div className="flex flex-col flex-1">
                 {/* Navigation Items */}
-                <ul className="flex flex-col items-center justify-center flex-1 py-8">
-                  {navItems.map((item) => (
-                    <li key={item.path} className="w-full max-w-xs">
-                      <Link
-                        href={item.path || '#'}
-                        className={`relative group flex items-center py-3 px-4 text-3xl hover:font-bold text-primary ${
-                          pathname === item.path ? 'font-bold' : ''
-                        }`}
-                        onClick={toggleMenu}
-                      >
-                        <div className="absolute left-0 flex items-center justify-center w-8 h-8">
-                          <Image
-                            src="/saffron.svg"
-                            alt=""
-                            width={32}
-                            height={32}
-                            className={
-                              pathname === item.path
-                                ? 'opacity-100'
-                                : 'opacity-0 group-hover:opacity-100 transition-opacity duration-200'
-                            }
-                          />
-                        </div>
-                        <span className="ml-10">{item.name}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={navigationStack.length}
+                    initial={{
+                      opacity: 0,
+                      x: navigationStack.length > 0 ? 20 : -20,
+                    }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{
+                      opacity: 0,
+                      x: navigationStack.length > 0 ? -20 : 20,
+                    }}
+                    transition={{ duration: 0.15 }}
+                    className="flex-1 overflow-hidden"
+                  >
+                    <ul className="flex flex-col py-4 md:px-4">
+                      {currentCategory
+                        ? currentCategory.children!.map((item) => (
+                            <MobileMenuItem key={item.name} item={item} />
+                          ))
+                        : navItems.map((item) => (
+                            <MobileMenuItem key={item.name} item={item} />
+                          ))}
+                    </ul>
+                  </motion.div>
+                </AnimatePresence>
 
                 {/* Social Icons */}
-                <div className="flex justify-center gap-8 py-8 border-t border-primary/10 mt-4">
+                <div className="flex justify-center gap-8 py-8 border-t border-primary/10 mt-auto">
                   {socialLinks.map((social) => (
                     <a
                       key={social.name}
@@ -404,7 +457,7 @@ const Navbar = () => {
                       aria-label={social.name}
                       tabIndex={0}
                     >
-                      <div className="w-6 h-6">{social.icon}</div>
+                      <div className="w-10 h-10">{social.icon}</div>
                     </a>
                   ))}
                 </div>
