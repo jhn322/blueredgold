@@ -1,12 +1,9 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import Hero from './Hero';
 
 export default function VanillaVidaLanding() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <Hero />
-
       {/* Technology Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
