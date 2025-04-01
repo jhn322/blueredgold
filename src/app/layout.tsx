@@ -1,17 +1,49 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const satoshi = localFont({
+  src: [
+    {
+      path: '../fonts/Satoshi-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Satoshi-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Satoshi-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-satoshi',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const switzer = localFont({
+  src: [
+    {
+      path: '../fonts/Switzer-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Switzer-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Switzer-Semibold.woff2',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-switzer',
 });
 
 // Placeholder-bild från Unsplash (kostnadsfri)
@@ -20,37 +52,39 @@ const PLACEHOLDER_OG_IMAGE =
 
 export const metadata: Metadata = {
   title: {
-    default: 'Offertu | Effektiv offerthantering för företag',
-    template: '%s | Offertu',
+    default:
+      'BlueRedGold - Swedish Saffron - Ethically grown - Harvested in Sweden',
+    template: '%s | BlueRedGold',
   },
   description:
-    'Offertu hjälper företag att effektivisera offertprocessen med smarta verktyg för projektkalkylering, offerthantering och uppföljning.',
-  authors: [{ name: 'Offertu Team' }],
-  creator: 'Offertu AB',
-  publisher: 'Offertu AB',
+    'BlueRedGold cultivating world-class saffron in the heart of Sörmland',
+  authors: [{ name: 'BlueRedGold Team' }],
+  creator: 'BlueRedGold',
+  publisher: 'BlueRedGold',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://offertu.vercel.app'),
+  metadataBase: new URL('https://blueredgold.vercel.app'),
   alternates: {
     canonical: './',
   },
   openGraph: {
     type: 'website',
-    locale: 'sv_SE',
-    url: 'https://offertu.vercel.app', // Ändra till er faktiska domän
-    siteName: 'Offertu',
-    title: 'Offertu | Effektiv offerthantering för företag',
+    locale: 'en_US',
+    url: 'https://BlueRedGold.vercel.app', // Ändra till er faktiska domän
+    siteName: 'BlueRedGold',
+    title:
+      'BlueRedGold - Swedish Saffron - Ethically grown - Harvested in Sweden',
     description:
-      'Offertu hjälper företag att effektivisera offertprocessen med smarta verktyg för projektkalkylering, offerthantering och uppföljning.',
+      'BlueRedGold cultivating world-class saffron in the heart of Sörmland',
     images: [
       {
         url: PLACEHOLDER_OG_IMAGE, // Placeholder från Unsplash
         width: 1200,
         height: 630,
-        alt: 'Offertu - Effektiv offerthantering',
+        alt: 'BlueRedGold - Effektiv offerthantering',
       },
     ],
   },
@@ -67,7 +101,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/favicon.ico', // Temporärt använd favicon.ico tills apple-touch-icon.png skapas
+    apple: '/favicon.ico',
   },
 };
 
@@ -77,8 +111,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="antialiased">
+    <html lang="en" className={`${satoshi.variable} ${switzer.variable}`}>
+      <body className="antialiased font-sans">
         <header>
           <Navbar />
         </header>

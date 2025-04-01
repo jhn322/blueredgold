@@ -120,7 +120,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: 'Company',
+    name: 'About us',
     icon: <Building2 className="w-5 h-5" />,
     children: [
       { name: 'About', path: '/about', icon: <Users className="w-4 h-4" /> },
@@ -474,7 +474,7 @@ const Navbar = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-accent transition-colors"
+                      className="text-primary hover:text-primary/80 transition-colors"
                       aria-label={social.name}
                       tabIndex={0}
                     >

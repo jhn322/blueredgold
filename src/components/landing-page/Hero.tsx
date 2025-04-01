@@ -1,123 +1,36 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 export default function Hero() {
   return (
-    <section
-      id="hero-section"
-      aria-labelledby="hero-heading"
-      className="bg-background py-16 px-2 sm:px-4 md:py-20"
-    >
-      <CardContent className="max-w-6xl mx-auto">
-        <div className="space-y-12">
-          <h1
-            id="hero-heading"
-            className="text-4xl md:text-5xl font-bold text-primary-foreground px-1"
-          >
-            Offertu
+    <section className="relative h-screen flex items-center">
+      <div className="absolute inset-0 z-0"></div>
+      <div className="container relative z-10 mx-auto px-4 md:px-6 flex flex-col gap-8">
+        <div className="max-w-xl">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white-DEFAULT mb-2">
+            VANIllA VIDA
           </h1>
-
-          <CardHeader className="grid lg:grid-cols-2 gap-16 items-start px-1">
-            <CardContent className="space-y-8 px-0">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-foreground">
-                Räkna smartare, vinn fler uppdrag
-              </h2>
-              <p className="text-muted-foreground lg:max-w-xl">
-                Låt våra experter hjälpa dig att räkna på projekt inom bygg, VVS
-                och el. Snabbt, träffsäkert och personligt genom direktkontakt
-                online.
-              </p>
-
-              <section className="max-w-3xl" aria-labelledby="how-it-works">
-                <div className="mb-12">
-                  <h3
-                    id="how-it-works"
-                    className="text-xl font-semibold mb-6 text-primary-foreground"
-                  >
-                    Så här fungerar det
-                  </h3>
-                  <ol className="relative space-y-6">
-                    {[
-                      'Lämna dina kontaktuppgifter',
-                      'Vi återkommer inom 24 timmar',
-                      'Genomför ett personligt videomöte',
-                      'Få experthjälp med din offertberäkning',
-                    ].map((step, index) => (
-                      <li key={index} className="flex items-start gap-4">
-                        <div className="flex-none relative">
-                          <span
-                            className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary"
-                            aria-hidden="true"
-                          >
-                            {index + 1}
-                          </span>
-                          {index < 3 && (
-                            <div
-                              className="absolute left-4 top-8 w-[1px] h-[calc(100%+1rem)] bg-border"
-                              aria-hidden="true"
-                            />
-                          )}
-                        </div>
-                        <div className="flex-1 pt-1">
-                          <div className="text-muted-foreground">{step}</div>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </section>
-            </CardContent>
-          </CardHeader>
-
-          <section
-            aria-labelledby="benefits-section"
-            className="grid md:grid-cols-3 gap-8 mt-20"
-          >
-            <h3 className="sr-only" id="benefits-section">
-              Fördelar med Offertu
-            </h3>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">
-                  Spara värdefull tid
-                </h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Vår kompetenta och erfarna personal med bakgrund i
-                  byggbranschen tar hand om dina beräkningar. I genomsnitt
-                  halverar vi din offerttid och kunder sparar 15+ timmar i
-                  veckan som de kan lägga på faktiskt arbete istället för
-                  pappersarbete.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">Öka precision</h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Minimera risken för felberäkningar med vår beprövade metodik
-                  och branschexpertis.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">
-                  Vinn fler affärer
-                </h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Med välgrundade och konkurrenskraftiga offerter ökar dina
-                  chanser att landa uppdraget.
-                </p>
-              </CardContent>
-            </Card>
-          </section>
+          <p className="text-lg text-white-DEFAULT/80">Growing Possibilities</p>
         </div>
-      </CardContent>
+        <div className="max-w-md space-y-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-white-DEFAULT">
+            Inspired by nature.
+            <br />
+            Driven by technology.
+          </h2>
+          <p className="text-white-DEFAULT/90">
+            We harness cutting-edge natural vanilla production with the most
+            advanced technology on the market. With Vanilla Vida&apos;s
+            innovative approach, we&apos;re revolutionizing the vanilla
+            industry.
+          </p>
+          <Button
+            variant="outline"
+            className="bg-transparent border-white-DEFAULT text-white-DEFAULT hover:bg-white-DEFAULT/10"
+          >
+            Learn More
+          </Button>
+        </div>
+      </div>
     </section>
   );
 }

@@ -4,11 +4,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Integritetspolicy',
   description:
-    'Läs om hur Offertu hanterar dina personuppgifter och följer GDPR. Vi värnar om din integritet och säkerställer att dina data behandlas säkert och transparent.',
+    'Läs om hur BlueRedGold hanterar dina personuppgifter och följer GDPR. Vi värnar om din integritet och säkerställer att dina data behandlas säkert och transparent.',
   openGraph: {
-    title: 'Integritetspolicy | Offertu',
+    title: 'Integritetspolicy | BlueRedGold',
     description:
-      'Läs om hur Offertu hanterar dina personuppgifter och följer GDPR. Vi värnar om din integritet och säkerställer att dina data behandlas säkert och transparent.',
+      'Läs om hur BlueRedGold hanterar dina personuppgifter och följer GDPR. Vi värnar om din integritet och säkerställer att dina data behandlas säkert och transparent.',
     url: '/integritetspolicy',
   },
 };

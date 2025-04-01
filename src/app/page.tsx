@@ -1,7 +1,5 @@
+import LandingPage from '../components/landing-page/LandingPage';
 import Hero from '../components/landing-page/Hero';
-import ApiSection from '../components/landing-page/ApiSection';
-import CareerSection from '../components/landing-page/CareerSection';
-import ResourcesSection from '../components/landing-page/ResourcesSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,9 +13,7 @@ export default function Home() {
       <header>
         <Hero />
       </header>
-      <ApiSection />
-      <CareerSection />
-      <ResourcesSection />
+      <LandingPage />
     </main>
   );
 }
