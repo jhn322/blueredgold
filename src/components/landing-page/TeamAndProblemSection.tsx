@@ -342,19 +342,19 @@ export const TeamAndProblemSection = () => {
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold">Our Vision</h3>
                   <p className="text-muted-foreground">
-                    At BlueRedGold, we're revolutionizing saffron cultivation
-                    through innovation and sustainability. Our team combines
-                    expertise in agriculture, technology, and business to create
-                    a better future for this precious spice.
+                    At BlueRedGold, we&apos;re revolutionizing saffron
+                    cultivation through innovation and sustainability. Our team
+                    combines expertise in agriculture, technology, and business
+                    to create a better future for this precious spice.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <h3 className="text-2xl font-semibold">Our Mission</h3>
                   <p className="text-muted-foreground">
-                    We're committed to transforming the saffron industry by
+                    We&apos;re committed to transforming the saffron industry by
                     making it sustainable, transparent, and accessible. Through
-                    our innovative approach, we're ensuring the future of this
-                    precious ingredient.
+                    our innovative approach, we&apos;re ensuring the future of
+                    this precious ingredient.
                   </p>
                 </div>
                 <Link href="/about" className="inline-block">
