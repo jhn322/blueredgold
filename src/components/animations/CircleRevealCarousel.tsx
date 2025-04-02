@@ -86,8 +86,13 @@ export const CircleRevealCarousel = ({
             <motion.div
               key={currentIndex}
               initial={{ scale: 1.2 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1.5, ease: 'easeOut' }}
+              animate={{
+                scale: 1,
+                transition: {
+                  duration: autoPlayInterval / 1000,
+                  ease: 'linear',
+                },
+              }}
               className="absolute inset-0"
             >
               <Image
@@ -95,6 +100,8 @@ export const CircleRevealCarousel = ({
                 alt={`${items[currentIndex].title} background`}
                 fill
                 className="object-cover"
+                sizes="100vw"
+                priority
               />
               <div className="absolute inset-0 bg-foreground/30" />
             </motion.div>

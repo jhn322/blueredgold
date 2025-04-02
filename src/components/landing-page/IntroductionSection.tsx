@@ -27,12 +27,21 @@ export const IntroductionSection = () => {
               BlueRedGold is pioneering a state-of-the-art indoor saffron farm.
             </p>
           </FadeIn>
-          <FadeIn delay={200}>
-            <div className="mt-12 bg-primary/5 rounded-2xl p-6 max-w-2xl mx-auto">
-              <h4 className="text-2xl font-semibold text-primary mb-3">
+        </div>
+
+        {/* Animation */}
+        <div>
+          <SaffronProcessAnimation />
+        </div>
+
+        {/* Controlled Climate */}
+        <FadeIn delay={200}>
+          <section className="relative w-full bg-background">
+            <div className="container mx-auto px-4">
+              <h4 className="text-4xl md:text-5xl font-bold text-center mb-3 text-primary">
                 Controlled Climate
               </h4>
-              <div className="flex items-center justify-center space-x-2 text-lg font-medium text-foreground/90">
+              <div className="flex items-center justify-center space-x-2 text-xl text-center text-foreground/80">
                 <span className="bg-primary/10 rounded-full px-4 py-1">
                   3 Climate Zones
                 </span>
@@ -42,13 +51,8 @@ export const IntroductionSection = () => {
                 </span>
               </div>
             </div>
-          </FadeIn>
-        </div>
-
-        {/* Animation */}
-        <div>
-          <SaffronProcessAnimation />
-        </div>
+          </section>
+        </FadeIn>
       </div>
     </section>
   );
