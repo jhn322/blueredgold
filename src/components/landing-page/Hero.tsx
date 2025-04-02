@@ -62,9 +62,9 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/40" />
       </div>
       <div className="container relative z-10 mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-64 items-center max-w-6xl mx-auto">
           {/* Left Column - Logo and Company Name */}
-          <div className="flex flex-col items-center md:items-start gap-6">
+          <div className="flex flex-col items-center md:items-center gap-6">
             <FadeIn delay={200}>
               <Image
                 src="/logo.svg"
@@ -76,7 +76,7 @@ export default function Hero() {
               />
             </FadeIn>
             <FadeIn delay={400}>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-background text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-background text-center">
                 BlueRedGold
               </h1>
             </FadeIn>
