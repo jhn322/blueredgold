@@ -1,6 +1,6 @@
 import Hero from '../components/landing-page/Hero';
 import { IntroductionSection } from '../components/landing-page/IntroductionSection';
-import { PlantReadingSection } from '../components/landing-page/PlantReadingSection';
+import { ProcessSection } from '../components/landing-page/ProcessSection';
 import { EfficiencySection } from '../components/landing-page/EfficiencySection';
 import { VanillaChoiceSection } from '../components/landing-page/VanillaChoiceSection';
 import type { Metadata } from 'next';
@@ -18,7 +18,7 @@ export default function Home() {
       </header>
       <div className="flex flex-col min-h-screen bg-background text-foreground">
         <IntroductionSection />
-        <PlantReadingSection />
+        <ProcessSection />
         <EfficiencySection />
         <VanillaChoiceSection />
       </div>
