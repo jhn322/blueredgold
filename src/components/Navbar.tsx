@@ -103,7 +103,7 @@ const navItems: NavItem[] = [
         icon: <FileText className="w-4 h-4" />,
       },
       {
-        name: 'In the news',
+        name: 'In the News',
         path: '/blog/news',
         icon: <Newspaper className="w-4 h-4" />,
       },

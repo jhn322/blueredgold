@@ -137,7 +137,7 @@ export default function Footer() {
                   </Link>
                   <Link href="/blog/in-the-news">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                      In the news
+                      In the News
                     </CardDescription>
                   </Link>
                   <Link href="/blog/recipes">
@@ -180,7 +180,7 @@ export default function Footer() {
                   </Link>
                   <Link href="/press-inquires">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                      Press inquires
+                      Press
                     </CardDescription>
                   </Link>
                   <Link href="/esg">
