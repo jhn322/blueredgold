@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimate, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
-import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -134,7 +133,7 @@ export const SaffronProcessAnimation = () => {
           <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
             <AnimatePresence
               initial={false}
-              mode="wait"
+              mode="sync"
               custom={slideDirection}
             >
               <motion.div
@@ -147,7 +146,7 @@ export const SaffronProcessAnimation = () => {
                 animate="center"
                 exit={slideDirection > 0 ? 'exitToLeft' : 'exitToRight'}
                 transition={{
-                  x: { type: 'spring', stiffness: 400, damping: 35 },
+                  x: { type: 'spring', stiffness: 500, damping: 35 },
                   opacity: { duration: 0.1 },
                 }}
                 className="absolute w-full flex justify-center"
@@ -224,22 +223,18 @@ export const SaffronProcessAnimation = () => {
 
           {/* Navigation Buttons */}
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center px-4 pointer-events-none">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 pointer-events-auto"
+            <button
+              className="rounded-full bg-background/80 backdrop-blur-sm pointer-events-auto w-16 h-16 p-0 flex items-center justify-center hover:bg-primary/10 transition-colors"
               onClick={handlePrevSlide}
             >
-              <ChevronLeft className="h-6 w-6" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full bg-background/80 backdrop-blur-sm hover:bg-background/90 pointer-events-auto"
+              <ChevronLeft className="h-12 w-12" />
+            </button>
+            <button
+              className="rounded-full bg-background/80 backdrop-blur-sm pointer-events-auto w-16 h-16 p-0 flex items-center justify-center hover:bg-primary/10 transition-colors"
               onClick={handleNextSlide}
             >
-              <ChevronRight className="h-6 w-6" />
-            </Button>
+              <ChevronRight className="h-12 w-12" />
+            </button>
           </div>
 
           {/* Dots Indicator */}

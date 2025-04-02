@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 // Custom hook for window size
 const useWindowSize = () => {
@@ -112,22 +113,10 @@ export const CircleRevealCarousel = ({
         <div className="flex justify-center items-center gap-4 mt-8">
           <button
             onClick={handlePrev}
-            className="p-2 rounded-full hover:bg-foreground/10 transition-colors"
+            className="rounded-full  backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-foreground/10 transition-colors"
             aria-label="Previous slide"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m15 18-6-6 6-6" />
-            </svg>
+            <ChevronLeft className="h-6 w-6" />
           </button>
 
           <div className="flex gap-2">
@@ -136,10 +125,10 @@ export const CircleRevealCarousel = ({
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={cn(
-                  'w-2 h-2 rounded-full transition-colors',
+                  'h-2 rounded-full transition-all',
                   index === currentIndex
-                    ? 'bg-primary'
-                    : 'bg-foreground/30 hover:bg-foreground/50'
+                    ? 'bg-primary w-4'
+                    : 'bg-foreground/30 hover:bg-foreground/50 w-2'
                 )}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -148,22 +137,10 @@ export const CircleRevealCarousel = ({
 
           <button
             onClick={handleNext}
-            className="p-2 rounded-full hover:bg-foreground/10 transition-colors"
+            className="rounded-full backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-foreground/10 transition-colors"
             aria-label="Next slide"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+            <ChevronRight className="h-6 w-6" />
           </button>
         </div>
       </div>
