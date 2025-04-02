@@ -1,6 +1,7 @@
 'use client';
 
 import { CircleRevealCarousel } from '@/components/animations/CircleRevealCarousel';
+import { useRef } from 'react';
 
 const AUTOMATION_ITEMS = [
   {
@@ -26,11 +27,24 @@ const AUTOMATION_ITEMS = [
 ];
 
 export const AutomationSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handlePause = (isPaused: boolean) => {
+    if (videoRef.current) {
+      if (isPaused) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+    }
+  };
+
   return (
     <section className="relative w-full min-h-screen">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -47,6 +61,7 @@ export const AutomationSection = () => {
       <CircleRevealCarousel
         items={AUTOMATION_ITEMS}
         className="relative z-10"
+        onPauseChange={handlePause}
       />
     </section>
   );
