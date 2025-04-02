@@ -1,7 +1,9 @@
 import Hero from '../components/landing-page/Hero';
-import ApiSection from '../components/landing-page/ApiSection';
-import CareerSection from '../components/landing-page/CareerSection';
-import ResourcesSection from '../components/landing-page/ResourcesSection';
+import { IntroductionSection } from '../components/landing-page/IntroductionSection';
+import { ProcessSection } from '../components/landing-page/ProcessSection';
+import { AutomationSection } from '../components/landing-page/AutomationSection';
+import { SeparatorSection } from '../components/landing-page/SeparatorSection';
+import { TeamAndProblemSection } from '../components/landing-page/TeamAndProblemSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,9 +17,13 @@ export default function Home() {
       <header>
         <Hero />
       </header>
-      <ApiSection />
-      <CareerSection />
-      <ResourcesSection />
+      <div className="flex flex-col min-h-screen bg-background text-foreground">
+        <IntroductionSection />
+        <ProcessSection />
+        <SeparatorSection />
+        <AutomationSection />
+        <TeamAndProblemSection />
+      </div>
     </main>
   );
 }

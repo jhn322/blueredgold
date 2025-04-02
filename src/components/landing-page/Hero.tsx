@@ -1,123 +1,118 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+'use client';
+
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FadeIn } from '@/components/ui/fade-in';
+import { useState, useEffect } from 'react';
+
+// Carousel phrases
+const carouselItems = [
+  {
+    title: 'BlueRedGold',
+    subtitle: 'An ingredient supplier',
+  },
+  {
+    title: 'Premium Saffron',
+    subtitle:
+      'Vertical cultivation with year round harvest through precision automation',
+  },
+  {
+    title: 'Cooking ingredient,',
+    subtitle: 'Flavoring agent',
+  },
+  {
+    title: 'Nutraceuticals,',
+    subtitle: 'Supplements, Nutricosmetics',
+  },
+];
 
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [opacity, setOpacity] = useState(1);
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Fade out current content
+      setOpacity(0);
+
+      // Update content and fade in
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
+        setOpacity(1);
+      }, 500);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section
-      id="hero-section"
-      aria-labelledby="hero-heading"
-      className="bg-background py-16 px-2 sm:px-4 md:py-20"
-    >
-      <CardContent className="max-w-6xl mx-auto">
-        <div className="space-y-12">
-          <h1
-            id="hero-heading"
-            className="text-4xl md:text-5xl font-bold text-primary-foreground px-1"
-          >
-            Offertu
-          </h1>
+    <section className="relative h-screen flex items-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/landing-page/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      <div className="container relative z-10 mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-64 items-center max-w-6xl mx-auto">
+          {/* Left Column - Logo and Company Name */}
+          <div className="flex flex-col items-center md:items-center gap-6">
+            <FadeIn delay={200}>
+              <Image
+                src="/logo.svg"
+                alt="BlueRedGold Logo"
+                width={240}
+                height={220}
+                className="w-48 md:w-64 lg:w-72"
+                priority
+              />
+            </FadeIn>
+            <FadeIn delay={400}>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-background text-center">
+                BlueRedGold
+              </h1>
+            </FadeIn>
+          </div>
 
-          <CardHeader className="grid lg:grid-cols-2 gap-16 items-start px-1">
-            <CardContent className="space-y-8 px-0">
-              <h2 className="text-xl md:text-2xl font-semibold text-primary-foreground">
-                Räkna smartare, vinn fler uppdrag
-              </h2>
-              <p className="text-muted-foreground lg:max-w-xl">
-                Låt våra experter hjälpa dig att räkna på projekt inom bygg, VVS
-                och el. Snabbt, träffsäkert och personligt genom direktkontakt
-                online.
-              </p>
-
-              <section className="max-w-3xl" aria-labelledby="how-it-works">
-                <div className="mb-12">
-                  <h3
-                    id="how-it-works"
-                    className="text-xl font-semibold mb-6 text-primary-foreground"
-                  >
-                    Så här fungerar det
-                  </h3>
-                  <ol className="relative space-y-6">
-                    {[
-                      'Lämna dina kontaktuppgifter',
-                      'Vi återkommer inom 24 timmar',
-                      'Genomför ett personligt videomöte',
-                      'Få experthjälp med din offertberäkning',
-                    ].map((step, index) => (
-                      <li key={index} className="flex items-start gap-4">
-                        <div className="flex-none relative">
-                          <span
-                            className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary"
-                            aria-hidden="true"
-                          >
-                            {index + 1}
-                          </span>
-                          {index < 3 && (
-                            <div
-                              className="absolute left-4 top-8 w-[1px] h-[calc(100%+1rem)] bg-border"
-                              aria-hidden="true"
-                            />
-                          )}
-                        </div>
-                        <div className="flex-1 pt-1">
-                          <div className="text-muted-foreground">{step}</div>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
+          {/* Right Column - Content */}
+          <div className="max-w-1xl space-y-8 text-center md:text-left">
+            <FadeIn delay={600}>
+              <div className="h-[120px] md:h-[140px] lg:h-[160px] flex flex-col justify-center relative">
+                <div
+                  className="absolute inset-0 flex flex-col justify-center transition-opacity duration-1000 ease-in-out"
+                  style={{ opacity }}
+                >
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-background leading-tight">
+                    {carouselItems[currentIndex].title}
+                  </h2>
+                  <p className="text-lg md:text-xl lg:text-3xl text-background/90 mt-2">
+                    {carouselItems[currentIndex].subtitle}
+                  </p>
                 </div>
-              </section>
-            </CardContent>
-          </CardHeader>
-
-          <section
-            aria-labelledby="benefits-section"
-            className="grid md:grid-cols-3 gap-8 mt-20"
-          >
-            <h3 className="sr-only" id="benefits-section">
-              Fördelar med Offertu
-            </h3>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">
-                  Spara värdefull tid
-                </h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Vår kompetenta och erfarna personal med bakgrund i
-                  byggbranschen tar hand om dina beräkningar. I genomsnitt
-                  halverar vi din offerttid och kunder sparar 15+ timmar i
-                  veckan som de kan lägga på faktiskt arbete istället för
-                  pappersarbete.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">Öka precision</h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Minimera risken för felberäkningar med vår beprövade metodik
-                  och branschexpertis.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-card rounded-lg">
-              <CardHeader>
-                <h4 className="font-semibold text-lg mb-2">
-                  Vinn fler affärer
-                </h4>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Med välgrundade och konkurrenskraftiga offerter ökar dina
-                  chanser att landa uppdraget.
-                </p>
-              </CardContent>
-            </Card>
-          </section>
+              </div>
+            </FadeIn>
+            <FadeIn delay={1000}>
+              <Link href="/about">
+                <Button
+                  variant="outline"
+                  className="relative rounded-full bg-transparent border-2 border-background text-background hover:text-background/80 overflow-hidden group text-md md:text-lg px-5 py-5"
+                >
+                  <span className="relative z-10">Learn More</span>
+                  <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-background/10" />
+                </Button>
+              </Link>
+            </FadeIn>
+          </div>
         </div>
-      </CardContent>
+      </div>
     </section>
   );
 }

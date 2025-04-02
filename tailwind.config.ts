@@ -69,6 +69,10 @@ export default {
           foreground: '#FFF2D7',
         },
       },
+      fontFamily: {
+        sans: ['var(--font-switzer)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],

@@ -103,7 +103,7 @@ const navItems: NavItem[] = [
         icon: <FileText className="w-4 h-4" />,
       },
       {
-        name: 'In the news',
+        name: 'In the News',
         path: '/blog/news',
         icon: <Newspaper className="w-4 h-4" />,
       },
@@ -120,7 +120,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: 'Company',
+    name: 'About us',
     icon: <Building2 className="w-5 h-5" />,
     children: [
       { name: 'About', path: '/about', icon: <Users className="w-4 h-4" /> },
@@ -201,7 +201,6 @@ const socialLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [opacity, setOpacity] = useState(1);
   const [isAtTop, setIsAtTop] = useState(true);
   const [navigationStack, setNavigationStack] = useState<NavItemWithChildren[]>(
     []
@@ -214,13 +213,14 @@ const Navbar = () => {
       const threshold = 100;
 
       if (position < threshold) {
-        setOpacity(1 - position / threshold);
         setIsAtTop(true);
       } else {
-        setOpacity(1);
         setIsAtTop(false);
       }
     };
+
+    // Set initial state to be visible navbar
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -362,7 +362,7 @@ const Navbar = () => {
           {/* Logo */}
           <div
             className="transition-opacity duration-300"
-            style={{ opacity: isAtTop ? opacity : 1 }}
+            style={{ opacity: 1 }}
           >
             <Link href="/" className="block relative w-[120px] h-[70px]">
               <Image
@@ -376,7 +376,11 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center justify-center flex-1 gap-4">
+          <div
+            className={`hidden lg:flex items-center justify-center flex-1 gap-4 ${
+              isAtTop ? 'text-primary' : 'text-secondary'
+            }`}
+          >
             {navItems.map((item) => (
               <NavLink key={item.name} item={item} />
             ))}
@@ -384,7 +388,9 @@ const Navbar = () => {
 
           {/* Menu Icon */}
           <button
-            className="flex items-center justify-center focus:outline-none text-secondary"
+            className={`flex items-center justify-center focus:outline-none ${
+              isAtTop ? 'text-primary' : 'text-secondary'
+            }`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
             tabIndex={0}
@@ -474,7 +480,7 @@ const Navbar = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:text-accent transition-colors"
+                      className="text-primary hover:text-primary/80 transition-colors"
                       aria-label={social.name}
                       tabIndex={0}
                     >
