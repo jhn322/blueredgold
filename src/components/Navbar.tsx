@@ -388,8 +388,7 @@ const Navbar = () => {
 
           {/* Menu Icon */}
           <button
-            className={`flex items-center justify-center focus:outline-none ${
-              isAtTop ? 'text-primary' : 'text-secondary'
+            className={`flex items-center justify-center focus:outline-none text-secondary
             }`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
