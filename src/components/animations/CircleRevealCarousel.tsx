@@ -5,6 +5,7 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 // Custom hook for window size
 const useWindowSize = () => {
@@ -30,6 +31,7 @@ const useWindowSize = () => {
 interface CarouselItem {
   title: string;
   description: string;
+  image?: string;
 }
 
 interface CircleRevealCarouselProps {
@@ -77,7 +79,30 @@ export const CircleRevealCarousel = ({
       ref={elementRef}
       className={cn('relative w-full min-h-screen overflow-hidden', className)}
     >
-      {/* Half Cirle Animation */}
+      {/* Background Image */}
+      {items[currentIndex].image && (
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ scale: 1.2 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={items[currentIndex].image}
+                alt={`${items[currentIndex].title} background`}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-foreground/30" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Half Circle Animation */}
       <motion.div
         initial={{ y: '-100%' }}
         animate={isVisible ? { y: 0 } : { y: '-100%' }}
@@ -113,7 +138,7 @@ export const CircleRevealCarousel = ({
         <div className="flex justify-center items-center gap-4 mt-8">
           <button
             onClick={handlePrev}
-            className="rounded-full  backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-foreground/10 transition-colors"
+            className="rounded-full backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-foreground/10 transition-colors"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-6 w-6" />

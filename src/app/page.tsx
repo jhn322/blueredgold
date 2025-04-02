@@ -1,8 +1,9 @@
 import Hero from '../components/landing-page/Hero';
 import { IntroductionSection } from '../components/landing-page/IntroductionSection';
 import { ProcessSection } from '../components/landing-page/ProcessSection';
-import { EfficiencySection } from '../components/landing-page/EfficiencySection';
 import { VanillaChoiceSection } from '../components/landing-page/VanillaChoiceSection';
+import { AutomationSection } from '../components/landing-page/AutomationSection';
+import { SeparatorSection } from '../components/landing-page/SeparatorSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -19,7 +20,8 @@ export default function Home() {
       <div className="flex flex-col min-h-screen bg-background text-foreground">
         <IntroductionSection />
         <ProcessSection />
-        <EfficiencySection />
+        <SeparatorSection />
+        <AutomationSection />
         <VanillaChoiceSection />
       </div>
     </main>
