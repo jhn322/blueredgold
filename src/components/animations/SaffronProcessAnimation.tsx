@@ -21,28 +21,28 @@ const processSteps: ProcessStep[] = [
     icon: '/seed/seed.svg',
     label: 'Vertically-integrated operation',
     description: 'Complete control over quality and production',
-    color: 'from-emerald-500/20 via-emerald-400/10 to-emerald-500/20',
+    color: 'from-blue-600/30 via-blue-500/30 to-blue-400/30',
   },
   {
     id: 2,
     icon: '/flower/flower7.svg',
     label: 'Location independent',
     description: 'Global reach and accessibility',
-    color: 'from-blue-500/20 via-blue-400/10 to-blue-500/20',
+    color: 'from-purple-600/30 via-purple-500/30 to-purple-400/30',
   },
   {
     id: 3,
     icon: '/flower/flower4.svg',
     label: 'Sustainable production',
     description: 'Environmentally conscious practices',
-    color: 'from-purple-500/20 via-purple-400/10 to-purple-500/20',
+    color: 'from-red-600/30 via-red-500/30 to-red-400/30',
   },
   {
     id: 4,
     icon: '/saffron/saffron.svg',
     label: 'Expanding natural ingredients',
     description: 'Pure and authentic components',
-    color: 'from-rose-500/20 via-rose-400/10 to-rose-500/20',
+    color: 'from-yellow-600/30 via-yellow-500/30 to-yellow-400/30',
   },
 ];
 

@@ -220,7 +220,7 @@ export default function Footer() {
             <div className="flex gap-4 text-sm">
               <Link href="/integritetspolicy">
                 <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                  Integritetspolicy
+                  Integrity Policy
                 </CardDescription>
               </Link>
             </div>
