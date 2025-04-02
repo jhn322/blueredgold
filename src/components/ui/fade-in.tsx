@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { useIntersectionObserver } from '@/hooks/use-intersection-observer';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import { ReactNode } from 'react';
 
 interface FadeInProps {
