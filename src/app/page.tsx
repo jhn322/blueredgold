@@ -1,9 +1,9 @@
 import Hero from '../components/landing-page/Hero';
 import { IntroductionSection } from '../components/landing-page/IntroductionSection';
 import { ProcessSection } from '../components/landing-page/ProcessSection';
-import { VanillaChoiceSection } from '../components/landing-page/VanillaChoiceSection';
 import { AutomationSection } from '../components/landing-page/AutomationSection';
 import { SeparatorSection } from '../components/landing-page/SeparatorSection';
+import { TeamAndProblemSection } from '../components/landing-page/TeamAndProblemSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function Home() {
         <ProcessSection />
         <SeparatorSection />
         <AutomationSection />
-        <VanillaChoiceSection />
+        <TeamAndProblemSection />
       </div>
     </main>
   );
