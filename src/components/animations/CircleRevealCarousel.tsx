@@ -216,10 +216,10 @@ export const CircleRevealCarousel = ({
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={cn(
-                    'h-2 rounded-full transition-all',
+                    'h-3 w-3 sm:h-2 sm:w-2 rounded-full transition-all p-1',
                     index === currentIndex
-                      ? 'bg-primary w-4'
-                      : 'bg-foreground/30 hover:bg-foreground/50 w-2'
+                      ? 'bg-primary w-6 sm:w-4'
+                      : 'bg-foreground/30 hover:bg-foreground/50 w-3 sm:w-2'
                   )}
                   aria-label={`Go to slide ${index + 1}`}
                 />
