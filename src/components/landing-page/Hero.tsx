@@ -58,6 +58,13 @@ export default function Hero() {
           className="w-full h-full object-cover"
         >
           <source src="/landing-page/hero.mp4" type="video/mp4" />
+          <track
+            kind="captions"
+            src="/landing-page/hero-captions.vtt"
+            srcLang="en"
+            label="English"
+            default
+          />
         </video>
         <div className="absolute inset-0 bg-black/40" />
       </div>

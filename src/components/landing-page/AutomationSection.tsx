@@ -52,6 +52,13 @@ export const AutomationSection = () => {
           className="w-full h-full object-cover"
         >
           <source src="/landing-page/automation.mp4" type="video/mp4" />
+          <track
+            kind="captions"
+            src="/landing-page/automation-captions.vtt"
+            srcLang="en"
+            label="English"
+            default
+          />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-foreground/30" />
