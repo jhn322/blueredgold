@@ -58,7 +58,6 @@ export const AutomationSection = () => {
           poster="/landing-page/automation-poster.webp"
           className="w-full h-full object-cover"
         >
-          <source src="/landing-page/automation.webm" type="video/webm" />
           <source src="/landing-page/automation.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
