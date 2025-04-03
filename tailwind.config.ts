@@ -73,6 +73,14 @@ export default {
         sans: ['var(--font-switzer)', 'system-ui', 'sans-serif'],
         display: ['var(--font-satoshi)', 'system-ui', 'sans-serif'],
       },
+      keyframes: {
+        spin: {
+          '0%': { transform: 'translate(-50%, -50%) scale(1.4) rotate(0turn)' },
+          '100%': {
+            transform: 'translate(-50%, -50%) scale(1.4) rotate(1turn)',
+          },
+        },
+      },
     },
   },
   plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],

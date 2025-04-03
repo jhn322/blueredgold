@@ -358,7 +358,11 @@ export const TeamAndProblemSection = () => {
                   </p>
                 </div>
                 <Link href="/about" className="inline-block">
-                  <Button size="lg" className="group rounded-full">
+                  <Button
+                    variant="default"
+                    size="lg"
+                    className="group rounded-full"
+                  >
                     Meet Our Team
                     <motion.span
                       className="inline-block ml-2"

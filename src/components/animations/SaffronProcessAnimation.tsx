@@ -18,28 +18,28 @@ interface ProcessStep {
 const processSteps: ProcessStep[] = [
   {
     id: 1,
-    icon: '/seed/seed.svg',
+    icon: '/seed/seed.webp',
     label: 'Vertically-integrated operation',
     description: 'Complete control over quality and production',
     color: 'from-blue-600/30 via-blue-500/30 to-blue-400/30',
   },
   {
     id: 2,
-    icon: '/flower/flower7.svg',
+    icon: '/flower/flower7.webp',
     label: 'Location independent',
     description: 'Global reach and accessibility',
     color: 'from-purple-600/30 via-purple-500/30 to-purple-400/30',
   },
   {
     id: 3,
-    icon: '/flower/flower4.svg',
+    icon: '/flower/flower4.webp',
     label: 'Sustainable production',
     description: 'Environmentally conscious practices',
     color: 'from-red-600/30 via-red-500/30 to-red-400/30',
   },
   {
     id: 4,
-    icon: '/saffron/saffron.svg',
+    icon: '/saffron/saffron.webp',
     label: 'Expanding natural ingredients',
     description: 'Pure and authentic components',
     color: 'from-yellow-600/30 via-yellow-500/30 to-yellow-400/30',
@@ -226,33 +226,43 @@ export const SaffronProcessAnimation = () => {
             <button
               className="rounded-full bg-background/80 backdrop-blur-sm pointer-events-auto w-16 h-16 p-0 flex items-center justify-center hover:bg-primary/10 transition-colors"
               onClick={handlePrevSlide}
+              aria-label="Previous slide"
             >
               <ChevronLeft className="h-12 w-12" />
             </button>
             <button
               className="rounded-full bg-background/80 backdrop-blur-sm pointer-events-auto w-16 h-16 p-0 flex items-center justify-center hover:bg-primary/10 transition-colors"
               onClick={handleNextSlide}
+              aria-label="Next slide"
             >
               <ChevronRight className="h-12 w-12" />
             </button>
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-3 mt-4">
             {processSteps.map((_, index) => (
               <button
                 key={index}
                 className={cn(
-                  'w-2 h-2 rounded-full transition-all',
+                  'rounded-full transition-all',
                   index === activeSlide
-                    ? 'bg-primary w-4'
+                    ? 'bg-primary'
                     : 'bg-muted-foreground/30'
                 )}
                 onClick={() => {
                   setSlideDirection(index > activeSlide ? 1 : -1);
                   setActiveSlide(index);
                 }}
-              />
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <span
+                  className={cn(
+                    'block w-2 h-2 rounded-full transition-all',
+                    index === activeSlide ? 'w-4' : ''
+                  )}
+                />
+              </button>
             ))}
           </div>
         </div>

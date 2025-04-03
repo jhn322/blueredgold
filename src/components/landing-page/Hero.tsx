@@ -58,6 +58,13 @@ export default function Hero() {
           className="w-full h-full object-cover"
         >
           <source src="/landing-page/hero.mp4" type="video/mp4" />
+          <track
+            kind="captions"
+            src="/landing-page/hero-captions.vtt"
+            srcLang="en"
+            label="English"
+            default
+          />
         </video>
         <div className="absolute inset-0 bg-black/40" />
       </div>
@@ -69,10 +76,15 @@ export default function Hero() {
               <Image
                 src="/logo.svg"
                 alt="BlueRedGold Logo"
-                width={240}
-                height={220}
+                width={120}
+                height={100}
                 className="w-48 md:w-64 lg:w-72"
                 priority
+                loading="eager"
+                // style={{
+                //   width: 'auto',
+                //   height: 'auto',
+                // }}
               />
             </FadeIn>
             <FadeIn delay={400}>
@@ -100,13 +112,22 @@ export default function Hero() {
               </div>
             </FadeIn>
             <FadeIn delay={1000}>
-              <Link href="/about">
+              <Link
+                href="/about"
+                aria-label="Learn more about BlueRedGold's premium saffron and products"
+                className="inline-block"
+              >
                 <Button
-                  variant="outline"
-                  className="relative rounded-full bg-transparent border-2 border-background text-background hover:text-background/80 overflow-hidden group text-md md:text-lg px-5 py-5"
+                  variant="default"
+                  size="lg"
+                  className="relative rounded-full overflow-hidden group text-md md:text-lg"
                 >
                   <span className="relative z-10">Learn More</span>
-                  <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-background/10" />
+                  <div className="absolute inset-0 bg-primary" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
+                    <div className="absolute inset-[2px] rounded-full bg-primary" />
+                  </div>
                 </Button>
               </Link>
             </FadeIn>
