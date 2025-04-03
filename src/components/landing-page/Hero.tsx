@@ -76,10 +76,15 @@ export default function Hero() {
               <Image
                 src="/logo.svg"
                 alt="BlueRedGold Logo"
-                width={240}
-                height={220}
+                width={120}
+                height={100}
                 className="w-48 md:w-64 lg:w-72"
                 priority
+                loading="eager"
+                // style={{
+                //   width: 'auto',
+                //   height: 'auto',
+                // }}
               />
             </FadeIn>
             <FadeIn delay={400}>
@@ -107,11 +112,15 @@ export default function Hero() {
               </div>
             </FadeIn>
             <FadeIn delay={1000}>
-              <Link href="/about">
+              <Link
+                href="/about"
+                aria-label="Learn more about BlueRedGold's premium saffron and products"
+                className="inline-block"
+              >
                 <Button
                   variant="default"
                   size="lg"
-                  className="relative rounded-full overflow-hidden group text-md md:text-lg "
+                  className="relative rounded-full overflow-hidden group text-md md:text-lg"
                 >
                   <span className="relative z-10">Learn More</span>
                   <div className="absolute inset-0 bg-primary" />

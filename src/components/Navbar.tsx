@@ -278,7 +278,7 @@ const Navbar = () => {
             {item.icon}
             <span>{item.name}</span>
             <ChevronDown
-              className={`w-4 h-4 transition-transform duration-200 ${
+              className={`w-5 h-5 transition-transform duration-200 ${
                 isNested ? '-rotate-90' : ''
               } ${
                 isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
@@ -355,24 +355,26 @@ const Navbar = () => {
     <>
       <header className="fixed top-0 left-0 w-full z-50">
         <nav
-          className={`flex items-center justify-between px-4 md:px-8 py-3 transition-all duration-300 ${
+          className={`flex items-center justify-between px-4 md:px-8 h-[86px] transition-all duration-300 ${
             isAtTop ? 'bg-transparent' : 'bg-primary shadow-md'
           }`}
         >
           {/* Logo */}
-          <div
-            className="transition-opacity duration-300"
-            style={{ opacity: 1 }}
-          >
-            <Link href="/" className="block relative w-[120px] h-[70px]">
-              <Image
-                src="/logo.svg"
-                alt="BlueRedGold Logo"
-                fill
-                priority
-                className="object-contain"
-              />
-            </Link>
+          <div className="w-[120px]">
+            <div
+              className="transition-opacity duration-300 hidden lg:block"
+              style={{ opacity: 1 }}
+            >
+              <Link href="/" className="block relative w-[120px] h-[70px]">
+                <Image
+                  src="/logo.svg"
+                  alt="BlueRedGold Logo"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+              </Link>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -387,15 +389,16 @@ const Navbar = () => {
           </div>
 
           {/* Menu Icon */}
-          <button
-            className={`flex items-center justify-center focus:outline-none text-secondary
-            }`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            tabIndex={0}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
+          <div className="w-[120px] flex justify-end">
+            <button
+              className={`flex items-center justify-center focus:outline-none text-secondary`}
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+              tabIndex={0}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
         </nav>
       </header>
 
@@ -423,7 +426,7 @@ const Navbar = () => {
                       aria-label="Go back"
                       tabIndex={0}
                     >
-                      <ChevronDown className="w-6 h-6 rotate-90" />
+                      <ChevronDown className="w-5 h-5 rotate-90" />
                     </button>
                     <span className="text-xl font-medium text-primary">
                       {currentCategory?.name}
