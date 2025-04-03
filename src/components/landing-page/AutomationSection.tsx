@@ -1,7 +1,7 @@
 'use client';
 
 import { CircleRevealCarousel } from '@/components/animations/CircleRevealCarousel';
-import { useRef } from 'react';
+import { useVideoLoading } from '@/hooks/useVideoLoading';
 
 const AUTOMATION_ITEMS = [
   {
@@ -27,14 +27,19 @@ const AUTOMATION_ITEMS = [
 ];
 
 export const AutomationSection = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useVideoLoading({
+    rootMargin: '50%',
+    threshold: 0.1,
+  });
 
   const handlePause = (isPaused: boolean) => {
     if (videoRef.current) {
       if (isPaused) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play();
+        videoRef.current.play().catch((error) => {
+          console.warn('Video play failed:', error);
+        });
       }
     }
   };
@@ -49,16 +54,12 @@ export const AutomationSection = () => {
           muted
           loop
           playsInline
+          preload="none"
+          poster="/landing-page/automation-poster.webp"
           className="w-full h-full object-cover"
         >
+          <source src="/landing-page/automation.webm" type="video/webm" />
           <source src="/landing-page/automation.mp4" type="video/mp4" />
-          <track
-            kind="captions"
-            src="/landing-page/automation-captions.vtt"
-            srcLang="en"
-            label="English"
-            default
-          />
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 bg-foreground/30" />

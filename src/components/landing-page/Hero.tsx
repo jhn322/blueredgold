@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FadeIn } from '@/components/ui/fade-in';
 import { useState, useEffect } from 'react';
+import { useVideoLoading } from '@/hooks/useVideoLoading';
 
 // Carousel phrases
 const carouselItems = [
@@ -31,6 +32,11 @@ export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [opacity, setOpacity] = useState(1);
 
+  const videoRef = useVideoLoading({
+    rootMargin: '50%',
+    threshold: 0.1,
+  });
+
   // Auto-rotate carousel
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,20 +57,17 @@ export default function Hero() {
     <section className="relative h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="none"
+          poster="/landing-page/hero-poster.webp"
           className="w-full h-full object-cover"
         >
+          <source src="/landing-page/hero.webm" type="video/webm" />
           <source src="/landing-page/hero.mp4" type="video/mp4" />
-          <track
-            kind="captions"
-            src="/landing-page/hero-captions.vtt"
-            srcLang="en"
-            label="English"
-            default
-          />
         </video>
         <div className="absolute inset-0 bg-black/40" />
       </div>
