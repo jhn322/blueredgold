@@ -120,7 +120,10 @@ export const CircleRevealCarousel = ({
   return (
     <div
       ref={elementRef}
-      className={cn('relative w-full min-h-screen overflow-hidden', className)}
+      className={cn(
+        'relative w-full min-h-[100dvh] overflow-hidden',
+        className
+      )}
     >
       {/* Background Image */}
       {items[currentIndex].image && (
@@ -166,7 +169,7 @@ export const CircleRevealCarousel = ({
 
       {/* Content */}
       <FadeIn delay={400}>
-        <div className="relative z-10 container mx-auto px-4 pt-32 md:pt-40">
+        <div className="relative z-10 container mx-auto px-4 pt-16 sm:pt-24 md:pt-40">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -174,12 +177,12 @@ export const CircleRevealCarousel = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="text-center max-w-2xl mx-auto"
+              className="text-center max-w-[90%] sm:max-w-2xl mx-auto"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4">
                 {items[currentIndex].title}
               </h2>
-              <p className="text-foreground/80 text-lg max-w-2xl">
+              <p className="text-foreground/80 text-sm sm:text-base md:text-lg max-w-full sm:max-w-2xl leading-relaxed">
                 {items[currentIndex].description}
               </p>
             </motion.div>
