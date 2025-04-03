@@ -113,8 +113,8 @@ export default function Hero() {
             </FadeIn>
             <FadeIn delay={1000}>
               <Link
-                href="/about"
-                aria-label="Learn more about BlueRedGold's premium saffron and products"
+                href="/blog/recipes"
+                aria-label="View our collection of saffron recipes and cooking inspiration"
                 className="inline-block"
               >
                 <Button
@@ -122,7 +122,7 @@ export default function Hero() {
                   size="lg"
                   className="relative rounded-full overflow-hidden group text-md md:text-lg"
                 >
-                  <span className="relative z-10">Learn More</span>
+                  <span className="relative z-10">View Recipes</span>
                   <div className="absolute inset-0 bg-primary" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />

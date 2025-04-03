@@ -245,7 +245,7 @@ export const SaffronProcessAnimation = () => {
               <button
                 key={index}
                 className={cn(
-                  'rounded-full transition-all',
+                  'rounded-full transition-all p-1',
                   index === activeSlide
                     ? 'bg-primary'
                     : 'bg-muted-foreground/30'
