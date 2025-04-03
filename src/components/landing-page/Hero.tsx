@@ -109,11 +109,16 @@ export default function Hero() {
             <FadeIn delay={1000}>
               <Link href="/about">
                 <Button
-                  variant="outline"
-                  className="relative rounded-full bg-transparent border-2 border-background text-background hover:text-background/80 overflow-hidden group text-md md:text-lg px-5 py-5"
+                  variant="default"
+                  size="lg"
+                  className="relative rounded-full overflow-hidden group text-md md:text-lg "
                 >
                   <span className="relative z-10">Learn More</span>
-                  <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-background/10" />
+                  <div className="absolute inset-0 bg-primary" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
+                    <div className="absolute inset-[2px] rounded-full bg-primary" />
+                  </div>
                 </Button>
               </Link>
             </FadeIn>
