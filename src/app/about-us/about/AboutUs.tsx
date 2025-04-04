@@ -82,8 +82,8 @@ export default function AboutUsContent() {
         className="bg-background py-16"
         aria-labelledby="journey-heading"
       >
-        <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="container max-w-4xl mx-auto">
+          <div className="text-center">
             <FadeIn>
               <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
                 <span className="text-sm font-medium text-primary">
@@ -155,60 +155,89 @@ export default function AboutUsContent() {
         </div>
       </section>
 
-      {/* Second Section with Text and Logo */}
+      {/* Advisory Board Section */}
       <section
         className="bg-background py-20"
         aria-labelledby="advisory-heading"
       >
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="container max-w-4xl mx-auto">
+          <div className="space-y-16">
+            {/* Main Content */}
+            <div className="space-y-12">
               <FadeIn>
-                <h2
-                  id="advisory-heading"
-                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
-                >
-                  Introducing the Industry Advisory Board
-                </h2>
-              </FadeIn>
-              <FadeIn delay={200}>
-                <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                  Our advisory board brings together experts from across the
-                  agricultural technology sector, sustainable farming practices,
-                  and business innovation. Their collective expertise guides our
-                  strategic direction and ensures we remain at the cutting edge
-                  of industry developments.
-                </p>
-              </FadeIn>
-              <FadeIn delay={300}>
-                <p className="text-lg text-foreground/80 leading-relaxed">
-                  With decades of combined experience, our advisors help us
-                  navigate challenges, identify opportunities, and maintain our
-                  commitment to quality and sustainability in everything we do.
-                </p>
-              </FadeIn>
-            </div>
-            <FadeIn delay={400}>
-              <div className="flex justify-center">
-                <div className="w-full max-w-md">
-                  <Image
-                    src="/logo-text.svg"
-                    alt="BlueRedGold logo"
-                    width={400}
-                    height={111}
-                    className="w-full"
-                  />
+                <div className="space-y-2">
+                  <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                    <span className="text-sm font-medium text-primary">
+                      Our Offerings
+                    </span>
+                  </div>
+                  <p className="text-lg text-foreground/80 leading-relaxed">
+                    Presently, we delight in offering our exquisite saffron to a
+                    diverse range of clients worldwide. From esteemed
+                    establishments in the restaurant and food industries to
+                    partnerships with local entrepreneurs and gourmet
+                    connoisseurs, our saffron finds its way to discerning tables
+                    across the globe. Moreover, our commitment extends to
+                    nutraceuticals, supplements, and nutricosmetics, where we
+                    collaborate with experts to deliver premium products that
+                    cater to the health and wellness needs of our clientele.
+                  </p>
                 </div>
+              </FadeIn>
+
+              <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+                <div className="flex-1 space-y-6">
+                  <FadeIn delay={200}>
+                    <h2
+                      id="advisory-heading"
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary"
+                    >
+                      Introducing the Industry Advisory Team
+                    </h2>
+                    <p className="text-lg text-foreground/80 mt-6 leading-relaxed">
+                      At the heart of BlueRedGold&apos;s success is a formidable
+                      assembly of experts and visionaries, each bringing a
+                      wealth of knowledge and passion to our mission.
+                    </p>
+                    <p className="text-lg text-foreground/80 mt-4 leading-relaxed">
+                      With decades of combined experience, our advisors help us
+                      navigate challenges, identify opportunities, and maintain
+                      our commitment to quality and sustainability in everything
+                      we do.
+                    </p>
+                  </FadeIn>
+                </div>
+
+                <FadeIn delay={300}>
+                  <div className="md:w-[400px] flex flex-col md:justify-center h-full md:min-h-[300px]">
+                    <div className="flex items-center gap-6">
+                      <Image
+                        src="/logo.svg"
+                        alt="BlueRedGold symbol"
+                        width={80}
+                        height={80}
+                        className="w-20 h-20"
+                      />
+                      <span className="text-4xl md:text-5xl font-bold text-foreground">
+                        BlueRedGold
+                      </span>
+                    </div>
+                  </div>
+                </FadeIn>
               </div>
+            </div>
+
+            <FadeIn delay={400}>
+              <Separator className="my-2 bg-secondary/30 h-0.5" />
             </FadeIn>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="bg-background py-20" aria-labelledby="team-heading">
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+      <section className="bg-background py-8" aria-labelledby="team-heading">
+        <div className="container max-w-4xl mx-auto">
+          <div className="mb-16">
             <FadeIn>
               <h2
                 id="team-heading"
@@ -219,16 +248,102 @@ export default function AboutUsContent() {
             </FadeIn>
             <FadeIn delay={200}>
               <p className="text-lg text-foreground/80">
-                Our diverse team brings together expertise from agriculture,
-                technology, business development, and sustainability. Each
-                member contributes unique skills and perspectives that drive our
-                mission forward.
+                Housing unparalleled expertise, our operations team boasts
+                world-class knowledge in indoor saffron farming, a journey of
+                innovation that began in 2017. Through their tireless efforts,
+                we&apos;ve transitioned from a Proof of Concept to the
+                successful establishment of our inaugural commercial farm,
+                marking the triumphant realization of our first harvest.
+                <br />
+                <br />
+                This dedicated team stands as the backbone of BlueRedGold,
+                ensuring that every grain of saffron we produce is of the
+                highest calibre.
               </p>
             </FadeIn>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
+          {/* First 3 profiles */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.slice(0, 3).map((member, index) => (
+              <FadeIn key={index} delay={300 + index * 100}>
+                <TeamMemberCard {...member} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Next 2 profiles */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            {teamMembers.slice(3, 5).map((member, index) => (
+              <FadeIn key={index} delay={300 + index * 100}>
+                <TeamMemberCard {...member} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Food and Plant Division */}
+          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+            <FadeIn>
+              <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Food and Plant Division
+              </h3>
+              <p className="text-lg text-foreground/80 max-w-3xl">
+                Anchored by specialists in Food Technology and Plant Research,
+                this team is dedicated to ensuring the premium quality and
+                sustainability of our saffron.
+              </p>
+            </FadeIn>
+          </div>
+
+          {/* Next 3 profiles */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.slice(5, 8).map((member, index) => (
+              <FadeIn key={index} delay={300 + index * 100}>
+                <TeamMemberCard {...member} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Executive Board */}
+          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+            <FadeIn>
+              <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Executive Board
+              </h3>
+              <p className="text-lg text-foreground/80 max-w-3xl">
+                A dynamic ensemble of seasoned strategists, brand architects,
+                and sales mavens, they steer the company with a forward-thinking
+                approach and an unwavering commitment to excellence.
+              </p>
+            </FadeIn>
+          </div>
+
+          {/* Next 4 profiles in 2x2 grid */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {teamMembers.slice(8, 12).map((member, index) => (
+              <FadeIn key={index} delay={300 + index * 100}>
+                <TeamMemberCard {...member} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* AI and Robotics Unit */}
+          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+            <FadeIn>
+              <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                AI and Robotics Unit
+              </h3>
+              <p className="text-lg text-foreground/80 max-w-3xl">
+                Our future-driven AI and Robotics team brings cutting-edge
+                automation and intelligence to our processes, ensuring
+                precision, efficiency, and innovation at every turn.
+              </p>
+            </FadeIn>
+          </div>
+
+          {/* Last 2 profiles */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            {teamMembers.slice(12).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
               </FadeIn>
@@ -242,8 +357,8 @@ export default function AboutUsContent() {
         className="bg-background py-20"
         aria-labelledby="partners-heading"
       >
-        <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="container max-w-4xl mx-auto">
+          <div className="text-center mb-16">
             <FadeIn>
               <h2
                 id="partners-heading"
@@ -338,48 +453,62 @@ export default function AboutUsContent() {
 interface TeamMember {
   name: string;
   title: string;
-  company: string;
+  description?: string;
+  role: string;
   image: string;
   linkedIn?: string;
 }
 
-function TeamMemberCard({ name, title, company, image, linkedIn }: TeamMember) {
+function TeamMemberCard({
+  name,
+  title,
+  description,
+  role,
+  image,
+  linkedIn,
+}: TeamMember) {
   return (
-    <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow rounded-xl">
-      <CardContent className="p-0">
-        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-secondary/10 to-primary/5 rounded-t-xl">
-          {image === 'andrei.webp' || image === 'arca.webp' ? (
-            <Image
-              src={`/${image}`}
-              alt={`Portrait of ${name}`}
-              fill
-              className="object-cover"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-secondary to-primary/80 flex items-center justify-center">
-                <span className="text-4xl font-bold text-white">
-                  {name.charAt(0)}
-                </span>
-              </div>
-            </div>
-          )}
+    <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow rounded-xl h-auto lg:h-[600px] flex flex-col">
+      <CardContent className="p-0 flex-1 flex flex-col">
+        {/* Image container with better responsive height handling */}
+        <div className="relative w-full aspect-[4/3] lg:h-[270px] lg:aspect-auto overflow-hidden bg-gradient-to-br from-secondary/10 to-primary/5">
+          <Image
+            src={image}
+            alt={`Portrait of ${name}`}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
+          />
         </div>
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-primary">{name}</h3>
-          <p className="text-foreground/70 mb-2">{title}</p>
-          <p className="text-sm text-foreground/60 mb-4">{company}</p>
+        {/* Content container with responsive padding */}
+        <div className="p-4 lg:p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <h3 className="text-lg lg:text-xl font-bold text-primary truncate">
+              {name}
+            </h3>
+            <p className="text-foreground/70 mb-2 truncate">{title}</p>
+            {description && (
+              <p className="text-sm text-foreground/60 mb-2 line-clamp-2">
+                {description}
+              </p>
+            )}
+            <p className="text-sm text-foreground/60 line-clamp-3 lg:line-clamp-4">
+              {role}
+            </p>
+          </div>
           {linkedIn && (
             <Link
               href={linkedIn}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Visit ${name}'s LinkedIn profile`}
+              className="mt-3 lg:mt-4"
             >
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full rounded-full"
+                className="w-full rounded-full text-sm"
               >
                 <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
               </Button>
@@ -393,99 +522,102 @@ function TeamMemberCard({ name, title, company, image, linkedIn }: TeamMember) {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Andrei Petersen',
-    title: 'Chief Executive Officer',
-    company: 'BlueRedGold AB',
-    image: 'andrei.webp',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Mikael Öhman',
+    title: 'Founder and Head of production',
+    description: 'Mikael is the founder and visionary behind our mission.',
+    role: 'Pioneer, Entrepreneur, Operations Expert, Ag Tech Developer.',
+    image: '/about/team/mikael.webp',
+    linkedIn: 'https://www.linkedin.com/in/mikael-ohman/',
   },
   {
-    name: 'Victoria Ballerup',
-    title: 'Operations Director',
-    company: 'BlueRedGold AB',
-    image: 'arca.webp',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Nastaran Baleng-Soultani',
+    title: 'CEO and Head of marketing & sales',
+    role: 'The Absolut Company, Unilever, SPACE, RadCap',
+    image: '/about/team/nastaran.webp',
+    linkedIn: 'https://www.linkedin.com/in/nastaran-baleng-soultani/',
   },
   {
-    name: 'Anders Broderson',
-    title: 'Chief Technology Officer',
-    company: 'BlueRedGold AB',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Andrei Boulescu',
+    title: 'CTO and Head of Production & Automation',
+    role: 'Huawei, Airbus, Innotek',
+    image: '/about/team/andrei.webp',
+    linkedIn: 'https://www.linkedin.com/in/andreiboulescu/',
   },
   {
-    name: 'Christopher Lindgren',
-    title: 'Head Engineer',
-    company: 'BlueRedGold AB',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Christopher Lindqvist',
+    title: 'Technical engineering',
+    role: 'Farm developer with focus on technical engineering.',
+    image: '/about/team/christopher.webp',
+    linkedIn: 'https://www.linkedin.com/in/criss-lindqvist-3713912a0/',
   },
   {
-    name: 'Johanna Thulman',
-    title: 'Sustainability Director',
-    company: 'BlueRedGold AB',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Fahimeh Shabani',
+    title: 'Food & Beverage',
+    role: 'Market researcher and digital content creator with insights and experience in food and beverage markets.',
+    image: '/about/team/fahimeh.webp',
+    linkedIn: 'https://www.linkedin.com/in/fahimeh-shabani-12209b208/',
   },
   {
-    name: 'Food and Plant Division',
-    title: '',
-    company: '',
-    image: '',
+    name: 'Sandra Flodström',
+    title: 'Sustainability, quality & food safety',
+    role: '30+ years in the food industry CSR, audits, sustainability and quality, food science, food legislation and corporate communication.',
+    image: '/about/team/sandra.webp',
+    linkedIn: 'https://www.linkedin.com/in/sandra-flodstr%C3%B6m-97500725/',
   },
   {
-    name: 'Sandra Pettersson',
-    title: 'Plant Biologist',
-    company: 'BlueRedGold Research',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
-  },
-  {
-    name: 'Sara Bengtsson',
-    title: 'Agricultural Specialist',
-    company: 'BlueRedGold Research',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Arca Kromwijk',
+    title: 'Wageningen Plant Research',
+    role: '30+ years experience of research in plant physiology with a focus on bulb crops. Research on indoor saffron production.',
+    image: '/about/team/arca.webp',
+    linkedIn: 'https://www.linkedin.com/in/arca-kromwijk-26951971/',
   },
   {
     name: 'Filip Van Noort',
-    title: 'Food Scientist',
-    company: 'BlueRedGold Labs',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    title: 'Wageningen Plant Research',
+    role: '30+ years experience as crop specialist; indoor farming, crop production with a focus on tropical crops and saffron.',
+    image: '/about/team/filip.webp',
+    linkedIn: 'https://www.linkedin.com/in/filip-van-noort-6b2207122/',
   },
   {
-    name: 'Executive Board',
-    title: '',
-    company: '',
-    image: '',
+    name: 'Björn Öste',
+    title: 'Serial entrepreneur.',
+    role: 'Co-founder of Oatly & Good Idea. Food tech investor. Member o.t. board Vertical Harvest Inc. Global brand building & biz within food tech, CEA, and metabolic health.',
+    image: '/about/team/bjorn.webp',
+    linkedIn: 'https://www.linkedin.com/in/bj%C3%B6rn-%C3%B6ste-b185551/',
   },
   {
-    name: 'Björn Lund',
-    title: 'Board Chairman',
-    company: 'BlueRedGold AB',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Karin Ljunggren',
+    title: 'Board member and investor.',
+    role: 'Business advisor with 15+ years of experience from supporting mgmt teams in their strategic and biz development work.',
+    image: '/about/team/karin.webp',
+    linkedIn: 'https://www.linkedin.com/in/karinljungren/',
   },
   {
-    name: 'Karen Jorgensen',
-    title: 'Board Member',
-    company: 'Venture Capital Partners',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Jonas L. Gadd',
+    title: 'Chairman of the board and investor.',
+    role: 'Business advisor with 15+ years experience from supporting mgmt teams in their strategic and operational work',
+    image: '/about/team/jonas.webp',
+    linkedIn: 'https://www.linkedin.com/in/jonasgadd/',
   },
   {
-    name: 'James L. Gould',
-    title: 'Board Member',
-    company: 'Agricultural Innovation Fund',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Jan Enhager',
+    title: 'Board member and investor.',
+    role: 'Serial entrepreneur and founder of e.g. Vitamin Well and Nocco. Business advisor and food industry marketing expert.',
+    image: '/about/team/jan.webp',
+    linkedIn: 'https://www.linkedin.com/in/jan-enhager-186ab110/',
   },
   {
-    name: 'Jan Eriksson',
-    title: 'Board Member',
-    company: 'Sustainable Tech Ventures',
-    image: '',
-    linkedIn: 'https://linkedin.com/in/username',
+    name: 'Robert Luciani',
+    title: 'AI expert and cofounder.',
+    role: 'Advisor in High Performance Computing and AI.',
+    image: '/about/team/robert.webp',
+    linkedIn: 'https://www.linkedin.com/in/r3tex/',
+  },
+  {
+    name: 'Tommy G Klein',
+    title: 'Advisor Robotics and investor.',
+    role: '30+ years experience in senior positions within ABB, SKF, etc. with a focus on robotics and automation.',
+    image: '/about/team/tommy.webp',
+    linkedIn: 'https://www.linkedin.com/in/arca-kromwijk-26951971/', // TODO: Not the correct linkedin profile
   },
 ];
