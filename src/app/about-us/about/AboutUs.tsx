@@ -362,13 +362,13 @@ export default function AboutUsContent() {
             <FadeIn>
               <h2
                 id="partners-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 text-left"
               >
-                Trusted Partners & Supporting Members
+                Associates & Supporting Partners
               </h2>
             </FadeIn>
             <FadeIn delay={200}>
-              <p className="text-lg text-foreground/80">
+              <p className="text-lg text-foreground/80 text-left">
                 We collaborate with industry leaders and innovative
                 organizations to advance our mission and create sustainable
                 impact in the agricultural sector.
@@ -377,27 +377,93 @@ export default function AboutUsContent() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {Array.from({ length: 9 }).map((_, index) => (
+            {partnerLogos.map((logo, index) => (
               <FadeIn key={index} delay={300 + index * 50}>
                 <div className="bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-32">
-                  {index < 2 ? (
-                    <Image
-                      src={index === 0 ? '/aventure.svg' : '/almi.svg'}
-                      alt={`Partner logo ${index + 1}`}
-                      width={180}
-                      height={60}
-                      className="max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-200/50 rounded-lg flex items-center justify-center">
-                      <span className="text-gray-400 font-medium">
-                        Partner {index + 1}
-                      </span>
-                    </div>
-                  )}
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={180}
+                    height={60}
+                    className="max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                  />
                 </div>
               </FadeIn>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Swedish Board of Agriculture Grant Section */}
+      <section className="bg-background py-20" aria-labelledby="grant-heading">
+        <div className="container max-w-4xl mx-auto">
+          <div className="space-y-8">
+            <FadeIn>
+              <h2
+                id="grant-heading"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
+              >
+                BlueRedGold AB has been granted 8.3 MSEK in support from the
+                Swedish Board of Agriculture.
+              </h2>
+            </FadeIn>
+
+            <FadeIn delay={200}>
+              <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
+                <p>
+                  BlueRedGold AB (BRG) is developing a method in controlled
+                  environment agriculture for the production of saffron. Our
+                  vision is to develop a precision-automated, efficient, and
+                  environmentally optimized hydroponic cultivation system. All
+                  automation components are developed independently of each
+                  other, allowing BRG, through our tech partner Dyno Robotics,
+                  to license the entire system or individual parts to other
+                  outdoor and indoor growers.
+                </p>
+
+                <p>
+                  Today, several manual processes are required to grow saffron.
+                  Automation facilitates tasks such as sorting the bulbs and
+                  separating the saffron stigmas from the other parts of the
+                  flower. The main benefit lies in resource savings. For indoor
+                  growers, the advantage is that they can easily implement all
+                  or parts of the system into their existing operations or
+                  facilities to cultivate a new, profitable crop. The most
+                  resource-intensive processes when cultivating saffron at scale
+                  are picking and sorting the saffron flowers, and then
+                  separating the petals, pollen, and other plant parts from the
+                  stigmas. It takes approximately 150 flowers to produce 1 gram
+                  of saffron, and this project aims to streamline several of
+                  those processes for both BlueRedGold and other growers.
+                </p>
+
+                <p>
+                  Through this project, Sweden will be able to compete with
+                  Iran&apos;s currently near-monopoly on saffron cultivation. We
+                  will reduce the need for saffron imports, while giving Sweden
+                  a real opportunity to become a credible saffron exporter on
+                  the global market.
+                </p>
+
+                <p>
+                  We have been granted 8.3 million SEK from the Swedish Board of
+                  Agriculture as support to finalize and demonstrate proof of
+                  concept for our highly automated indoor saffron cultivation
+                  system and to offer the technology to other growers. The
+                  result could be that Sweden becomes self-sufficient in saffron
+                  and even a major exporter on the world market. We have defined
+                  five work packages, which follow the three climate zones that
+                  saffron corms go through during the annual growth phase, as
+                  well as automation for quality control, monitoring, and lab
+                  analysis required to demonstrate proof of concept for indoor
+                  cultivation.
+                </p>
+
+                <p className="font-medium">
+                  The project is carried out in five distinct work packages.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -408,39 +474,135 @@ export default function AboutUsContent() {
         aria-labelledby="cta-heading"
       >
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <FadeIn>
-              <h2
-                id="cta-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
-              >
-                Cultivate the Future With Us
-              </h2>
-            </FadeIn>
-            <FadeIn delay={200}>
-              <p className="text-xl mb-10 text-white/80">
-                Join us in revolutionizing sustainable agriculture and bringing
-                premium saffron to the world through innovation, technology, and
-                environmental stewardship.
-              </p>
-            </FadeIn>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <FadeIn delay={300}>
-                <Button
-                  size="lg"
-                  className="bg-secondary hover:bg-secondary/90 text-black font-medium rounded-full"
-                >
-                  Join Our Journey
-                </Button>
-              </FadeIn>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6">
+                <FadeIn>
+                  <div className="inline-block px-4 py-1 bg-white/10 rounded-full mb-2">
+                    <span className="text-sm font-medium text-white/90">
+                      Discover More
+                    </span>
+                  </div>
+                  <h2
+                    id="cta-heading"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+                  >
+                    Explore Our Premium Saffron Solutions
+                  </h2>
+                </FadeIn>
+                <FadeIn delay={200}>
+                  <p className="text-xl text-white/80">
+                    From food & beverages to medical & cosmetics, discover how
+                    our innovative saffron technology is transforming
+                    industries.
+                  </p>
+                </FadeIn>
+                <FadeIn delay={300}>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link href="/food-beverages">
+                      <Button
+                        size="lg"
+                        className="bg-secondary hover:bg-secondary/90 text-black font-medium rounded-full"
+                      >
+                        Food & Beverages
+                      </Button>
+                    </Link>
+                    <Link href="/medical-cosmetics">
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="border-white text-black hover:bg-white/10 rounded-full"
+                      >
+                        Medical & Cosmetics
+                      </Button>
+                    </Link>
+                  </div>
+                </FadeIn>
+              </div>
               <FadeIn delay={400}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/10 rounded-full"
-                >
-                  Contact Us
-                </Button>
+                <div className="flex flex-col gap-2">
+                  <Link href="/about-us/sustainability/esg">
+                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                          <svg
+                            className="w-6 h-6 text-secondary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 10V3L4 14h7v7l9-11h-7z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">
+                            Sustainability ESG
+                          </h3>
+                          <p className="text-white/70">
+                            Environmental & social impact
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/blog/updates">
+                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                          <svg
+                            className="w-6 h-6 text-secondary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Blog</h3>
+                          <p className="text-white/70">
+                            Latest updates & recipes
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/about-us/contact">
+                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                          <svg
+                            className="w-6 h-6 text-secondary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-lg">Contact</h3>
+                          <p className="text-white/70">Get in touch with us</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
               </FadeIn>
             </div>
           </div>
@@ -620,4 +782,19 @@ const teamMembers: TeamMember[] = [
     image: '/about/team/tommy.webp',
     linkedIn: 'https://www.linkedin.com/in/arca-kromwijk-26951971/', // TODO: Not the correct linkedin profile
   },
+];
+
+const partnerLogos = [
+  { src: '/about/company/aventure.svg', alt: 'Aventure' },
+  { src: '/about/company/almi.svg', alt: 'Almi' },
+  { src: '/about/company/connect.svg', alt: 'Connect Sverige' },
+  { src: '/about/company/create.svg', alt: 'Create' },
+  { src: '/about/company/dyno-robotics.svg', alt: 'Dyno Robotics' },
+  { src: '/about/company/johan-heibert.svg', alt: 'Johan Heibert' },
+  { src: '/about/company/jordbruksfonden.avif', alt: 'Jordbruksfonden' },
+  {
+    src: '/about/company/sormlands-matkluster.avif',
+    alt: 'Sörmlands Matkluster',
+  },
+  { src: '/about/company/europeiska-unionen.avif', alt: 'Europeiska Unionen' },
 ];
