@@ -120,29 +120,41 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    name: 'About us',
+    name: 'About Us',
     icon: <Building2 className="w-5 h-5" />,
     children: [
-      { name: 'About', path: '/about', icon: <Users className="w-4 h-4" /> },
+      {
+        name: 'About',
+        path: '/about-us/about',
+        icon: <Users className="w-4 h-4" />,
+      },
       {
         name: 'Career',
-        path: '/career',
+        path: '/about-us/career',
         icon: <Briefcase className="w-4 h-4" />,
       },
-      { name: 'Contact', path: '/contact', icon: <Mail className="w-4 h-4" /> },
+      {
+        name: 'Contact',
+        path: '/about-us/contact',
+        icon: <Mail className="w-4 h-4" />,
+      },
       {
         name: 'Investor Relations',
-        path: '/investor-relations',
+        path: '/about-us/investor-relations',
         icon: <LineChart className="w-4 h-4" />,
       },
-      { name: 'Press', path: '/press', icon: <Press className="w-4 h-4" /> },
+      {
+        name: 'Press',
+        path: '/about-us/press',
+        icon: <Press className="w-4 h-4" />,
+      },
       {
         name: 'Sustainability',
         icon: <Recycle className="w-4 h-4" />,
         children: [
           {
             name: 'ESG',
-            path: '/sustainability/esg',
+            path: '/about-us/sustainability/esg',
             icon: <Recycle className="w-4 h-4" />,
           },
         ],

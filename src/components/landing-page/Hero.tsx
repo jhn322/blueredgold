@@ -122,13 +122,13 @@ export default function Hero() {
                 <Button
                   variant="default"
                   size="lg"
-                  className="relative rounded-full overflow-hidden group text-md md:text-lg"
+                  className="relative rounded-full overflow-hidden group text-md md:text-lg text-black"
                 >
                   <span className="relative z-10">View Recipes</span>
-                  <div className="absolute inset-0 bg-primary" />
+                  <div className="absolute inset-0 bg-secondary" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
-                    <div className="absolute inset-[2px] rounded-full bg-primary" />
+                    <div className="absolute inset-[2px] rounded-full bg-secondary" />
                   </div>
                 </Button>
               </Link>
