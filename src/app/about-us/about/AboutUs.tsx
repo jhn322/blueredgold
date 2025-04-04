@@ -83,7 +83,7 @@ export default function AboutUsContent() {
         aria-labelledby="journey-heading"
       >
         <div className="container max-w-4xl mx-auto">
-          <div className="text-center">
+          <div className="text-left">
             <FadeIn>
               <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
                 <span className="text-sm font-medium text-primary">
@@ -92,7 +92,7 @@ export default function AboutUsContent() {
               </div>
               <h2
                 id="journey-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 text-left"
               >
                 Our Journey
               </h2>
@@ -379,13 +379,19 @@ export default function AboutUsContent() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {partnerLogos.map((logo, index) => (
               <FadeIn key={index} delay={300 + index * 50}>
-                <div className="bg-white rounded-xl shadow-sm p-6 flex items-center justify-center h-32">
+                <div
+                  className={`bg-white rounded-xl shadow-sm p-6 flex items-center justify-center ${
+                    index >= partnerLogos.length - 3 ? 'h-40' : 'h-32'
+                  }`}
+                >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     width={180}
                     height={60}
-                    className="max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                    className={`${
+                      index >= partnerLogos.length - 3 ? 'max-h-28' : 'max-h-20'
+                    } w-auto opacity-100 hover:opacity-80 transition-opacity`}
                   />
                 </div>
               </FadeIn>
@@ -470,7 +476,7 @@ export default function AboutUsContent() {
 
       {/* Exit Headline */}
       <section
-        className="bg-primary text-white py-20"
+        className="bg-secondary text-black py-20"
         aria-labelledby="cta-heading"
       >
         <div className="container">
@@ -478,8 +484,8 @@ export default function AboutUsContent() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <FadeIn>
-                  <div className="inline-block px-4 py-1 bg-white/10 rounded-full mb-2">
-                    <span className="text-sm font-medium text-white/90">
+                  <div className="inline-block px-4 py-1 bg-black/10 rounded-full mb-2">
+                    <span className="text-sm font-medium text-black/90">
                       Discover More
                     </span>
                   </div>
@@ -491,7 +497,7 @@ export default function AboutUsContent() {
                   </h2>
                 </FadeIn>
                 <FadeIn delay={200}>
-                  <p className="text-xl text-white/80">
+                  <p className="text-xl text-black/80">
                     From food & beverages to medical & cosmetics, discover how
                     our innovative saffron technology is transforming
                     industries.
@@ -502,7 +508,7 @@ export default function AboutUsContent() {
                     <Link href="/food-beverages">
                       <Button
                         size="lg"
-                        className="bg-secondary hover:bg-secondary/90 text-black font-medium rounded-full"
+                        className="bg-primary hover:bg-primary/90 text-white font-medium rounded-full"
                       >
                         Food & Beverages
                       </Button>
@@ -511,7 +517,7 @@ export default function AboutUsContent() {
                       <Button
                         size="lg"
                         variant="outline"
-                        className="border-white text-black hover:bg-white/10 rounded-full"
+                        className="border-white text-black hover:bg-black/10 rounded-full"
                       >
                         Medical & Cosmetics
                       </Button>
@@ -522,11 +528,11 @@ export default function AboutUsContent() {
               <FadeIn delay={400}>
                 <div className="flex flex-col gap-2">
                   <Link href="/about-us/sustainability/esg">
-                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                    <div className="bg-black/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/20 transition-colors">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                           <svg
-                            className="w-6 h-6 text-secondary"
+                            className="w-6 h-6 text-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -543,7 +549,7 @@ export default function AboutUsContent() {
                           <h3 className="font-semibold text-lg">
                             Sustainability ESG
                           </h3>
-                          <p className="text-white/70">
+                          <p className="text-black/80">
                             Environmental & social impact
                           </p>
                         </div>
@@ -551,11 +557,11 @@ export default function AboutUsContent() {
                     </div>
                   </Link>
                   <Link href="/blog/updates">
-                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                    <div className="bg-black/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/20 transition-colors">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                           <svg
-                            className="w-6 h-6 text-secondary"
+                            className="w-6 h-6 text-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -570,7 +576,7 @@ export default function AboutUsContent() {
                         </div>
                         <div>
                           <h3 className="font-semibold text-lg">Blog</h3>
-                          <p className="text-white/70">
+                          <p className="text-black/80">
                             Latest updates & recipes
                           </p>
                         </div>
@@ -578,11 +584,11 @@ export default function AboutUsContent() {
                     </div>
                   </Link>
                   <Link href="/about-us/contact">
-                    <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/20 transition-colors">
+                    <div className="bg-black/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/20 transition-colors">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                           <svg
-                            className="w-6 h-6 text-secondary"
+                            className="w-6 h-6 text-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -597,7 +603,7 @@ export default function AboutUsContent() {
                         </div>
                         <div>
                           <h3 className="font-semibold text-lg">Contact</h3>
-                          <p className="text-white/70">Get in touch with us</p>
+                          <p className="text-black/80">Get in touch with us</p>
                         </div>
                       </div>
                     </div>
@@ -787,15 +793,15 @@ const teamMembers: TeamMember[] = [
 
 const partnerLogos = [
   { src: '/about/company/aventure.svg', alt: 'Aventure' },
-  { src: '/about/company/almi.svg', alt: 'Almi' },
+  { src: '/about/company/almi.webp', alt: 'Almi' },
   { src: '/about/company/connect.svg', alt: 'Connect Sverige' },
   { src: '/about/company/create.svg', alt: 'Create' },
   { src: '/about/company/dyno-robotics.svg', alt: 'Dyno Robotics' },
   { src: '/about/company/johan-heibert.svg', alt: 'Johan Heibert' },
-  { src: '/about/company/jordbruksfonden.avif', alt: 'Jordbruksfonden' },
   {
-    src: '/about/company/sormlands-matkluster.avif',
+    src: '/about/company/sormlands-matkluster.webp',
     alt: 'Sörmlands Matkluster',
   },
-  { src: '/about/company/europeiska-unionen.avif', alt: 'Europeiska Unionen' },
+  { src: '/about/company/jordbruksfonden.webp', alt: 'Jordbruksfonden' },
+  { src: '/about/company/europeiska-unionen.webp', alt: 'Europeiska Unionen' },
 ];
