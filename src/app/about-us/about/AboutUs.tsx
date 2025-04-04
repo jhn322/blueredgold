@@ -630,9 +630,9 @@ function TeamMemberCard({
   linkedIn,
 }: TeamMember) {
   return (
-    <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow rounded-xl h-auto lg:h-[600px] flex flex-col">
+    <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow rounded-xl h-full flex flex-col">
       <CardContent className="p-0 flex-1 flex flex-col">
-        {/* Image container with better responsive height handling */}
+        {/* Image container with responsive height handling */}
         <div className="relative w-full aspect-[4/3] lg:h-[270px] lg:aspect-auto overflow-hidden bg-gradient-to-br from-secondary/10 to-primary/5">
           <Image
             src={image}
@@ -644,37 +644,38 @@ function TeamMemberCard({
           />
         </div>
         {/* Content container with responsive padding */}
-        <div className="p-4 lg:p-6 flex-1 flex flex-col justify-between">
-          <div>
-            <h3 className="text-lg lg:text-xl font-bold text-primary truncate">
+        <div className="p-4 lg:p-6 flex-1 flex flex-col">
+          <div className="flex-1">
+            <h3 className="text-lg lg:text-xl font-bold text-primary mb-1">
               {name}
             </h3>
-            <p className="text-foreground/70 mb-2 truncate">{title}</p>
+            <p className="text-foreground/70 mb-3 line-clamp-2 min-h-[2.5rem]">
+              {title}
+            </p>
             {description && (
-              <p className="text-sm text-foreground/60 mb-2 line-clamp-2">
+              <p className="text-sm text-foreground/60 mb-3 line-clamp-2">
                 {description}
               </p>
             )}
-            <p className="text-sm text-foreground/60 line-clamp-3 lg:line-clamp-4">
-              {role}
-            </p>
+            <p className="text-sm text-foreground/60 line-clamp-4">{role}</p>
           </div>
           {linkedIn && (
-            <Link
-              href={linkedIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${name}'s LinkedIn profile`}
-              className="mt-3 lg:mt-4"
-            >
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-full rounded-full text-sm"
+            <div className="mt-4 pt-3 border-t border-secondary/10">
+              <Link
+                href={linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${name}'s LinkedIn profile`}
               >
-                <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-              </Button>
-            </Link>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full rounded-full text-sm"
+                >
+                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+                </Button>
+              </Link>
+            </div>
           )}
         </div>
       </CardContent>
