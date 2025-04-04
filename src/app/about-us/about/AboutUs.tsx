@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { ChevronRight, Linkedin } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
+import { motion } from 'framer-motion';
 
 export default function AboutUsContent() {
   return (
@@ -18,7 +19,6 @@ export default function AboutUsContent() {
       >
         <div className="absolute inset-0 z-0">
           <picture>
-            <source media="(max-width: 768px)" srcSet="/hero-2.webp" />
             <Image
               src="/about/hero-about.webp"
               alt="Saffron flower close-up showing purple petals and red stigmas"
@@ -46,10 +46,31 @@ export default function AboutUsContent() {
             </FadeIn>
             <FadeIn delay={500}>
               <Button
+                variant="default"
                 size="lg"
-                className="bg-secondary hover:bg-secondary/90 text-black font-medium rounded-full"
+                className="relative rounded-full overflow-hidden group text-md md:text-lg text-black"
+                onClick={() => {
+                  window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth',
+                  });
+                }}
               >
-                Discover Our Mission <ChevronRight className="ml-2 h-4 w-4" />
+                <span className="relative z-10 flex items-center">
+                  Discover Our Mission{' '}
+                  <motion.span
+                    className="inline-flex ml-2"
+                    animate={{ y: [0, 3, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ChevronRight className="h-4 w-4 rotate-90" />
+                  </motion.span>
+                </span>
+                <div className="absolute inset-0 bg-secondary" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
+                  <div className="absolute inset-[2px] rounded-full bg-secondary" />
+                </div>
               </Button>
             </FadeIn>
           </div>
@@ -64,6 +85,11 @@ export default function AboutUsContent() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
             <FadeIn>
+              <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                <span className="text-sm font-medium text-primary">
+                  About Us
+                </span>
+              </div>
               <h2
                 id="journey-heading"
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
@@ -72,23 +98,22 @@ export default function AboutUsContent() {
               </h2>
             </FadeIn>
             <FadeIn delay={200}>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Founded on a vision of innovation and sustainability,
-                BlueRedGold has been at the forefront of transforming the
-                saffron industry. We combine traditional knowledge with
-                cutting-edge technology to create premium saffron products while
-                maintaining the highest environmental standards.
+              <p className="text-lg text-foreground/80 leading-relaxed text-left">
+                Established in the heart of Stockholm in 2021, BlueRedGold AB is
+                the culmination of years of rigorous research and meticulous
+                production trials.
+                <br />
+                <br />
+                In 2022, we achieved a groundbreaking milestone: the launch of
+                the first-ever, industrial-grade, controlled indoor cultivation
+                and year-round saffron production in Åkers Styckebruk, Sweden.
+                This achievement was swiftly followed by our foray into the
+                realms of robotics and automation, underscoring our commitment
+                to innovation and precision.
               </p>
             </FadeIn>
             <FadeIn delay={300}>
               <Separator className="my-10 bg-secondary/30 h-0.5" />
-            </FadeIn>
-            <FadeIn delay={400}>
-              <p className="text-lg text-foreground/80 italic">
-                In 2018, we embarked on a revolutionary journey to modernize the
-                harvest of this rare spice, creating a sustainable model that
-                preserves its quality while reducing environmental impact.
-              </p>
             </FadeIn>
           </div>
         </div>
@@ -117,12 +142,14 @@ export default function AboutUsContent() {
               </h2>
             </FadeIn>
             <FadeIn delay={200}>
-              <Button
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10 rounded-full"
-              >
-                Explore Our Technology
-              </Button>
+              <Link href="/technology/growing">
+                <Button
+                  variant="outline"
+                  className="bg-transparent border-white text-white hover:bg-white/10 rounded-full"
+                >
+                  Explore Our Technology
+                </Button>
+              </Link>
             </FadeIn>
           </div>
         </div>

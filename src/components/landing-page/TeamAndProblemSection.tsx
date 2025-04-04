@@ -3,6 +3,7 @@
 import { FadeIn } from '@/components/ui/fade-in';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -357,19 +358,19 @@ export const TeamAndProblemSection = () => {
                     this precious ingredient.
                   </p>
                 </div>
-                <Link href="/about" className="inline-block">
+                <Link href="/about-us/about" className="inline-block">
                   <Button
                     variant="default"
                     size="lg"
-                    className="group rounded-full"
+                    className="group rounded-full bg-secondary hover:bg-secondary/90 text-black"
                   >
                     Meet Our Team
                     <motion.span
-                      className="inline-block ml-2"
+                      className="inline-block"
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
-                      →
+                      <ChevronRight className="h-4 w-4" />
                     </motion.span>
                   </Button>
                 </Link>
