@@ -555,7 +555,7 @@ export default function AboutUsContent() {
                       </div>
                     </div>
                   </Link>
-                  <Link href="/blog/updates">
+                  <Link href="/blogs/updates">
                     <div className="bg-black/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/20 transition-colors">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
@@ -637,18 +637,39 @@ function TeamMemberCard({
   return (
     <div className="group flex flex-col items-center text-center h-[520px]">
       {/* Circular image container with hover effect */}
-      <div className="relative w-64 h-64 mb-6 rounded-full overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
-        <Image
-          src={image}
-          alt={`Portrait of ${name}`}
-          fill
-          className="object-cover object-center scale-[1.25]"
-          sizes="(max-width: 768px) 256px, 320px"
-          priority
-        />
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      {linkedIn ? (
+        <Link
+          href={linkedIn}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${name}'s LinkedIn profile`}
+          className="relative w-64 h-64 mb-6 rounded-full overflow-hidden shadow-md transition-all duration-300 group-hover:scale-105 flex-shrink-0 cursor-pointer"
+        >
+          <Image
+            src={image}
+            alt={`Portrait of ${name}`}
+            fill
+            className="object-cover object-center scale-[1.25]"
+            sizes="(max-width: 768px) 256px, 320px"
+            priority
+          />
+          {/* Enhanced hover overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </Link>
+      ) : (
+        <div className="relative w-64 h-64 mb-6 rounded-full overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+          <Image
+            src={image}
+            alt={`Portrait of ${name}`}
+            fill
+            className="object-cover object-center scale-[1.25]"
+            sizes="(max-width: 768px) 256px, 320px"
+            priority
+          />
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+      )}
 
       {/* Content container */}
       <div className="flex flex-col flex-grow w-full">

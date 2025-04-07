@@ -99,22 +99,22 @@ const navItems: NavItem[] = [
     children: [
       {
         name: 'Updates',
-        path: '/blog/updates',
+        path: '/blogs/updates',
         icon: <FileText className="w-4 h-4" />,
       },
       {
         name: 'In the News',
-        path: '/blog/news',
+        path: '/blogs/news',
         icon: <Newspaper className="w-4 h-4" />,
       },
       {
         name: 'Recipes',
-        path: '/blog/recipes',
+        path: '/blogs/recipes',
         icon: <UtensilsCrossed className="w-4 h-4" />,
       },
       {
         name: 'Science',
-        path: '/blog/science',
+        path: '/blogs/science',
         icon: <Microscope className="w-4 h-4" />,
       },
     ],

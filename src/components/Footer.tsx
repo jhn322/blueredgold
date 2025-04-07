@@ -130,22 +130,22 @@ export default function Footer() {
                   Blog
                 </CardTitle>
                 <div className="grid gap-2">
-                  <Link href="/blog/updates">
+                  <Link href="/blogs/updates">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Updates
                     </CardDescription>
                   </Link>
-                  <Link href="/blog/in-the-news">
+                  <Link href="/blogs/in-the-news">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       In the News
                     </CardDescription>
                   </Link>
-                  <Link href="/blog/recipes">
+                  <Link href="/blogs/recipes">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Recipes
                     </CardDescription>
                   </Link>
-                  <Link href="/blog/science">
+                  <Link href="/blogs/science">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Science
                     </CardDescription>

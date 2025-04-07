@@ -115,7 +115,7 @@ export default function Hero() {
             </FadeIn>
             <FadeIn delay={1000}>
               <Link
-                href="/blog/recipes"
+                href="/blogs/recipes"
                 aria-label="View our collection of saffron recipes and cooking inspiration"
                 className="inline-block"
               >

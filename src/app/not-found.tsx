@@ -102,7 +102,7 @@ export default function NotFound() {
               className="hover:bg-accent/50 backdrop-blur-sm bg-white/70 w-full sm:w-auto"
               aria-label="Visit About page"
             >
-              <Link href="/about">
+              <Link href="/about-us/about">
                 <Info className="mr-2 h-4 w-4" aria-hidden="true" />
                 About Us
               </Link>
