@@ -84,7 +84,7 @@ blueredgold/
 │   │   ├── about-us/
 │   │   │   ├── about/
 │   │   │   ├── career/
-│   │   │   ├── contact/
+│   │   │   ├── contact-us/
 │   │   │   ├── investor-relations/
 │   │   │   ├── press/
 │   │   │   └── sustainability/

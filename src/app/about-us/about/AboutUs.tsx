@@ -585,7 +585,7 @@ export default function AboutUsContent() {
                       </div>
                     </div>
                   </Link>
-                  <Link href="/about-us/contact">
+                  <Link href="/about-us/contact-us">
                     <div className="bg-black/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/20 transition-colors">
                       <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
