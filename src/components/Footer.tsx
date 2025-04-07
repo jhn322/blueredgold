@@ -218,9 +218,9 @@ export default function Footer() {
             </div>
 
             <div className="flex gap-4 text-sm">
-              <Link href="/integritetspolicy">
+              <Link href="/privacy-policy">
                 <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                  Integrity Policy
+                  Privacy Policy
                 </CardDescription>
               </Link>
             </div>
