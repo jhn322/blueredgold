@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
 
 export default function ContactPage() {
@@ -22,7 +21,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full">
+    <div className="relative min-h-screen w-full bg-black/90">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -34,100 +33,87 @@ export default function ContactPage() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
-        <FadeIn className="mb-8 max-w-2xl text-center">
-          <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col lg:flex-row items-center justify-center px-4 py-16 gap-12 sm:px-6 lg:px-8">
+        {/* Left Content */}
+        <FadeIn className="w-full lg:w-5/12 text-left">
+          <h1 className="font-display text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
             Get in touch
           </h1>
-          <p className="mt-4 text-lg text-gray-200">
-            Use our contact form below, and we&apos;ll ensure your inquiry finds
-            its way to the appropriate team member. We value your time and
-            interest and promise a prompt response.
+          <p className="text-lg text-gray-200">
+            Use our contact form, and we&apos;ll ensure your inquiry finds its
+            way to the appropriate team member. We value your time and interest
+            and promise a prompt response.
           </p>
         </FadeIn>
 
-        <FadeIn delay={300}>
-          <Card className="w-full max-w-2xl overflow-hidden bg-white/95 backdrop-blur-sm rounded-xl">
-            <CardContent className="p-6 sm:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName">Full name*</Label>
-                    <Input
-                      id="fullName"
-                      placeholder="Erik Svensson"
-                      required
-                      className="bg-white"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email*</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="eriksvensson@example.com"
-                      required
-                      className="bg-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone number*</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="070-123 45 67"
-                      required
-                      className="bg-white"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input
-                      id="company"
-                      placeholder="Your company (optional)"
-                      className="bg-white"
-                    />
-                  </div>
-                </div>
-
+        {/* Right Form Section */}
+        <FadeIn delay={300} className="w-full lg:w-7/12">
+          <div className="bg-background rounded-xl p-8 lg:p-12">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Type your message here..."
-                    className="min-h-[100px] resize-none bg-white"
+                  <Input
+                    placeholder="Full name*"
+                    required
+                    className="bg-transparent border-b border-black/20 rounded-xl px-2 h-12 placeholder:text-black/60 focus:border-black/40 focus:ring-0"
                   />
                 </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="privacy" required />
-                    <Label htmlFor="privacy" className="text-sm">
-                      I have read and accepted the{' '}
-                      <a
-                        href="/privacy-policy"
-                        className="text-primary hover:underline"
-                      >
-                        privacy policy
-                      </a>
-                      *
-                    </Label>
-                  </div>
+                <div className="space-y-2">
+                  <Input
+                    type="email"
+                    placeholder="Email*"
+                    required
+                    className="bg-transparent border-b border-black/20 rounded-xl px-2 h-12 placeholder:text-black/60 focus:border-black/40 focus:ring-0"
+                  />
                 </div>
+                <div className="space-y-2">
+                  <Input
+                    type="tel"
+                    placeholder="Phone number*"
+                    required
+                    className="bg-transparent border-b border-black/20 rounded-xl px-2 h-12 placeholder:text-black/60 focus:border-black/40 focus:ring-0"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Input
+                    placeholder="Company (optional)"
+                    className="bg-transparent border-b border-black/20 rounded-xl px-2 h-12 placeholder:text-black/60 focus:border-black/40 focus:ring-0"
+                  />
+                </div>
+              </div>
 
-                <Button
-                  type="submit"
-                  className="w-full rounded-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Sending...' : 'Submit'}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+              <div className="space-y-4">
+                <Textarea
+                  placeholder="Message"
+                  className="min-h-[100px] resize-none bg-transparent border rounded-xl px-2 placeholder:text-black/60 focus:border-black/40 focus:ring-0"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="privacy" required className="rounded-sm" />
+                  <Label htmlFor="privacy" className="text-sm">
+                    I have read and accepted the{' '}
+                    <a
+                      href="/privacy-policy"
+                      className="text-primary hover:underline"
+                    >
+                      privacy policy
+                    </a>
+                    *
+                  </Label>
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-black text-white hover:bg-black/90 rounded-full py-6"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Submit'}
+              </Button>
+            </form>
+          </div>
         </FadeIn>
       </div>
     </div>
