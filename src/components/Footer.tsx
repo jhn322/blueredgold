@@ -198,7 +198,7 @@ export default function Footer() {
           {/* Footer Bottom */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <CardDescription className="text-sm text-white">
-              Copyright {currentYear} | BlueRedGold
+              © {currentYear} | BlueRedGold. All rights reserved.
             </CardDescription>
 
             {/* Social Links */}
