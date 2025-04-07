@@ -8,20 +8,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 
-interface PlaceholderPageProps {
-  title?: string;
-  subtitle?: string;
-  message?: string;
-  estimatedTime?: string;
-}
-
-export default function PlaceholderPage({
-  title = 'Coming Soon',
-  subtitle = "We're working on something amazing",
-  message = 'This page is under construction. Please check back later for updates.',
-  estimatedTime = 'when it is ready.',
-}: PlaceholderPageProps) {
+export default function GrowingPage() {
   const [loading, setLoading] = useState(true);
+
+  const title = 'Coming Soon';
+  const subtitle = "We're working on something amazing";
+  const message =
+    'This page is under construction. Please check back later for updates.';
+  const estimatedTime = 'when it is ready.';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -132,7 +126,6 @@ export default function PlaceholderPage({
                         />
                       </motion.div>
 
-                      {/* Simple floating particles */}
                       {[...Array(4)].map((_, i) => (
                         <motion.div
                           key={i}
