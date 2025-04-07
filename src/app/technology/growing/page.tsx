@@ -8,17 +8,19 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 
+interface PlaceholderPageProps {
+  title?: string;
+  subtitle?: string;
+  message?: string;
+  estimatedTime?: string;
+}
+
 export default function PlaceholderPage({
   title = 'Coming Soon',
   subtitle = "We're working on something amazing",
   message = 'This page is under construction. Please check back later for updates.',
   estimatedTime = 'when it is ready.',
-}: {
-  title?: string;
-  subtitle?: string;
-  message?: string;
-  estimatedTime?: string;
-}) {
+}: PlaceholderPageProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
