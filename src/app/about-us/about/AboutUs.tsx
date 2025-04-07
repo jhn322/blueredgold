@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { ChevronRight, Linkedin } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
@@ -240,10 +239,10 @@ export default function AboutUsContent() {
           <div className="mb-16">
             <FadeIn>
               <h2
-                id="team-heading"
+                id="team-section"
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
               >
-                BlueRedGold Team Overview
+                BlueRedGold Team Operations
               </h2>
             </FadeIn>
             <FadeIn delay={200}>
@@ -264,7 +263,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* First 3 profiles */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {teamMembers.slice(0, 3).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
@@ -273,7 +272,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Next 2 profiles */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-12 mt-12">
             {teamMembers.slice(3, 5).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
@@ -282,7 +281,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Food and Plant Division */}
-          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+          <div className="mt-24 mb-12 max-w-6xl mx-auto">
             <FadeIn>
               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 Food and Plant Division
@@ -296,7 +295,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Next 3 profiles */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {teamMembers.slice(5, 8).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
@@ -305,7 +304,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Executive Board */}
-          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+          <div className="mt-24 mb-12 max-w-6xl mx-auto">
             <FadeIn>
               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 Executive Board
@@ -319,7 +318,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Next 4 profiles in 2x2 grid */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-12">
             {teamMembers.slice(8, 12).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
@@ -328,7 +327,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* AI and Robotics Unit */}
-          <div className="mt-16 mb-8 max-w-4xl mx-auto">
+          <div className="mt-24 mb-12 max-w-6xl mx-auto">
             <FadeIn>
               <h3 className="text-3xl md:text-4xl font-bold text-primary mb-4">
                 AI and Robotics Unit
@@ -342,7 +341,7 @@ export default function AboutUsContent() {
           </div>
 
           {/* Last 2 profiles */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-12">
             {teamMembers.slice(12).map((member, index) => (
               <FadeIn key={index} delay={300 + index * 100}>
                 <TeamMemberCard {...member} />
@@ -636,56 +635,56 @@ function TeamMemberCard({
   linkedIn,
 }: TeamMember) {
   return (
-    <Card className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow rounded-xl h-full flex flex-col">
-      <CardContent className="p-0 flex-1 flex flex-col">
-        {/* Image container with responsive height handling */}
-        <div className="relative w-full aspect-[4/3] lg:h-[270px] lg:aspect-auto overflow-hidden bg-gradient-to-br from-secondary/10 to-primary/5">
-          <Image
-            src={image}
-            alt={`Portrait of ${name}`}
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority
-          />
+    <div className="group flex flex-col items-center text-center h-[520px]">
+      {/* Circular image container with hover effect */}
+      <div className="relative w-64 h-64 mb-6 rounded-full overflow-hidden shadow-md transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
+        <Image
+          src={image}
+          alt={`Portrait of ${name}`}
+          fill
+          className="object-cover object-center scale-[1.25]"
+          sizes="(max-width: 768px) 256px, 320px"
+          priority
+        />
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+
+      {/* Content container */}
+      <div className="flex flex-col flex-grow w-full">
+        <div className="space-y-3 max-w-sm mx-auto">
+          <h3 className="text-xl font-bold text-primary group-hover:text-primary/90 transition-colors">
+            {name}
+          </h3>
+          <p className="text-foreground/80 font-medium">{title}</p>
+          {description && (
+            <p className="text-sm text-foreground/60">{description}</p>
+          )}
+          <p className="text-sm text-foreground/60">{role}</p>
         </div>
-        {/* Content container with responsive padding */}
-        <div className="p-4 lg:p-6 flex-1 flex flex-col">
-          <div className="flex-1">
-            <h3 className="text-lg lg:text-xl font-bold text-primary mb-1">
-              {name}
-            </h3>
-            <p className="text-foreground/70 mb-3 line-clamp-2 min-h-[2.5rem]">
-              {title}
-            </p>
-            {description && (
-              <p className="text-sm text-foreground/60 mb-3 line-clamp-2">
-                {description}
-              </p>
-            )}
-            <p className="text-sm text-foreground/60 line-clamp-4">{role}</p>
-          </div>
+
+        {/* LinkedIn btn*/}
+        <div className="mt-auto pt-4">
           {linkedIn && (
-            <div className="mt-4 pt-3 border-t border-secondary/10">
-              <Link
-                href={linkedIn}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Visit ${name}'s LinkedIn profile`}
+            <Link
+              href={linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${name}'s LinkedIn profile`}
+            >
+              <Button
+                variant="default"
+                size="sm"
+                className="rounded-full text-sm hover:primary/90"
               >
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full rounded-full text-sm"
-                >
-                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-                </Button>
-              </Link>
-            </div>
+                <Linkedin className="mr-2 h-4 w-4" />
+                Connect
+              </Button>
+            </Link>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
 

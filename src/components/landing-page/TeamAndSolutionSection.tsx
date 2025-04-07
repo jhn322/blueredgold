@@ -297,7 +297,7 @@ const ComparisonSection = () => {
   );
 };
 
-export const TeamAndProblemSection = () => {
+export const TeamAndSolutionSection = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-background to-background/95">
       <div className="container px-4 md:px-6">
@@ -358,7 +358,10 @@ export const TeamAndProblemSection = () => {
                     this precious ingredient.
                   </p>
                 </div>
-                <Link href="/about-us/about" className="inline-block">
+                <Link
+                  href="/about-us/about#team-section"
+                  className="inline-block"
+                >
                   <Button
                     variant="default"
                     size="lg"

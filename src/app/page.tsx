@@ -3,7 +3,7 @@ import { IntroductionSection } from '../components/landing-page/IntroductionSect
 import { ProcessSection } from '../components/landing-page/ProcessSection';
 import { AutomationSection } from '../components/landing-page/AutomationSection';
 import { SeparatorSection } from '../components/landing-page/SeparatorSection';
-import { TeamAndProblemSection } from '../components/landing-page/TeamAndProblemSection';
+import { TeamAndSolutionSection } from '../components/landing-page/TeamAndSolutionSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function Home() {
         <ProcessSection />
         <SeparatorSection />
         <AutomationSection />
-        <TeamAndProblemSection />
+        <TeamAndSolutionSection />
       </div>
     </main>
   );
