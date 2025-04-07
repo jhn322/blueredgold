@@ -13,7 +13,7 @@ export default function AboutUsContent() {
     <main className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
       <section
-        className="relative w-full h-screen flex items-center"
+        className="relative w-full h-[80vh] flex items-center"
         aria-labelledby="hero-heading"
       >
         <div className="absolute inset-0 z-0">
@@ -47,10 +47,13 @@ export default function AboutUsContent() {
               <Button
                 variant="default"
                 size="lg"
-                className="relative rounded-full overflow-hidden group text-md md:text-lg text-black"
+                className="relative rounded-full overflow-hidden group text-md text-black"
                 onClick={() => {
+                  const heroSection = document.querySelector('section');
+                  const heroHeight =
+                    heroSection?.getBoundingClientRect().height || 0;
                   window.scrollTo({
-                    top: window.innerHeight,
+                    top: heroHeight - 100,
                     behavior: 'smooth',
                   });
                 }}
