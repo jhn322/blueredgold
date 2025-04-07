@@ -56,12 +56,12 @@ const navItems: NavItem[] = [
     children: [
       {
         name: 'Food & Beverages',
-        path: '/food-beverages',
+        path: '/premium-saffron/food-beverages',
         icon: <UtensilsCrossed className="w-4 h-4" />,
       },
       {
         name: 'Medical & Cosmetics',
-        path: '/medical-cosmetics',
+        path: '/premium-saffron/medical-cosmetics',
         icon: <TestTube2 className="w-4 h-4" />,
       },
     ],
