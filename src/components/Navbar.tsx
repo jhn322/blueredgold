@@ -135,7 +135,7 @@ const navItems: NavItem[] = [
       },
       {
         name: 'Contact',
-        path: '/about-us/contact',
+        path: '/about-us/contact-us',
         icon: <Mail className="w-4 h-4" />,
       },
       {

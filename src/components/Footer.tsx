@@ -84,17 +84,17 @@ export default function Footer() {
                   Saffron
                 </CardTitle>
                 <div className="grid gap-2">
-                  <Link href="/growing-saffron">
+                  <Link href="/">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Growing Saffron
                     </CardDescription>
                   </Link>
-                  <Link href="/food-beverages">
+                  <Link href="/premium-saffron/food-beverages">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Food & Beverages
                     </CardDescription>
                   </Link>
-                  <Link href="/medical-cosmetics">
+                  <Link href="/premium-saffron/medical-cosmetics">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Medical & Cosmetics
                     </CardDescription>
@@ -117,7 +117,7 @@ export default function Footer() {
                       Harvesting
                     </CardDescription>
                   </Link>
-                  <Link href="/technology/batches">
+                  <Link href="/technology/data/batches">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Batches
                     </CardDescription>
@@ -135,7 +135,7 @@ export default function Footer() {
                       Updates
                     </CardDescription>
                   </Link>
-                  <Link href="/blogs/in-the-news">
+                  <Link href="/blogs/news">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       In the News
                     </CardDescription>
@@ -158,34 +158,34 @@ export default function Footer() {
                   About us
                 </CardTitle>
                 <div className="grid gap-2">
-                  <Link href="/about">
+                  <Link href="/about-us/about">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       About
                     </CardDescription>
                   </Link>
-                  <Link href="/career">
+                  <Link href="/about-us/career">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Career
                     </CardDescription>
                   </Link>
-                  <Link href="/contact">
+                  <Link href="/about-us/contact-us">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Contact
                     </CardDescription>
                   </Link>
-                  <Link href="/investor-relations">
+                  <Link href="/about-us/investor-relations">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Investor Relations
                     </CardDescription>
                   </Link>
-                  <Link href="/press-inquires">
+                  <Link href="/about-us/press">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Press
                     </CardDescription>
                   </Link>
-                  <Link href="/esg">
+                  <Link href="/about-us/sustainability/esg">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                      ESG
+                      Sustainability (ESG)
                     </CardDescription>
                   </Link>
                 </div>
@@ -218,9 +218,9 @@ export default function Footer() {
             </div>
 
             <div className="flex gap-4 text-sm">
-              <Link href="/integritetspolicy">
+              <Link href="/privacy-policy">
                 <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
-                  Integrity Policy
+                  Privacy Policy
                 </CardDescription>
               </Link>
             </div>

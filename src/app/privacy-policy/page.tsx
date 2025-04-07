@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function IntegrityPolicy() {
+export default function PrivacyPolicy() {
   return (
     <>
       <main className="mx-auto py-12">
