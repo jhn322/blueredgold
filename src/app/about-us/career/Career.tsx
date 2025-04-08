@@ -29,7 +29,7 @@ export default function CareersPage() {
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <ParallaxHero
-        imageSrc="/career/hero-career.webp"
+        imageSrc="/career/career-hero.webp"
         imageAlt="Hero image for career page"
         title="Career at BlueRedGold"
         subtitle="Be part of something extraordinary. We're building the future of sustainable agriculture with robotics and AI."

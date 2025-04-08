@@ -14,7 +14,7 @@ export default function AboutUsContent() {
     <main className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
       <ParallaxHero
-        imageSrc="/about/hero-about.webp"
+        imageSrc="/about/about-hero.webp"
         imageAlt="Saffron flower close-up showing purple petals and red stigmas"
         title="Elevating Saffron Production to New Heights"
         subtitle="With Swedish Precision Automation"
@@ -507,11 +507,7 @@ function TeamMemberCard({
               rel="noopener noreferrer"
               aria-label={`Visit ${name}'s LinkedIn profile`}
             >
-              <Button
-                variant="default"
-                size="sm"
-                className="rounded-full text-sm hover:primary/90"
-              >
+              <Button variant="default" className="rounded-full text-sm">
                 <Linkedin className="mr-2 h-4 w-4" />
                 Connect
               </Button>

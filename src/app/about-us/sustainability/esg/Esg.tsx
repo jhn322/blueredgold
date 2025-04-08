@@ -1,25 +1,9 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import {
-  BriefcaseBusiness,
-  Code,
-  Globe,
-  HeartHandshake,
-  Lightbulb,
-  Mail,
-  MapPin,
-  Rocket,
-  Users,
-} from 'lucide-react';
+import { Leaf, Factory, Users2, Target } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
@@ -29,161 +13,86 @@ export default function EsgPage() {
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <ParallaxHero
-        imageSrc="/career/hero-career.webp"
+        imageSrc="/esg/esg-hero.webp"
         imageAlt="Hero image for ESG page"
         title="ESG"
         subtitle="Our view of sustainability"
       />
 
-      {/* Why Join Us Section */}
-      <section className="py-20 bg-muted">
-        <div className="container">
+      {/* Mission Statement */}
+      <section className="py-16 bg-muted/50">
+        <div className="container max-w-4xl">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center font-display">
-              Why Join Our Team?
-            </h2>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Globe className="h-10 w-10 text-secondary" />,
-                title: 'Revolutionary Agriculture',
-                description:
-                  'Be part of the first-ever industrial-grade, controlled indoor cultivation and year-round saffron production in Sweden.',
-              },
-              {
-                icon: <Users className="h-10 w-10 text-secondary" />,
-                title: 'Innovation First',
-                description:
-                  'Join a team pioneering robotics and automation in agriculture, making Sweden competitive in global saffron production.',
-              },
-              {
-                icon: <Rocket className="h-10 w-10 text-secondary" />,
-                title: 'Sustainable Impact',
-                description:
-                  'Contribute to reducing saffron imports and help establish Sweden as a credible saffron exporter on the global market.',
-              },
-              {
-                icon: <HeartHandshake className="h-10 w-10 text-secondary" />,
-                title: 'Work-Life Balance',
-                description:
-                  'Flexible schedules and policies that respect your time outside of work.',
-              },
-              {
-                icon: <Lightbulb className="h-10 w-10 text-secondary" />,
-                title: 'Continuous Learning',
-                description:
-                  'Access to resources, workshops, and mentorship to help you grow professionally.',
-              },
-              {
-                icon: (
-                  <BriefcaseBusiness className="h-10 w-10 text-secondary" />
-                ),
-                title: 'Competitive Benefits',
-                description:
-                  'Comprehensive packages that reward your contributions and support your wellbeing.',
-              },
-            ].map((item, index) => (
-              <FadeIn key={index} delay={0.1 * index}>
-                <Card className="h-full bg-card border-none shadow-md hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="mb-2">{item.icon}</div>
-                    <CardTitle className="text-xl text-primary">
-                      {item.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-foreground/70 text-base">
-                      {item.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Values Section */}
-      <section className="py-20">
-        <div className="container">
-          <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 text-center font-display">
-              Our Values
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-lg text-foreground/80 max-w-3xl mx-auto text-center mb-16">
-              These core principles guide everything we do and define who we are
-              as a company.
+            <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">
+                Sustainability
+              </span>
+            </div>
+            <p className="text-lg text-foreground/80 leading-relaxed text-left">
+              At BlueRedGold, we are deeply committed to sustainability in every
+              aspect of our saffron production. Our ultimate aim is to have a
+              positive impact on society and the environment by implementing
+              highly efficient and sustainable farming practices.
+            </p>
+            <p className="text-lg text-left text-foreground/80 leading-relaxed mt-4">
+              We firmly believe that sustainability is not just an option but an
+              essential requirement for the future of our planet.
             </p>
           </FadeIn>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <FadeIn>
-              <div className="space-y-8">
-                {[
-                  {
-                    title: 'Innovation',
-                    description:
-                      'We pioneer new technologies in agriculture, from robotics to AI, to revolutionize saffron production.',
-                  },
-                  {
-                    title: 'Sustainability',
-                    description:
-                      'We are committed to environmentally-friendly premium saffron using automated hydroponic vertical indoor growing systems.',
-                  },
-                  {
-                    title: 'Excellence',
-                    description:
-                      'We strive for excellence in everything we do, setting high standards in both technology and agriculture.',
-                  },
-                  {
-                    title: 'Collaboration',
-                    description:
-                      'We believe in the power of teamwork and value diverse perspectives in our mission to transform agriculture.',
-                  },
-                ].map((value, index) => (
-                  <div key={index} className="flex gap-4">
-                    <div className="h-12 w-12 rounded-full bg-secondary flex items-center justify-center shrink-0">
-                      <span className="text-secondary-foreground font-bold">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-primary mb-2">
-                        {value.title}
-                      </h3>
-                      <p className="text-foreground/70">{value.description}</p>
-                    </div>
-                  </div>
-                ))}
+      {/* Our Cultivation */}
+      <section className="py-20">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <FadeIn className="order-2 lg:order-1">
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-primary font-display">
+                  Our Cultivation
+                </h2>
+                <p className="text-foreground/80">
+                  To achieve our sustainability goals, we are building a
+                  state-of-the-art R&D farm, dedicated to developing effective
+                  and eco-friendly farming methods.
+                </p>
+                <p className="text-foreground/80">
+                  We recognize that innovative technology plays a crucial role
+                  in minimizing our environmental footprint. Therefore, we are
+                  actively working on developing vertical cultivation, robotics,
+                  and automation to enhance efficiency and reduce resource
+                  consumption.
+                </p>
+                <p className="text-foreground/80">
+                  Looking ahead, we believe indoor cultivation can play a
+                  significant role in sustainable farming by freeing up land
+                  previously used for traditional agriculture. We even envision
+                  the possibility of creating wetlands to further support a more
+                  sustainable planet.
+                </p>
               </div>
             </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80 z-10"></div>
-                <div className="absolute inset-0">
-                  <Image
-                    src="/career/recruitment.webp"
-                    alt="Engineering excellence background"
-                    fill
-                    className="object-cover opacity-40"
-                  />
-                </div>
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-white-foreground p-8">
-                  <Code className="h-16 w-16 mb-6 text-white" />
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
-                    Engineering Excellence
-                  </h3>
-                  <p className="text-white/90 text-center max-w-md">
-                    We pioneer precision-automated, efficient, and
-                    environmentally optimized hydroponic cultivation systems.
-                    Our engineering team combines robotics and AI to
-                    revolutionize sustainable agriculture.
-                  </p>
+            <FadeIn delay={0.2} className="order-1 lg:order-2">
+              <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] max-w-xl mx-auto">
+                <div className="relative w-full h-full">
+                  {/* Back image */}
+                  <div className="absolute right-0 top-0 w-[70%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                      src="/esg/esg-1.webp"
+                      alt="Cultivation image 1"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Front image */}
+                  <div className="absolute left-0 bottom-0 w-[70%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                      src="/esg/esg-2.webp"
+                      alt="Cultivation image 2"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -191,49 +100,199 @@ export default function EsgPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-secondary text-black">
+      {/* Our Crops */}
+      <section className="py-20 bg-muted/50">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display">
-                Ready to Join Our Team?
-              </h2>
+              <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] max-w-xl mx-auto">
+                <div className="relative w-full h-full">
+                  {/* Back image */}
+                  <div className="absolute right-0 top-0 w-[60%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                      src="/esg/esg-3.webp"
+                      alt="Additional crops image"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Front image */}
+                  <div className="absolute left-0 bottom-0 w-[60%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                      src="/esg/esg-4.webp"
+                      alt="Our crops"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="text-lg text-black/90 mb-8">
-                Join us in shaping the future of sustainable agriculture with
-                robotics and AI.
-              </p>
-              <p className="text-lg text-black/90 mb-8">
-                We currently have all positions filled. But feel free to contact
-                us at:
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full"
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  <Link href="mailto:career@blueredgold.com">
-                    career@blueredgold.com
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-black hover:bg-black/10 rounded-full"
-                >
-                  <MapPin className="mr-2 h-4 w-4" />
-                  <Link href="https://www.google.com/maps/search/?api=1&query=Mästarvägen+2,+645+41+Strängnäs">
-                    Our Location
-                  </Link>
-                </Button>
+              <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-primary font-display">
+                  Our Crops
+                </h2>
+                <p className="text-foreground/80">
+                  When it comes to irrigation, we are implementing a
+                  self-supported and closed system that prevents any leakage of
+                  gray water into the environment. Additionally, we strictly
+                  adhere to pesticide-free production practices to ensure the
+                  purity and integrity of our saffron.
+                </p>
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Carbon Footprint & People */}
+      <section className="py-20">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <FadeIn>
+              <Card className="border-none shadow-lg h-full">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <Factory className="h-12 w-12 text-secondary mb-6" />
+                  <h3 className="text-2xl font-bold text-primary mb-4">
+                    Carbon Footprint
+                  </h3>
+                  <p className="text-foreground/80 flex-grow">
+                    In our facilities, we continuously work to optimize our
+                    energy usage to enable for a more sustainable energy system.
+                    While our total energy consumption may be relatively high,
+                    we aim to utilize renewable energy sources whenever
+                    possible. Furthermore, the majority of our electricity
+                    consumption occurs during off-peak hours, reducing our
+                    carbon footprint.
+                  </p>
+                </CardContent>
+              </Card>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Card className="border-none shadow-lg h-full">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <Users2 className="h-12 w-12 text-secondary mb-6" />
+                  <h3 className="text-2xl font-bold text-primary mb-4">
+                    People
+                  </h3>
+                  <p className="text-foreground/80 flex-grow">
+                    At BlueRedGold, diversity and inclusion are core values that
+                    guide our actions. We welcome individuals from diverse
+                    backgrounds and experiences, fostering a supportive work
+                    environment. We value and respect all employees life
+                    experiences and beliefs in transparent communication with
+                    all stakeholders, including customers, teams, and partners.
+                  </p>
+                  <Link href="/about-us/about#team-section">
+                    <Button
+                      variant="default"
+                      className="mt-6 rounded-full hover:bg-secondary/90"
+                    >
+                      About Us
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* UN Goals */}
+      <section className="py-20 bg-muted/50">
+        <div className="container">
+          <FadeIn>
+            <div className="max-w-4xl mx-auto">
+              <div className="relative w-full max-w-2xl mx-auto mb-12">
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
+                  <Image
+                    src="/esg/esg-circle.webp"
+                    alt="Global sustainability goals"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+              <div className="mb-12 text-left">
+                <Target className="h-12 w-12 text-secondary mb-6" />
+                <h2 className="text-3xl font-bold text-primary mb-6 font-display">
+                  UN Goals
+                </h2>
+                <p className="text-foreground/80 mb-8">
+                  Our dedication to sustainability is strongly aligned with the
+                  United Nations Sustainable Development Goals (SDGs). We
+                  actively support several SDGs, including:
+                </p>
+              </div>
+              <ul className="space-y-4 text-foreground/80">
+                <li className="flex items-center gap-2 group">
+                  <Leaf className="h-5 w-5 text-secondary" />
+                  <Link
+                    href="https://sdgs.un.org/goals/goal9"
+                    target="_blank"
+                    className="relative inline-block"
+                  >
+                    <span>SDG 9: Industry, Innovation and Infrastructure</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2 group">
+                  <Leaf className="h-5 w-5 text-secondary" />
+                  <Link
+                    href="https://sdgs.un.org/goals/goal13"
+                    target="_blank"
+                    className="relative inline-block"
+                  >
+                    <span>SDG 13: Climate Action</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2 group">
+                  <Leaf className="h-5 w-5 text-secondary" />
+                  <Link
+                    href="https://sdgs.un.org/goals/goal12"
+                    target="_blank"
+                    className="relative inline-block"
+                  >
+                    <span>SDG 12: Responsible Consumption and Production</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2 group">
+                  <Leaf className="h-5 w-5 text-secondary" />
+                  <Link
+                    href="https://sdgs.un.org/goals/goal15"
+                    target="_blank"
+                    className="relative inline-block"
+                  >
+                    <span>SDG 15: Life on Land</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2 group">
+                  <Leaf className="h-5 w-5 text-secondary" />
+                  <Link
+                    href="https://sdgs.un.org/goals/goal8"
+                    target="_blank"
+                    className="relative inline-block"
+                  >
+                    <span>SDG 8: Decent Work and Economic Growth</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              </ul>
+              <p className="mt-8 text-foreground/80">
+                To ensure progress, we focus on a few specific SDGs at a time.
+                We are establishing routines to regularly measure and monitor
+                our progress towards these goals, making them an integral part
+                of our daily operations. By diligently working on these specific
+                SDGs, we aim to make tangible contributions towards a more
+                sustainable future.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
     </main>
