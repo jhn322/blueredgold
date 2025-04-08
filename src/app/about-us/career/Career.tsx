@@ -20,87 +20,32 @@ import {
   Rocket,
   Users,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ParallaxHero } from '@/components/ui/parallax-hero';
 
 export default function CareersPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section
-        className="relative w-full h-[80vh] flex items-center"
-        aria-labelledby="hero-heading"
-      >
-        <div className="absolute inset-0 z-0">
-          <picture>
-            <Image
-              src="/career/hero-career.webp"
-              alt="Hero image for career page"
-              fill
-              priority
-              className="object-cover"
-            />
-          </picture>
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="container relative z-10">
-          <div className="max-w-3xl">
-            <FadeIn delay={100}>
-              <h1
-                id="hero-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-              >
-                Career at BlueRedGold
-              </h1>
-            </FadeIn>
-            <FadeIn delay={300}>
-              <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl">
-                Be part of something extraordinary. We&apos;re building the
-                future of sustainable agriculture with robotics and AI.
-              </p>
-            </FadeIn>
-            <FadeIn delay={500}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="relative rounded-full overflow-hidden group text-md text-black"
-                >
-                  <span className="relative z-10 flex items-center">
-                    <Mail className="mr-2 h-4 w-4" />
-                    <Link href="mailto:career@blueredgold.com">Contact Us</Link>
-                  </span>
-                  <div className="absolute inset-0 bg-secondary" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
-                    <div className="absolute inset-[2px] rounded-full bg-secondary" />
-                  </div>
-                </Button>
-                <Link
-                  href="/about-us/about#team-section"
-                  className="inline-block"
-                >
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="group border-white text-black hover:bg-white/10 rounded-full"
-                  >
-                    Meet Our Team
-                    <motion.span
-                      className="inline-block"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </motion.span>
-                  </Button>
-                </Link>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <ParallaxHero
+        imageSrc="/career/career-hero.webp"
+        imageAlt="Hero image for career page"
+        title="Career at BlueRedGold"
+        subtitle="Be part of something extraordinary. We're building the future of sustainable agriculture with robotics and AI."
+        buttons={[
+          {
+            text: 'Contact Us',
+            href: 'mailto:career@blueredgold.com',
+            icon: <Mail className="h-4 w-4" />,
+          },
+          {
+            text: 'Meet Our Team',
+            href: '/about-us/about#team-section',
+            variant: 'outline',
+          },
+        ]}
+      />
 
       {/* Why Join Us Section */}
       <section className="py-20 bg-muted">
