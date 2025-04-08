@@ -65,7 +65,7 @@ export default function CareersPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="relative rounded-full overflow-hidden group text-md text-black"
+                  className="relative rounded-full overflow-hidden group text-md text-black w-fit"
                 >
                   <span className="relative z-10 flex items-center">
                     <Mail className="mr-2 h-4 w-4" />
