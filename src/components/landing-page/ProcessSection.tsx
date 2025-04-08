@@ -8,19 +8,19 @@ const PROCESS_ITEMS = [
     title: 'GROWTH ZONE',
     description:
       'Where we grow our new corms. We have a special mix of nutriants and our own uniq spectrum of LED-lights, among other things.',
-    image: '/carousel/carousel1-1.webp',
+    image: '/landing-page/carousel/carousel1-1.webp',
   },
   {
     title: 'DORMANT ZONE',
     description:
       'Heatroom where our corms are during the dormant period, until they are ready to produce flowers.',
-    image: '/carousel/carousel1-2.webp',
+    image: '/landing-page/carousel/carousel1-2.webp',
   },
   {
     title: 'FLOWERING ZONE',
     description:
       'This is where we trigger the corms to start to flower and then harvest the flowers and the saffron.',
-    image: '/carousel/carousel1-3.webp',
+    image: '/landing-page/carousel/carousel1-3.webp',
   },
 ];
 
