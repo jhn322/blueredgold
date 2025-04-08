@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ImageCarousel } from '@/components/ui/image-carousel';
 
 // Temporary mock data until Sanity is implemented
 interface PressArticle {
@@ -133,24 +134,7 @@ export default function PressPage() {
           </FadeIn>
 
           <FadeIn delay={300}>
-            {/* Placeholder for future carousel component */}
-            <div className="relative aspect-[21/9] mb-12 bg-muted rounded-xl overflow-hidden">
-              <Image
-                src="/press/food-and-beverages.webp"
-                alt="Press images preview"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <h3 className="text-white text-2xl font-semibold mb-2">
-                  PRESS IMAGES: FOOD & BEVERAGES
-                </h3>
-                <Button variant="secondary" className="rounded-full">
-                  Explore our full gallery
-                </Button>
-              </div>
-            </div>
+            <ImageCarousel className="mb-12" />
           </FadeIn>
 
           <FadeIn delay={400}>
