@@ -9,6 +9,7 @@ import { FadeIn } from '@/components/ui/fade-in';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageCarousel } from '@/components/ui/image-carousel';
+import { ExploreSolution } from '@/components/ui/explore-solution';
 
 // Temporary mock data until Sanity is implemented
 interface PressArticle {
@@ -152,7 +153,7 @@ export default function PressPage() {
                   aria-label="Download high-res images for print (137mb) from Google Drive"
                 >
                   <Button variant="default" className="rounded-full">
-                    Download high-res images for print (137mb)
+                    Download high-res images for print (137MB)
                   </Button>
                 </Link>
               </div>
@@ -160,6 +161,8 @@ export default function PressPage() {
           </FadeIn>
         </div>
       </section>
+
+      <ExploreSolution />
     </main>
   );
 }
