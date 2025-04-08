@@ -4,81 +4,29 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { ChevronRight, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
-import { motion } from 'framer-motion';
 import { ExploreSolution } from '@/components/ui/explore-solution';
+import { ParallaxHero } from '@/components/ui/parallax-hero';
 
 export default function AboutUsContent() {
   return (
     <main className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
-      <section
-        className="relative w-full h-[80vh] flex items-center"
-        aria-labelledby="hero-heading"
-      >
-        <div className="absolute inset-0 z-0">
-          <picture>
-            <Image
-              src="/about/hero-about.webp"
-              alt="Saffron flower close-up showing purple petals and red stigmas"
-              fill
-              priority
-              className="object-cover"
-            />
-          </picture>
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="container relative z-10">
-          <div className="max-w-3xl">
-            <FadeIn delay={100}>
-              <h1
-                id="hero-heading"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-              >
-                Elevating Saffron Production to New Heights
-              </h1>
-            </FadeIn>
-            <FadeIn delay={300}>
-              <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl">
-                With Swedish Precision Automation
-              </p>
-            </FadeIn>
-            <FadeIn delay={500}>
-              <Button
-                variant="default"
-                size="lg"
-                className="relative rounded-full overflow-hidden group text-md text-black"
-                onClick={() => {
-                  const heroSection = document.querySelector('section');
-                  const heroHeight =
-                    heroSection?.getBoundingClientRect().height || 0;
-                  window.scrollTo({
-                    top: heroHeight - 100,
-                    behavior: 'smooth',
-                  });
-                }}
-              >
-                <span className="relative z-10 flex items-center">
-                  Discover Our Mission{' '}
-                  <motion.span
-                    className="inline-flex ml-2"
-                    animate={{ y: [0, 3, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ChevronRight className="h-4 w-4 rotate-90" />
-                  </motion.span>
-                </span>
-                <div className="absolute inset-0 bg-secondary" />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
-                  <div className="absolute inset-[2px] rounded-full bg-secondary" />
-                </div>
-              </Button>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
+      <ParallaxHero
+        imageSrc="/about/hero-about.webp"
+        imageAlt="Saffron flower close-up showing purple petals and red stigmas"
+        title="Elevating Saffron Production to New Heights"
+        subtitle="With Swedish Precision Automation"
+        buttons={[
+          {
+            text: 'Discover Our Mission',
+            href: '#journey-heading',
+            variant: 'default',
+            smoothScroll: true,
+          },
+        ]}
+      />
 
       {/* Separator with Brief Description */}
       <section

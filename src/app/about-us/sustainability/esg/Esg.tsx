@@ -24,27 +24,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
 
-export default function CareersPage() {
+export default function EsgPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <ParallaxHero
         imageSrc="/career/hero-career.webp"
-        imageAlt="Hero image for career page"
-        title="Career at BlueRedGold"
-        subtitle="Be part of something extraordinary. We're building the future of sustainable agriculture with robotics and AI."
-        buttons={[
-          {
-            text: 'Contact Us',
-            href: 'mailto:career@blueredgold.com',
-            icon: <Mail className="h-4 w-4" />,
-          },
-          {
-            text: 'Meet Our Team',
-            href: '/about-us/about#team-section',
-            variant: 'outline',
-          },
-        ]}
+        imageAlt="Hero image for ESG page"
+        title="ESG"
+        subtitle="Our view of sustainability"
       />
 
       {/* Why Join Us Section */}
