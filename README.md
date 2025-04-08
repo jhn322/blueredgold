@@ -89,7 +89,7 @@ blueredgold/
 │   │   │   ├── press/
 │   │   │   └── sustainability/
 |   |   |       ├── esg/
-│   │   ├── blog/
+│   │   ├── blogs/
 │   │   │   ├── news/
 │   │   │   ├── recipes/
 │   │   │   ├── science/
