@@ -187,7 +187,7 @@ const MedicalCosmetics = () => {
       </section>
 
       {/* Research Carousel */}
-      <section className="py-20 bg-foreground/5">
+      <section className="py-20 px-4 bg-foreground/5">
         <div className="container mx-auto px-4">
           <FadeIn>
             <div className="max-w-4xl mx-auto mb-12 text-center">

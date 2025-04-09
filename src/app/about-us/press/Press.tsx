@@ -135,12 +135,12 @@ export default function PressPage() {
           </FadeIn>
 
           <FadeIn delay={300}>
-            <ImageCarousel className="mb-12" />
+            <ImageCarousel className="h-[500px] md:h-[600px] shadow-xl mb-12" />
           </FadeIn>
 
           <FadeIn delay={400}>
             <div className="space-y-4 text-foreground/80">
-              <p>
+              <p className="mt-4 md:mt-0">
                 All images are free to use in publications specifically related
                 to BlueRedGold. When utilizing our images, kindly attribute them
                 with the copyright symbol and our name: © BlueRedGold

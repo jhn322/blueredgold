@@ -311,18 +311,18 @@ export const ImageCarousel = ({
       {/* Mobile Controls - Outside Carousel */}
       <div className="sm:hidden">
         {/* Mobile Navigation Container */}
-        <div className="bg-muted rounded-full p-2 -mt-6 mx-4 flex items-center justify-between">
+        <div className="bg-muted/30 rounded-full p-2 mt-12 mx-auto w-fit flex items-center justify-between shadow-sm">
           <button
             onClick={handlePrev}
             disabled={isAnimating}
-            className="rounded-full bg-black/10 hover:bg-black/20 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
+            className="rounded-full bg-black/5 hover:bg-black/10 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5 text-black" />
           </button>
 
           {/* Mobile Dots */}
-          <div className="flex gap-2">
+          <div className="flex gap-2 mx-3">
             {items.map((_, index) => (
               <button
                 key={index}
@@ -347,7 +347,7 @@ export const ImageCarousel = ({
           <button
             onClick={handleNext}
             disabled={isAnimating}
-            className="rounded-full bg-black/10 hover:bg-black/20 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
+            className="rounded-full bg-black/5 hover:bg-black/10 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5 text-black" />
@@ -355,7 +355,7 @@ export const ImageCarousel = ({
         </div>
 
         {/* Mobile Button */}
-        <div className="px-4 mt-8 mb-12">
+        <div className="mt-8">
           {items[currentIndex].link ? (
             <Link
               href={items[currentIndex].link}
