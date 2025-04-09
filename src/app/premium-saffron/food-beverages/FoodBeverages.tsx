@@ -10,6 +10,66 @@ import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ExploreSolution } from '@/components/ui/explore-solution';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
+import { useEffect, useState } from 'react';
+
+// StarFall animation
+const StarFall = () => {
+  const [stars, setStars] = useState<
+    { id: number; x: number; size: number; duration: number; delay: number }[]
+  >([]);
+
+  useEffect(() => {
+    const generateStars = () => {
+      const newStars = Array.from({ length: 30 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        size: Math.random() * 5 + 1,
+        duration: Math.random() * 5 + 5,
+        delay: Math.random() * 15,
+      }));
+      setStars(newStars);
+    };
+
+    generateStars();
+
+    // Regenerate stars every 20 seconds for continuous effect
+    const interval = setInterval(generateStars, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 z-5 overflow-hidden pointer-events-none">
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          className="absolute bg-[#FFFFFF] rounded-full opacity-0"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            left: `${star.x}%`,
+            top: '-20px',
+            filter: `blur(${star.size <= 3 ? 0 : 1}px) brightness(1.5)`,
+            boxShadow: `0 0 ${star.size * 2}px ${
+              star.size / 2
+            }px rgba(255, 215, 0, 0.8)`,
+          }}
+          animate={{
+            y: ['0vh', '120vh'],
+            rotate: [0, 360],
+            opacity: [0, 1, 1, 0],
+          }}
+          transition={{
+            duration: star.duration,
+            delay: star.delay,
+            ease: 'linear',
+            repeat: Infinity,
+            times: [0, 0.1, 0.9, 1],
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 // Temporary mock data until Sanity is implemented
 interface FoodBeveragesRecipe {
@@ -52,15 +112,6 @@ const infiniteXAnimation = {
       repeat: Infinity,
       ease: 'easeInOut',
     },
-  },
-};
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
   },
 };
 
@@ -249,6 +300,7 @@ export default function FoodBeveragesPage() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+          <StarFall />
         </div>
 
         <div className="container max-w-6xl mx-auto relative z-10">
@@ -264,9 +316,16 @@ export default function FoodBeveragesPage() {
                 <p className="text-lg text-white/90 leading-relaxed">
                   During the Christmas season, kitchens across Sweden fill with
                   the warm, inviting aroma of Lussekatter, the traditional
-                  saffron-infused buns. Add an extra layer of authenticity and
-                  flavor to your holiday treats with BlueRedGold's premium
-                  saffron.
+                  <Link
+                    href="/blogs/saffron-recipes/johan-heiberts-lussekatter"
+                    className="relative inline-block group ml-1"
+                  >
+                    <span>saffron-infused buns</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white/80 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white/30 transition-all duration-300"></span>
+                  </Link>
+                  . Add an extra layer of authenticity and flavor to your
+                  holiday treats with BlueRedGold&apos;s premium saffron.
                 </p>
               </div>
             </FadeIn>
@@ -306,7 +365,7 @@ export default function FoodBeveragesPage() {
               <div className="space-y-6">
                 <blockquote className="text-lg md:text-xl lg:text-2xl italic text-foreground leading-relaxed">
                   <span className="text-primary font-semibold">
-                    "By setting the standards for the highest quality
+                    &quot;By setting the standards for the highest quality
                   </span>
                   , sustainably and ethically produced saffron, BlueRedGold will
                   build a{' '}
@@ -316,7 +375,7 @@ export default function FoodBeveragesPage() {
                   supplying consumers, retail, food services and the consumer
                   packaged food industry worldwide{' '}
                   <span className="text-primary font-semibold">
-                    with saffron and innovative saffron products"
+                    with saffron and innovative saffron products&quot;
                   </span>
                 </blockquote>
               </div>
@@ -350,7 +409,7 @@ export default function FoodBeveragesPage() {
                 </h2>
                 <p className="text-lg text-white/90 leading-relaxed">
                   In Sweden, autumn is synonymous with the joys of outdoor
-                  cooking. And what's a paella without the golden touch of
+                  cooking. And what&apos;s a paella without the golden touch of
                   premium saffron?
                 </p>
               </div>
@@ -411,16 +470,16 @@ export default function FoodBeveragesPage() {
                   </span>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
-                  Let's Collaborate
+                  Let&apos;s Collaborate
                 </h2>
                 <p className="text-lg text-foreground/80 leading-relaxed">
-                  Whether you're crafting dishes steeped in traditional French
-                  cuisine or blazing new trails in the culinary world,
+                  Whether you&apos;re crafting dishes steeped in traditional
+                  French cuisine or blazing new trails in the culinary world,
                   BlueRedGold wants to be a part of your journey. We are
                   actively seeking to collaborate with chefs and foodies.
                 </p>
                 <p className="text-lg text-foreground/80 leading-relaxed">
-                  Reach out to us and let's make something extraordinary
+                  Reach out to us and let&apos;s make something extraordinary
                   together.
                 </p>
                 <div className="pt-6">

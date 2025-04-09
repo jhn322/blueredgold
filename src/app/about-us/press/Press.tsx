@@ -49,20 +49,6 @@ const infiniteXAnimation = {
   },
 };
 
-const shimmerAnimation = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: [0, 1, 0],
-    x: ['-100%', '100%', '300%'],
-    transition: {
-      duration: 2.5,
-      repeat: Infinity,
-      ease: 'easeInOut',
-      repeatDelay: 2,
-    },
-  },
-};
-
 export default function PressPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -117,7 +103,7 @@ export default function PressPage() {
                         />
                       </div>
 
-                      <div className="p-6 bg-background relative">
+                      <div className="p-6 bg-background relative h-[180px] flex flex-col">
                         <motion.div
                           className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
                           initial={{ y: 20, opacity: 0 }}
@@ -128,7 +114,7 @@ export default function PressPage() {
                           {format(article.date, 'MMM d, yyyy')}
                         </motion.div>
 
-                        <h2 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                        <h2 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-auto">
                           {article.title}
                         </h2>
 
