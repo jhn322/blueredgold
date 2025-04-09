@@ -134,10 +134,10 @@ export default function FoodBeveragesPage() {
                           src={recipe.imageUrl}
                           alt={recipe.title}
                           fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         {/* Hover effect - zoom line */}
                         <motion.div
@@ -150,7 +150,7 @@ export default function FoodBeveragesPage() {
 
                       <div className="p-6 bg-background relative">
                         <motion.div
-                          className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-xs font-medium rounded-full"
+                          className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
                           initial={{ y: 20, opacity: 0 }}
                           whileInView={{ y: 0, opacity: 1 }}
                           transition={{ delay: 0.2 }}
@@ -239,7 +239,7 @@ export default function FoodBeveragesPage() {
       </section>
 
       {/* Winter in Sweden Section*/}
-      <section className="py-32 relative">
+      <section className="h-[60vh] relative flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="/food-beverages/food-2.webp"
@@ -326,7 +326,7 @@ export default function FoodBeveragesPage() {
       </section>
 
       {/* Autumn in Sweden Section*/}
-      <section className="py-32 relative">
+      <section className="h-[60vh] relative flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             src="/food-beverages/food-3.webp"
@@ -402,9 +402,9 @@ export default function FoodBeveragesPage() {
       {/* Collaboration Section */}
       <section className="py-24 bg-gradient-to-b from-muted/30 to-background">
         <div className="container max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-16 items-center">
-            <FadeIn>
-              <div className="md:w-1/2 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <FadeIn className="order-2 sm:order-1">
+              <div className="space-y-6">
                 <div className="inline-block px-4 py-1 bg-primary/10 rounded-full">
                   <span className="text-sm font-medium tracking-wider text-primary">
                     Cook Along
@@ -423,54 +423,46 @@ export default function FoodBeveragesPage() {
                   Reach out to us and let's make something extraordinary
                   together.
                 </p>
-                <div className="pt-4">
-                  <Link href="/about-us/about">
-                    <Button
-                      className="group relative overflow-hidden text-black"
-                      size="lg"
-                    >
-                      <span className="relative z-10">Get in touch</span>
+                <div className="pt-6">
+                  <Button
+                    className="group relative overflow-hidden text-black"
+                    size="lg"
+                    asChild
+                  >
+                    <Link href="/about-us/about">
+                      <span className="relative z-10">Get in Touch</span>
                       <div className="absolute inset-0 bg-secondary" />
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] aspect-square bg-[conic-gradient(transparent_270deg,#FFF2D7,transparent)] animate-[spin_2s_linear_infinite]" />
                         <div className="absolute inset-[2px] rounded-md bg-secondary" />
                       </div>
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </FadeIn>
 
-            <FadeIn delay={200}>
-              <div className="md:w-1/2 grid grid-cols-2 gap-6">
-                <div className="space-y-6">
-                  <div className="relative rounded-2xl overflow-hidden h-48 shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+            <FadeIn delay={200} className="order-1 md:order-2">
+              <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] max-w-xl mx-auto">
+                <div className="relative w-full h-full">
+                  {/* Back image */}
+                  <div className="absolute right-0 top-0 w-[85%] h-[80%] rounded-xl overflow-hidden shadow-md">
                     <Image
                       src="/food-beverages/food-4.webp"
                       alt="Saffron flowers"
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-                  <div className="relative rounded-2xl overflow-hidden h-40 shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
+                  {/* Front image */}
+                  <div className="absolute left-[-20%] bottom-[-15%] w-[100%] h-[100%] rounded-xl overflow-hidden">
                     <Image
                       src="/food-beverages/food-5.webp"
                       alt="Saffron cooking"
                       fill
-                      className="object-cover object-center"
+                      className="object-contain transition-transform"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
-                </div>
-                <div className="relative rounded-2xl overflow-hidden h-full shadow-lg transform hover:scale-[1.02] transition-transform duration-500">
-                  <Image
-                    src="/food-beverages/food-5.webp"
-                    alt="Saffron dish"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
               </div>
             </FadeIn>

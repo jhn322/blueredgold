@@ -49,6 +49,20 @@ const infiniteXAnimation = {
   },
 };
 
+const shimmerAnimation = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: [0, 1, 0],
+    x: ['-100%', '100%', '300%'],
+    transition: {
+      duration: 2.5,
+      repeat: Infinity,
+      ease: 'easeInOut',
+      repeatDelay: 2,
+    },
+  },
+};
+
 export default function PressPage() {
   return (
     <main className="min-h-screen bg-background">
@@ -56,9 +70,23 @@ export default function PressPage() {
       <section className="pt-48 pb-16">
         <div className="container max-w-7xl">
           <FadeIn>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-12 font-display">
-              Press
-            </h1>
+            <div className="flex justify-between items-center mb-12">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
+                Press
+              </h1>
+              <Link href="/blogs/articles" className="hidden md:block">
+                <Button variant="outline" className="group bg-muted/20">
+                  View all articles
+                  <motion.div
+                    variants={infiniteXAnimation}
+                    animate="animate"
+                    className="ml-2"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </motion.div>
+                </Button>
+              </Link>
+            </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -69,22 +97,51 @@ export default function PressPage() {
                   className="group"
                 >
                   <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
-                    <CardContent className="p-0">
+                    <CardContent className="p-0 relative">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
                           src={article.imageUrl}
                           alt={article.title}
                           fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                        {/* Hover effect - zoom line */}
+                        <motion.div
+                          className="absolute bottom-0 left-0 h-1 bg-primary origin-left"
+                          initial={{ scaleX: 0 }}
+                          whileHover={{ scaleX: 1 }}
+                          transition={{ duration: 0.4 }}
                         />
                       </div>
-                      <div className="p-6">
-                        <time className="text-sm text-muted-foreground">
-                          {format(article.date, 'MMMM d, yyyy')}
-                        </time>
-                        <h2 className="text-xl font-semibold mt-2 text-foreground group-hover:text-primary transition-colors">
+
+                      <div className="p-6 bg-background relative">
+                        <motion.div
+                          className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
+                          initial={{ y: 20, opacity: 0 }}
+                          whileInView={{ y: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                          viewport={{ once: true }}
+                        >
+                          {format(article.date, 'MMM d, yyyy')}
+                        </motion.div>
+
+                        <h2 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300">
                           {article.title}
                         </h2>
+
+                        <div className="mt-4 flex items-center text-primary/80 text-sm font-medium">
+                          <span>Read article</span>
+                          <motion.div
+                            variants={infiniteXAnimation}
+                            animate="animate"
+                            className="ml-2"
+                          >
+                            <ChevronRight className="h-4 w-4" />
+                          </motion.div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -94,9 +151,9 @@ export default function PressPage() {
           </div>
 
           <FadeIn delay={200}>
-            <div className="flex justify-center">
+            <div className="flex justify-center md:hidden">
               <Link href="/blogs/articles">
-                <Button variant="outline" className="group bg-muted/20">
+                <Button variant="outline" className="group bg-background/50">
                   View all articles
                   <motion.div
                     variants={infiniteXAnimation}
