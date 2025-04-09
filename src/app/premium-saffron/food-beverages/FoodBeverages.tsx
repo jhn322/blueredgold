@@ -73,7 +73,7 @@ export default function FoodBeveragesPage() {
                   href={`/blogs/saffron-recipes/${recipe.slug}`}
                   className="group"
                 >
-                  <Card className="overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
+                  <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
@@ -101,7 +101,7 @@ export default function FoodBeveragesPage() {
           <FadeIn delay={200}>
             <div className="flex justify-center">
               <Link href="/blogs/saffron-recipes">
-                <Button variant="outline" className="group">
+                <Button variant="outline" className="group bg-muted/20">
                   View all recipes
                   <motion.div
                     variants={infiniteXAnimation}

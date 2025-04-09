@@ -68,7 +68,7 @@ export default function PressPage() {
                   href={`/blogs/articles/${article.slug}`}
                   className="group"
                 >
-                  <Card className="overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
+                  <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
@@ -96,7 +96,7 @@ export default function PressPage() {
           <FadeIn delay={200}>
             <div className="flex justify-center">
               <Link href="/blogs/articles">
-                <Button variant="outline" className="group">
+                <Button variant="outline" className="group bg-muted/20">
                   View all articles
                   <motion.div
                     variants={infiniteXAnimation}
@@ -139,24 +139,43 @@ export default function PressPage() {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <div className="space-y-4 text-foreground/80">
-              <p className="mt-4 md:mt-0">
-                All images are free to use in publications specifically related
-                to BlueRedGold. When utilizing our images, kindly attribute them
-                with the copyright symbol and our name: © BlueRedGold
-              </p>
-              <div>
-                <Link
-                  href="https://drive.google.com/file/d/1RP2KHNoyOsaPa29Xs_bPTd4ywVVpCm30/view"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Download high-res images for print (137mb) from Google Drive"
-                >
-                  <Button variant="default" className="group">
-                    High-res images for print (137MB)
-                    <Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                  </Button>
-                </Link>
+            <div className="relative mt-8 p-6 md:p-8 bg-white rounded-xl border border-primary/10">
+              <div className="absolute -top-4 left-4 px-4 py-1 bg-primary/10 rounded-full">
+                <span className="text-xs font-medium text-primary">
+                  Attribution Guidelines
+                </span>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="flex-1">
+                  <p className="text-foreground/80 leading-relaxed">
+                    All images are free to use in publications specifically
+                    related to BlueRedGold. When utilizing our images, kindly
+                    attribute them with the copyright symbol and our name: ©
+                    BlueRedGold
+                  </p>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <Link
+                    href="https://drive.google.com/file/d/1RP2KHNoyOsaPa29Xs_bPTd4ywVVpCm30/view"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Download high-res images for print (137mb) from Google Drive"
+                  >
+                    <Button
+                      variant="default"
+                      size="lg"
+                      className="group relative overflow-hidden"
+                    >
+                      <span className="relative z-10">
+                        High-res images for print (137MB)
+                      </span>
+                      <Download className="relative z-10 ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </FadeIn>

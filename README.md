@@ -69,12 +69,15 @@ blueredgold/
 ├── prisma/
 ├── public/
 │   ├── about/
-│   ├── carousel/
-│   ├── flower/
+│   ├── blogs/
+│   ├── career/
+│   ├── contact-us/
+│   ├── esg/
+│   ├── food-beverages/
+│   ├── illustration/
 │   ├── landing-page/
-│   ├── other/
-│   ├── saffron/
-│   ├── seed/
+│   ├── medical-cosmetics/
+│   ├── press/
 │   ├── favicon.ico
 │   ├── logo-text.svg
 │   ├── logo.svg
@@ -90,8 +93,9 @@ blueredgold/
 │   │   │   └── sustainability/
 |   |   |       ├── esg/
 │   │   ├── blogs/
+|   |   |   |── articles/
 │   │   │   ├── news/
-│   │   │   ├── recipes/
+│   │   │   ├── saffron-recipes/
 │   │   │   ├── science/
 │   │   │   └── updates/
 │   │   ├── premium-saffron/
