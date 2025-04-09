@@ -6,6 +6,7 @@ import { FadeIn } from '@/components/ui/fade-in';
 import { ImageCarousel, CarouselItem } from '@/components/ui/image-carousel';
 import Image from 'next/image';
 import { useInView } from 'framer-motion';
+import { ExploreSolution } from '@/components/ui/explore-solution';
 
 // Compounds data
 const compounds = [
@@ -214,6 +215,17 @@ const MedicalCosmetics = () => {
           </FadeIn>
         </div>
       </section>
+
+      <ExploreSolution
+        primaryButton={{
+          text: 'Growing Saffron',
+          href: '/premium-saffron/growing-saffron',
+        }}
+        secondaryButton={{
+          text: 'Food & Beverages',
+          href: '/premium-saffron/food-beverages',
+        }}
+      />
     </main>
   );
 };

@@ -26,14 +26,14 @@ const mockPressArticles: PressArticle[] = [
     title:
       "(SWE) Press release: Pioneering the future of Saffron as Sweden's next major export",
     date: new Date('2024-01-05'),
-    imageUrl: '/press/press-1.webp',
+    imageUrl: '/blogs/articles/press-1.webp',
     slug: 'pioneering-saffron-future',
   },
   {
     id: '2',
     title: 'Revolutionizing Saffron Cultivation with Cutting-Edge Technology',
     date: new Date('2023-12-15'),
-    imageUrl: '/press/press-2.webp',
+    imageUrl: '/blogs/articles/press-2.webp',
     slug: 'revolutionizing-saffron-cultivation',
   },
 ];

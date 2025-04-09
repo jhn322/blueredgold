@@ -140,7 +140,7 @@ export default function Footer() {
                       In the News
                     </CardDescription>
                   </Link>
-                  <Link href="/blogs/recipes">
+                  <Link href="/blogs/saffron-recipes">
                     <CardDescription className="text-sm text-white hover:text-secondary transition-colors">
                       Recipes
                     </CardDescription>

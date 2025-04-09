@@ -9,7 +9,7 @@ import { FadeIn } from '@/components/ui/fade-in';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-interface Article {
+interface Recipes {
   id: string;
   title: string;
   description: string;
@@ -20,7 +20,7 @@ interface Article {
 }
 
 // Temporary mock data until Sanity is implemented
-const mockArticles: Article[] = [
+const mockRecipes: Recipes[] = [
   {
     id: '1',
     title:
@@ -145,30 +145,30 @@ const mockArticles: Article[] = [
   },
 ];
 
-export default function ArticlesPage() {
-  const [displayedArticles, setDisplayedArticles] = useState<Article[]>([]);
+export default function RecipesPage() {
+  const [displayedRecipes, setDisplayedRecipes] = useState<Recipes[]>([]);
   const [isExpanded, setIsExpanded] = useState(false);
-  const articlesPerPage = 6;
+  const recipesPerPage = 6;
 
   useEffect(() => {
-    setDisplayedArticles(mockArticles.slice(0, articlesPerPage));
+    setDisplayedRecipes(mockRecipes.slice(0, recipesPerPage));
     setIsExpanded(false);
   }, []);
 
-  const handleToggleArticles = () => {
+  const handleToggleRecipes = () => {
     if (isExpanded) {
       // Show less
-      setDisplayedArticles(mockArticles.slice(0, articlesPerPage));
+      setDisplayedRecipes(mockRecipes.slice(0, recipesPerPage));
       setIsExpanded(false);
     } else {
       // Show more
-      const currentLength = displayedArticles.length;
-      const nextArticles = mockArticles.slice(
+      const currentLength = displayedRecipes.length;
+      const nextRecipes = mockRecipes.slice(
         currentLength,
-        currentLength + articlesPerPage
+        currentLength + recipesPerPage
       );
-      setDisplayedArticles([...displayedArticles, ...nextArticles]);
-      setIsExpanded(currentLength + articlesPerPage >= mockArticles.length);
+      setDisplayedRecipes([...displayedRecipes, ...nextRecipes]);
+      setIsExpanded(currentLength + recipesPerPage >= mockRecipes.length);
     }
   };
 
@@ -179,46 +179,46 @@ export default function ArticlesPage() {
           <FadeIn>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
-                Articles
+                Recipes
               </h1>
               <p className="text-muted-foreground">
-                Showing {displayedArticles.length} of {mockArticles.length}{' '}
-                articles
+                Showing {displayedRecipes.length} of {mockRecipes.length}{' '}
+                recipes
               </p>
             </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {displayedArticles.map((article, index) => (
-              <FadeIn key={article.id} delay={index * 50}>
+            {displayedRecipes.map((recipe, index) => (
+              <FadeIn key={recipe.id} delay={index * 50}>
                 <Link
-                  href={`/blogs/articles/${article.slug}`}
+                  href={`/blogs/saffron-recipes/${recipe.slug}`}
                   className="group"
                 >
                   <Card className="h-full overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
-                          src={article.imageUrl}
-                          alt={article.title}
+                          src={recipe.imageUrl}
+                          alt={recipe.title}
                           fill
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                         <div className="absolute top-4 left-4">
                           <span className="px-3 py-1 text-xs font-medium bg-primary/90 text-primary-foreground rounded-full">
-                            {article.category}
+                            {recipe.category}
                           </span>
                         </div>
                       </div>
                       <div className="p-6">
                         <time className="text-sm text-muted-foreground">
-                          {format(article.date, 'MMMM d, yyyy')}
+                          {format(recipe.date, 'MMMM d, yyyy')}
                         </time>
                         <h2 className="text-xl font-semibold mt-2 mb-3 text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                          {article.title}
+                          {recipe.title}
                         </h2>
                         <p className="text-muted-foreground line-clamp-3">
-                          {article.description}
+                          {recipe.description}
                         </p>
                         <div className="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:text-primary/80 transition-colors border border-primary/20 rounded-full px-4 py-1.5 group-hover:border-primary/40">
                           Continue reading
@@ -232,15 +232,15 @@ export default function ArticlesPage() {
             ))}
           </div>
 
-          {displayedArticles.length > 0 && (
+          {displayedRecipes.length > 0 && (
             <FadeIn delay={300}>
               <div className="flex justify-center">
                 <Button
                   variant="outline"
                   className="group transition-all duration-300"
-                  onClick={handleToggleArticles}
+                  onClick={handleToggleRecipes}
                 >
-                  {isExpanded ? 'Show less articles' : 'Show more articles'}
+                  {isExpanded ? 'Show less recipes' : 'Show more recipes'}
                   <ChevronDown
                     className={`ml-2 h-4 w-4 transition-transform duration-300 ${
                       isExpanded ? 'rotate-180' : 'rotate-0'

@@ -109,7 +109,7 @@ const navItems: NavItem[] = [
       },
       {
         name: 'Recipes',
-        path: '/blogs/recipes',
+        path: '/blogs/saffron-recipes',
         icon: <UtensilsCrossed className="w-4 h-4" />,
       },
       {
