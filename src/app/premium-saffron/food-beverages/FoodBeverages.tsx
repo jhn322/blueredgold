@@ -6,9 +6,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ChevronRight, Download } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ImageCarousel } from '@/components/ui/image-carousel';
 import { ExploreSolution } from '@/components/ui/explore-solution';
 
 // Temporary mock data until Sanity is implemented
@@ -23,18 +22,24 @@ interface FoodBeveragesRecipe {
 const mockFoodBeveragesRecipes: FoodBeveragesRecipe[] = [
   {
     id: '1',
-    title:
-      "(SWE) Press release: Pioneering the future of Saffron as Sweden's next major export",
-    date: new Date('2024-01-05'),
-    imageUrl: '/blogs/articles/press-1.webp',
-    slug: 'pioneering-saffron-future',
+    title: 'Swedish Saffron Pancakes: A Gotland specialty',
+    date: new Date('2023-12-25'),
+    imageUrl: '/blogs/saffron-recipes/saffron-1.webp',
+    slug: 'swedish-saffron-pancakes',
   },
   {
     id: '2',
-    title: 'Revolutionizing Saffron Cultivation with Cutting-Edge Technology',
-    date: new Date('2023-12-15'),
-    imageUrl: '/blogs/articles/press-2.webp',
-    slug: 'revolutionizing-saffron-cultivation',
+    title: "Johan Heibert's Lussekatter Recipe with BlueRedGold Saffron",
+    date: new Date('2023-12-13'),
+    imageUrl: '/blogs/saffron-recipes/saffron-2.webp',
+    slug: 'johan-heiberts-lussekatter',
+  },
+  {
+    id: '3',
+    title: 'Saffron Kladdkaka: A Modern Twist on a Classic Favorite',
+    date: new Date('2023-01-12'),
+    imageUrl: '/blogs/saffron-recipes/saffron-3.webp',
+    slug: 'saffron-kladdkaka',
   },
 ];
 
@@ -64,7 +69,10 @@ export default function FoodBeveragesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {mockFoodBeveragesRecipes.map((recipe, index) => (
               <FadeIn key={recipe.id} delay={index * 200}>
-                <Link href={`/blogs/articles/${recipe.slug}`} className="group">
+                <Link
+                  href={`/blogs/saffron-recipes/${recipe.slug}`}
+                  className="group"
+                >
                   <Card className="overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface Recipes {
@@ -23,125 +23,123 @@ interface Recipes {
 const mockRecipes: Recipes[] = [
   {
     id: '1',
-    title:
-      "(SWE) Press release: Pioneering the future of Saffron as Sweden's next major export",
+    title: 'Swedish Saffron Pancakes: A Gotland specialty',
     description:
-      'Dive deeper into the innovative world of BlueRedGold with our latest press release. Uncover the details of our groundbreaking saffron cultivation project in Sweden and learn about our ambitious goals for the future.',
-    date: new Date('2024-01-05'),
-    imageUrl: '/blogs/articles/press-1.webp',
-    slug: 'pioneering-saffron-future',
-    category: 'Press Release',
+      'Discover the traditional Swedish saffron pancakes from Gotland, featuring our premium BlueRedGold saffron. Learn the authentic recipe and techniques to create this delightful breakfast or dessert dish.',
+    date: new Date('2023-12-25'),
+    imageUrl: '/blogs/saffron-recipes/saffron-1.webp',
+    slug: 'swedish-saffron-pancakes',
+    category: 'Traditional',
   },
   {
     id: '2',
-    title: 'Revolutionizing Saffron Cultivation with Cutting-Edge Technology',
+    title: "Johan Heibert's Lussekatter Recipe with BlueRedGold Saffron",
     description:
-      'Highlighted in an insightful interview on Sveriges Radio P4 Sörmland, BlueRedGold is charting a new course in the world of spice cultivation. Our ambitious goal? To grow metric tons of saffron right here in Sweden.',
-    date: new Date('2023-12-15'),
-    imageUrl: '/blogs/articles/press-2.webp',
-    slug: 'revolutionizing-saffron-cultivation',
-    category: 'Interview',
+      'Master baker Johan Heibert shares his special recipe for Lussekatter (Swedish saffron buns) using BlueRedGold saffron. These S-shaped buns are a Christmas tradition in Sweden and feature our high-quality saffron.',
+    date: new Date('2023-12-13'),
+    imageUrl: '/blogs/saffron-recipes/saffron-2.webp',
+    slug: 'johan-heiberts-lussekatter',
+    category: 'Holiday',
   },
   {
     id: '3',
-    title: "The Future of Sustainable Farming: BlueRedGold's Vision",
+    title: 'Saffron Kladdkaka: A Modern Twist on a Classic Favorite',
     description:
-      'Explore how our innovative approach to saffron cultivation is setting new standards in sustainable agriculture and what this means for the future of farming.',
-    date: new Date('2023-11-30'),
-    imageUrl: '/blogs/articles/press-3.webp',
-    slug: 'sustainable-farming-vision',
-    category: 'Innovation',
+      'Give the traditional Swedish chocolate sticky cake (kladdkaka) a luxurious upgrade with our premium saffron. This fusion dessert combines the best of both worlds for a unique and indulgent treat.',
+    date: new Date('2023-01-12'),
+    imageUrl: '/blogs/saffron-recipes/saffron-3.webp',
+    slug: 'saffron-kladdkaka',
+    category: 'Fusion',
   },
   {
     id: '4',
-    title: 'From Traditional to High-Tech: The Evolution of Saffron Production',
+    title: 'Creamy Saffron Risotto with Swedish Mushrooms',
     description:
-      'A deep dive into how technology is transforming traditional saffron cultivation methods and why this matters for global food security.',
-    date: new Date('2023-11-15'),
-    imageUrl: '/blogs/articles/press-4.webp',
-    slug: 'saffron-production-evolution',
-    category: 'Technology',
+      'Learn how to make a velvety saffron risotto featuring locally foraged Swedish mushrooms. Our step-by-step guide ensures perfect results with the distinctive aroma and flavor of BlueRedGold saffron.',
+    date: new Date('2022-11-15'),
+    imageUrl: '/blogs/saffron-recipes/saffron-4.webp',
+    slug: 'saffron-risotto-swedish-mushrooms',
+    category: 'Main Course',
   },
   {
     id: '5',
-    title:
-      'The Science Behind Saffron: Understanding the Magic of the Red Gold',
+    title: 'Saffron Infused Ice Cream with Cardamom and Honey',
     description:
-      "An in-depth exploration of the scientific properties that make saffron one of the most valuable spices in the world, and how we're optimizing these properties in our Swedish cultivation.",
-    date: new Date('2023-10-20'),
-    imageUrl: '/blogs/articles/press-5.webp',
-    slug: 'saffron-science',
-    category: 'Research',
+      'Create a luxurious dessert with our recipe for saffron ice cream enhanced with cardamom and Swedish wildflower honey. A perfect balance of flavors that showcases the unique qualities of BlueRedGold saffron.',
+    date: new Date('2022-10-20'),
+    imageUrl: '/blogs/saffron-recipes/saffron-5.webp',
+    slug: 'saffron-ice-cream',
+    category: 'Dessert',
   },
   {
     id: '6',
-    title: 'Local Impact: How BlueRedGold is Transforming Swedish Agriculture',
+    title: 'Saffron and Dill Cured Salmon (Gravlax)',
     description:
-      'Discover how our innovative saffron cultivation project is creating new opportunities for Swedish farmers and contributing to the local economy.',
-    date: new Date('2023-10-05'),
-    imageUrl: '/blogs/articles/press-6.webp',
-    slug: 'local-impact',
-    category: 'Local Development',
+      'Elevate the traditional Swedish gravlax with the addition of BlueRedGold saffron. This elegant appetizer combines two premium ingredients - fresh salmon and high-quality saffron - for a spectacular dish.',
+    date: new Date('2022-10-05'),
+    imageUrl: '/blogs/saffron-recipes/saffron-6.webp',
+    slug: 'saffron-dill-gravlax',
+    category: 'Appetizer',
   },
   {
     id: '7',
-    title: 'The Art of Saffron Harvesting: A Day in the Life',
+    title: 'Persian Saffron Rice (Tahdig) with Nordic Berries',
     description:
-      'Follow our team through a typical day during the saffron harvesting season, from dawn to dusk, as we carefully collect and process the precious threads.',
-    date: new Date('2023-09-25'),
-    imageUrl: '/blogs/articles/press-7.webp',
-    slug: 'saffron-harvesting',
-    category: 'Behind the Scenes',
+      'A fusion recipe that brings together the best of Persian and Nordic cuisines. Learn how to make perfect crispy-bottomed saffron rice topped with seasonal Swedish berries for a unique side dish.',
+    date: new Date('2022-09-25'),
+    imageUrl: '/blogs/saffron-recipes/saffron-7.webp',
+    slug: 'persian-saffron-rice-nordic-berries',
+    category: 'Fusion',
   },
   {
     id: '8',
-    title: 'Climate-Smart Agriculture: Our Commitment to Sustainability',
+    title: 'Saffron Infused Aquavit: A Swedish Twist',
     description:
-      'Learn about our innovative farming practices that minimize environmental impact while maximizing saffron quality and yield.',
-    date: new Date('2023-09-15'),
-    imageUrl: '/blogs/articles/press-8.webp',
-    slug: 'climate-smart-agriculture',
-    category: 'Sustainability',
+      'Create your own saffron-infused aquavit with this simple recipe. Our premium BlueRedGold saffron adds a unique flavor and golden hue to this traditional Scandinavian spirit - perfect for special occasions.',
+    date: new Date('2022-09-15'),
+    imageUrl: '/blogs/saffron-recipes/saffron-8.webp',
+    slug: 'saffron-infused-aquavit',
+    category: 'Beverages',
   },
   {
     id: '9',
-    title: 'The Global Saffron Market: Opportunities and Challenges',
+    title: 'Saffron Braised Lamb Shanks with Root Vegetables',
     description:
-      'An analysis of the current state of the global saffron market and how BlueRedGold is positioning itself to meet growing demand sustainably.',
-    date: new Date('2023-09-01'),
-    imageUrl: '/blogs/articles/press-9.webp',
-    slug: 'global-saffron-market',
-    category: 'Market Analysis',
+      'A hearty winter dish featuring slow-cooked lamb shanks in a rich saffron broth with traditional Swedish root vegetables. The perfect comfort food showcasing our premium BlueRedGold saffron.',
+    date: new Date('2022-09-01'),
+    imageUrl: '/blogs/saffron-recipes/saffron-9.webp',
+    slug: 'saffron-lamb-shanks',
+    category: 'Main Course',
   },
   {
     id: '10',
-    title: 'Innovation in Agriculture: The Role of AI in Saffron Cultivation',
+    title: 'Modern Saffron Waffles with Lingonberry Compote',
     description:
-      'Explore how artificial intelligence and machine learning are revolutionizing our approach to saffron farming and quality control.',
-    date: new Date('2023-08-20'),
-    imageUrl: '/blogs/articles/press-10.webp',
-    slug: 'ai-saffron-cultivation',
-    category: 'Technology',
+      'Upgrade your breakfast with these golden saffron waffles served with a tart lingonberry compote. A contemporary twist on classic Swedish flavors using our high-quality BlueRedGold saffron.',
+    date: new Date('2022-08-20'),
+    imageUrl: '/blogs/saffron-recipes/saffron-10.webp',
+    slug: 'saffron-waffles-lingonberry',
+    category: 'Breakfast',
   },
   {
     id: '11',
-    title: 'The Health Benefits of Premium Swedish Saffron',
+    title: 'Healthy Saffron Smoothie Bowl with Nordic Superfoods',
     description:
-      'A comprehensive look at the health benefits of saffron and how our Swedish-grown variety compares to traditional sources.',
-    date: new Date('2023-08-10'),
-    imageUrl: '/blogs/articles/press-11.webp',
-    slug: 'health-benefits-saffron',
+      'Start your day with this nutritious saffron smoothie bowl featuring Swedish berries and superfoods. Learn how a pinch of our premium saffron can transform your morning routine with its flavor and health benefits.',
+    date: new Date('2022-08-10'),
+    imageUrl: '/blogs/saffron-recipes/saffron-11.webp',
+    slug: 'saffron-smoothie-bowl',
     category: 'Health',
   },
   {
     id: '12',
-    title: 'Building a Sustainable Future: Our 5-Year Vision',
+    title: 'Ultimate Saffron Seafood Stew (Swedish Bouillabaisse)',
     description:
-      "An overview of BlueRedGold's strategic plans for the next five years, including expansion goals and sustainability initiatives.",
-    date: new Date('2023-08-01'),
-    imageUrl: '/blogs/articles/press-12.webp',
-    slug: '5-year-vision',
-    category: 'Strategy',
+      'A Swedish take on the classic Provençal dish, featuring the bounty of the Nordic seas enhanced with BlueRedGold saffron. This hearty seafood stew is perfect for entertaining or special family dinners.',
+    date: new Date('2022-08-01'),
+    imageUrl: '/blogs/saffron-recipes/saffron-12.webp',
+    slug: 'saffron-seafood-stew',
+    category: 'Main Course',
   },
 ];
 
@@ -177,6 +175,13 @@ export default function RecipesPage() {
       <section className="pt-48 pb-16">
         <div className="container max-w-7xl">
           <FadeIn>
+            <Link
+              href="/premium-saffron/food-beverages"
+              className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 mb-6 px-4 py-2 rounded-full hover:bg-primary/5"
+            >
+              <ChevronLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Food & Beverages
+            </Link>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
                 Recipes

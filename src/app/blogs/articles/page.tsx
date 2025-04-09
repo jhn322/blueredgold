@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface Article {
@@ -177,6 +177,13 @@ export default function ArticlesPage() {
       <section className="pt-48 pb-16">
         <div className="container max-w-7xl">
           <FadeIn>
+            <Link
+              href="/about-us/press"
+              className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 mb-6 px-4 py-2 rounded-full hover:bg-primary/5"
+            >
+              <ChevronLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Press
+            </Link>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
                 Articles
