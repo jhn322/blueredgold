@@ -101,7 +101,7 @@ export function ParallaxHero({
                       key={index}
                       size="lg"
                       variant={button.variant || 'default'}
-                      className={`relative rounded-full overflow-hidden group text-md ${
+                      className={`relative overflow-hidden group text-md ${
                         button.variant === 'outline'
                           ? 'border-white text-black hover:bg-white/10'
                           : 'text-black'

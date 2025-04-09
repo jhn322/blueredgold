@@ -122,7 +122,7 @@ export default function Hero() {
                 <Button
                   variant="default"
                   size="lg"
-                  className="relative rounded-full overflow-hidden group text-md text-black"
+                  className="relative overflow-hidden group text-md text-black"
                 >
                   <span className="relative z-10">View Recipes</span>
                   <div className="absolute inset-0 bg-secondary" />

@@ -365,7 +365,7 @@ export const TeamAndSolutionSection = () => {
                   <Button
                     variant="default"
                     size="lg"
-                    className="group rounded-full bg-secondary hover:bg-secondary/90 text-black"
+                    className="group bg-secondary hover:bg-secondary/90 text-black"
                   >
                     Meet Our Team
                     <motion.span

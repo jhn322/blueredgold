@@ -107,7 +107,7 @@ export default function ContactPage() {
 
               <Button
                 type="submit"
-                className="w-full text-md rounded-full py-6"
+                className="w-full text-md py-6"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Submit'}

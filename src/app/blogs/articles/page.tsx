@@ -237,7 +237,7 @@ export default function ArticlesPage() {
               <div className="flex justify-center">
                 <Button
                   variant="outline"
-                  className="rounded-full group transition-all duration-300"
+                  className="group transition-all duration-300"
                   onClick={handleToggleArticles}
                 >
                   {isExpanded ? 'Show less articles' : 'Show more articles'}

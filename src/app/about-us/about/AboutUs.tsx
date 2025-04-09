@@ -96,7 +96,7 @@ export default function AboutUsContent() {
               <Link href="/technology/growing">
                 <Button
                   variant="outline"
-                  className="bg-transparent border-white text-white hover:bg-white/10 rounded-full"
+                  className="bg-transparent border-white text-white hover:bg-white/10"
                 >
                   Explore Our Technology
                 </Button>
@@ -507,7 +507,7 @@ function TeamMemberCard({
               rel="noopener noreferrer"
               aria-label={`Visit ${name}'s LinkedIn profile`}
             >
-              <Button variant="default" className="rounded-full text-sm">
+              <Button variant="default" className="text-sm">
                 <Linkedin className="mr-2 h-4 w-4" />
                 Connect
               </Button>

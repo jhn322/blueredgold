@@ -87,7 +87,7 @@ export default function NotFound() {
           <Button
             asChild
             variant="default"
-            className="bg-[#CD8B5E] hover:bg-[#CD8B5E]/90 text-white w-full sm:w-auto"
+            className=" w-full sm:w-auto"
             aria-label="Return to home page"
           >
             <Link href="/">
@@ -99,7 +99,7 @@ export default function NotFound() {
             <Button
               asChild
               variant="outline"
-              className="hover:bg-accent/50 backdrop-blur-sm bg-white/70 w-full sm:w-auto"
+              className="hover:bg-primary/90 backdrop-blur-sm bg-white/70 w-full sm:w-auto"
               aria-label="Visit About page"
             >
               <Link href="/about-us/about">
@@ -110,7 +110,7 @@ export default function NotFound() {
             <Button
               asChild
               variant="outline"
-              className="hover:bg-accent/50 backdrop-blur-sm bg-white/70 w-full sm:w-auto"
+              className="hover:bg-primary/90 backdrop-blur-sm bg-white/70 w-full sm:w-auto"
               aria-label="Visit Food & Beverages page"
             >
               <Link href="/food-beverages">
@@ -123,7 +123,7 @@ export default function NotFound() {
 
         <CardContent className="pt-8 relative z-10">
           <div
-            className="h-2 w-32 mx-auto rounded-full bg-gradient-to-r from-primary via-accent to-secondary"
+            className="h-2 w-32 mx-auto bg-gradient-to-r from-primary via-accent to-secondary"
             aria-hidden="true"
             role="presentation"
           />

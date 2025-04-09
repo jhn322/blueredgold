@@ -123,7 +123,6 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
                 >
                   <Button
                     variant="secondary"
-                    className="rounded-full"
                     onClick={() =>
                       window.open(
                         'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',
@@ -220,7 +219,7 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
         <div className="px-4 mt-8 mb-12">
           <Button
             variant="secondary"
-            className="rounded-full w-full shadow-sm hover:shadow-md transition-shadow"
+            className="w-full shadow-sm hover:shadow-md transition-shadow"
             onClick={() =>
               window.open(
                 'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',

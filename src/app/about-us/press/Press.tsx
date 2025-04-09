@@ -96,7 +96,7 @@ export default function PressPage() {
           <FadeIn delay={200}>
             <div className="flex justify-center">
               <Link href="/blogs/articles">
-                <Button variant="outline" className="rounded-full group">
+                <Button variant="outline" className="group">
                   View all articles
                   <motion.div
                     variants={infiniteXAnimation}
@@ -152,7 +152,7 @@ export default function PressPage() {
                   rel="noopener noreferrer"
                   aria-label="Download high-res images for print (137mb) from Google Drive"
                 >
-                  <Button variant="default" className="rounded-full">
+                  <Button variant="default">
                     Download high-res images for print (137MB)
                   </Button>
                 </Link>

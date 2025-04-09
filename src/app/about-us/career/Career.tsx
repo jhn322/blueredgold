@@ -226,7 +226,7 @@ export default function CareersPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full"
+                  className="bg-primary hover:bg-primary/90 text-white"
                 >
                   <Mail className="mr-2 h-4 w-4" />
                   <Link href="mailto:career@blueredgold.com">
@@ -236,7 +236,7 @@ export default function CareersPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-black hover:bg-black/10 rounded-full"
+                  className="border-white text-black hover:bg-black/10"
                 >
                   <MapPin className="mr-2 h-4 w-4" />
                   <Link href="https://www.google.com/maps/search/?api=1&query=Mästarvägen+2,+645+41+Strängnäs">

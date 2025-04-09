@@ -42,7 +42,7 @@ export function ExploreSolution({ className = '' }: ExploreSolutionProps) {
                   <Link href="/food-beverages">
                     <Button
                       size="lg"
-                      className="bg-primary hover:bg-primary/90 text-white font-medium rounded-full"
+                      className="bg-primary hover:bg-primary/90 text-white font-medium"
                     >
                       Food & Beverages
                     </Button>
@@ -51,7 +51,7 @@ export function ExploreSolution({ className = '' }: ExploreSolutionProps) {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white text-black hover:bg-black/10 rounded-full"
+                      className="border-white text-black hover:bg-black/10"
                     >
                       Medical & Cosmetics
                     </Button>
