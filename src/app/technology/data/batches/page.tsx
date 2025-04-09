@@ -118,7 +118,7 @@ export default function TechnologyPage() {
                         className="absolute inset-0"
                       >
                         <Image
-                          src="/flower/flower8.webp"
+                          src="/illustration/flower/flower8.webp"
                           alt="Purple Crocus Flower"
                           fill
                           className="object-contain"

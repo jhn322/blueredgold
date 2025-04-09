@@ -4,11 +4,28 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/ui/fade-in';
 
-interface ExploreSolutionProps {
-  className?: string;
+interface ButtonProps {
+  text: string;
+  href: string;
 }
 
-export function ExploreSolution({ className = '' }: ExploreSolutionProps) {
+interface ExploreSolutionProps {
+  className?: string;
+  primaryButton?: ButtonProps;
+  secondaryButton?: ButtonProps;
+}
+
+export function ExploreSolution({
+  className = '',
+  primaryButton = {
+    text: 'Food & Beverages',
+    href: '/premium-saffron/food-beverages',
+  },
+  secondaryButton = {
+    text: 'Medical & Cosmetics',
+    href: '/premium-saffron/medical-cosmetics',
+  },
+}: ExploreSolutionProps) {
   return (
     <section
       className={`bg-secondary text-black py-20 ${className}`}
@@ -39,21 +56,21 @@ export function ExploreSolution({ className = '' }: ExploreSolutionProps) {
               </FadeIn>
               <FadeIn delay={300}>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="/food-beverages">
+                  <Link href={primaryButton.href}>
                     <Button
                       size="lg"
                       className="bg-primary hover:bg-primary/90 text-white font-medium"
                     >
-                      Food & Beverages
+                      {primaryButton.text}
                     </Button>
                   </Link>
-                  <Link href="/medical-cosmetics">
+                  <Link href={secondaryButton.href}>
                     <Button
                       size="lg"
                       variant="outline"
                       className="border-white text-black hover:bg-black/10"
                     >
-                      Medical & Cosmetics
+                      {secondaryButton.text}
                     </Button>
                   </Link>
                 </div>

@@ -26,27 +26,27 @@ interface ImageCarouselProps {
 
 const defaultCarouselItems: CarouselItem[] = [
   {
-    image: '/image-carousel/production.webp',
+    image: '/press/image-carousel/production.webp',
     category: 'Production',
     buttonText: 'Explore Production Gallery',
   },
   {
-    image: '/image-carousel/technology.webp',
+    image: '/press/image-carousel/technology.webp',
     category: 'Technology',
     buttonText: 'View Technology Collection',
   },
   {
-    image: '/image-carousel/product.webp',
+    image: '/press/image-carousel/product.webp',
     category: 'Product',
     buttonText: 'Browse Product Images',
   },
   {
-    image: '/image-carousel/food-beverages.webp',
+    image: '/press/image-carousel/food-beverages.webp',
     category: 'Food & Beverages',
     buttonText: 'See Food & Beverages',
   },
   {
-    image: '/image-carousel/saffron.webp',
+    image: '/press/image-carousel/saffron.webp',
     category: 'Saffron',
     buttonText: 'Discover Saffron Gallery',
   },

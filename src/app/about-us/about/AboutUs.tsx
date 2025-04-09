@@ -457,7 +457,7 @@ function TeamMemberCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Visit ${name}'s LinkedIn profile`}
-          className="relative w-64 h-64 mb-6 rounded-full overflow-hidden shadow-md transition-all duration-300 group-hover:scale-105 flex-shrink-0 cursor-pointer"
+          className="relative w-64 h-64 mb-6 rounded-full overflow-hidden bg-muted transition-all duration-300 group-hover:scale-105 flex-shrink-0 cursor-pointer"
         >
           <Image
             src={image}

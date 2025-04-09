@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import FoodBeveragesContent from './FoodBeverages';
 
 export const metadata: Metadata = {
-  title: 'API Dokumentation',
+  title: 'Food & Beverages',
   description:
-    'Effektivisera din verksamhet genom att integrera våra tjänster direkt i dina system. Ansök om API-tillgång och skräddarsy lösningen efter dina behov.',
+    "Learn about BlueRedGold's innovative approach to saffron production using Swedish precision automation and hydroponic vertical indoor growing systems.",
   openGraph: {
-    title: 'Offertu | API Dokumentation',
+    title: 'Food & Beverages',
     description:
-      'Effektivisera din verksamhet genom att integrera våra tjänster direkt i dina system. Ansök om API-tillgång och skräddarsy lösningen efter dina behov.',
+      "Discover how we're revolutionizing saffron production with sustainable hydroponic systems and Swedish precision automation.",
   },
 };
 
-export default function FoodBeverages() {
+export default function FoodBeveragesPage() {
   return <FoodBeveragesContent />;
 }
