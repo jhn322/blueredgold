@@ -68,7 +68,7 @@ export default function PressPage() {
                   href={`/blogs/articles/${article.slug}`}
                   className="group"
                 >
-                  <Card className="overflow-hidden border-none shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <Card className="overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image

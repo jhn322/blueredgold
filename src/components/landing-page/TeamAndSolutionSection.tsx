@@ -47,7 +47,7 @@ const ProcessStep = ({
   >
     <div className="flex items-start gap-4">
       <div
-        className={`p-3 rounded-lg ${
+        className={`p-3 rounded-xl ${
           gradientClass ||
           (isTraditional ? 'bg-destructive/30' : 'bg-primary/30')
         }`}

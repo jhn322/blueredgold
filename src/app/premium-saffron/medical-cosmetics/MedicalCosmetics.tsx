@@ -1,10 +1,11 @@
 'use client';
 
-import React from 'react';
+import { useRef } from 'react';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
 import { FadeIn } from '@/components/ui/fade-in';
 import { ImageCarousel, CarouselItem } from '@/components/ui/image-carousel';
 import Image from 'next/image';
+import { useInView } from 'framer-motion';
 
 // Compounds data
 const compounds = [
@@ -55,6 +56,79 @@ const carouselItems: CarouselItem[] = [
   },
 ];
 
+const CompoundCard = ({
+  compound,
+  index,
+  isLastItem,
+}: {
+  compound: (typeof compounds)[0];
+  index: number;
+  isLastItem: boolean;
+}) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, amount: 0.3 });
+  const isLineInView = useInView(lineRef, { once: true, amount: 0.1 });
+
+  const isEven = index % 2 === 0;
+
+  return (
+    <div className="flex flex-col items-center w-full">
+      <div
+        ref={cardRef}
+        className={`w-full max-w-5xl mx-auto px-6 py-16 flex flex-col ${
+          isEven ? 'md:flex-row' : 'md:flex-row-reverse'
+        } items-center justify-between gap-8`}
+      >
+        {/* Image container */}
+        <div
+          className={`w-full md:w-[400px] lg:w-[1400px] h-[300px] md:h-[350px] lg:h-[400px] bg-[#ffffff] rounded-xl overflow-hidden transform transition-all duration-700 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src={compound.imageSrc}
+              alt={compound.name}
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 400px, 500px"
+            />
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/15 to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Text container */}
+        <div
+          className={`w-full md:w-[400px] lg:w-[500px] transform transition-all duration-700 delay-150 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <h3 className="text-2xl font-bold mb-3 text-foreground">
+            {compound.name}
+          </h3>
+          <p className="text-foreground/80 text-lg">{compound.description}</p>
+        </div>
+      </div>
+
+      {!isLastItem && (
+        <div
+          ref={lineRef}
+          className="h-48 md:h-64 w-0.5 bg-foreground/10 relative overflow-hidden"
+        >
+          <div
+            className={`absolute top-0 left-0 right-0 bg-foreground w-full transition-all duration-3000 ease-out ${
+              isLineInView ? 'h-full' : 'h-0'
+            }`}
+            style={{ transitionDuration: '3s' }}
+          ></div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const MedicalCosmetics = () => {
   return (
     <main className="flex flex-col min-h-screen bg-background">
@@ -99,32 +173,14 @@ const MedicalCosmetics = () => {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="flex flex-col items-center">
             {compounds.map((compound, index) => (
-              <FadeIn key={compound.id} delay={index * 100}>
-                <div className="relative overflow-hidden rounded-lg group h-[320px]">
-                  {/* Background Image */}
-                  <Image
-                    src={compound.imageSrc}
-                    alt={compound.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/60 transition-opacity duration-300"></div>
-
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
-                    <div className="transform transition-transform duration-300 group-hover:translate-y-[-8px]">
-                      <h3 className="text-2xl font-bold text-white mb-2">
-                        {compound.name}
-                      </h3>
-                      <p className="text-white/90">{compound.description}</p>
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
+              <CompoundCard
+                key={compound.id}
+                compound={compound}
+                index={index}
+                isLastItem={index === compounds.length - 1}
+              />
             ))}
           </div>
         </div>
