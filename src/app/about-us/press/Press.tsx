@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageCarousel } from '@/components/ui/image-carousel';
 import { ExploreSolution } from '@/components/ui/explore-solution';
@@ -68,7 +68,7 @@ export default function PressPage() {
                   href={`/blogs/articles/${article.slug}`}
                   className="group"
                 >
-                  <Card className="overflow-hidden border-none shadow-lg transition-all duration-300 hover:shadow-xl">
+                  <Card className="overflow-hidden border-none shadow-md transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-0">
                       <div className="relative aspect-[16/9] overflow-hidden">
                         <Image
@@ -135,12 +135,12 @@ export default function PressPage() {
           </FadeIn>
 
           <FadeIn delay={300}>
-            <ImageCarousel className="mb-12" />
+            <ImageCarousel className="h-[500px] md:h-[600px] shadow-xl mb-12" />
           </FadeIn>
 
           <FadeIn delay={400}>
             <div className="space-y-4 text-foreground/80">
-              <p>
+              <p className="mt-4 md:mt-0">
                 All images are free to use in publications specifically related
                 to BlueRedGold. When utilizing our images, kindly attribute them
                 with the copyright symbol and our name: © BlueRedGold
@@ -152,8 +152,9 @@ export default function PressPage() {
                   rel="noopener noreferrer"
                   aria-label="Download high-res images for print (137mb) from Google Drive"
                 >
-                  <Button variant="default">
-                    Download high-res images for print (137MB)
+                  <Button variant="default" className="group">
+                    High-res images for print (137MB)
+                    <Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
                   </Button>
                 </Link>
               </div>

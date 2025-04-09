@@ -76,7 +76,7 @@ export default function EsgPage() {
               <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] max-w-xl mx-auto">
                 <div className="relative w-full h-full">
                   {/* Back image */}
-                  <div className="absolute right-0 top-0 w-[70%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                  <div className="absolute right-0 top-0 w-[70%] h-[85%] rounded-xl overflow-hidden shadow-md">
                     <Image
                       src="/esg/esg-1.webp"
                       alt="Cultivation image 1"
@@ -85,7 +85,7 @@ export default function EsgPage() {
                     />
                   </div>
                   {/* Front image */}
-                  <div className="absolute left-0 bottom-0 w-[70%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                  <div className="absolute left-0 bottom-0 w-[70%] h-[85%] rounded-xl overflow-hidden shadow-md">
                     <Image
                       src="/esg/esg-2.webp"
                       alt="Cultivation image 2"
@@ -108,7 +108,7 @@ export default function EsgPage() {
               <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] max-w-xl mx-auto">
                 <div className="relative w-full h-full">
                   {/* Back image */}
-                  <div className="absolute right-0 top-0 w-[60%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                  <div className="absolute right-0 top-0 w-[60%] h-[85%] rounded-xl overflow-hidden shadow-md">
                     <Image
                       src="/esg/esg-3.webp"
                       alt="Additional crops image"
@@ -117,7 +117,7 @@ export default function EsgPage() {
                     />
                   </div>
                   {/* Front image */}
-                  <div className="absolute left-0 bottom-0 w-[60%] h-[85%] rounded-lg overflow-hidden shadow-lg">
+                  <div className="absolute left-0 bottom-0 w-[60%] h-[85%] rounded-xl overflow-hidden shadow-md">
                     <Image
                       src="/esg/esg-4.webp"
                       alt="Our crops"
@@ -151,7 +151,7 @@ export default function EsgPage() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <FadeIn>
-              <Card className="border-none shadow-lg h-full">
+              <Card className="border-none h-full shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 flex flex-col h-full">
                   <Factory className="h-12 w-12 text-secondary mb-6" />
                   <h3 className="text-2xl font-bold text-primary mb-4">
@@ -170,7 +170,7 @@ export default function EsgPage() {
               </Card>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <Card className="border-none shadow-lg h-full">
+              <Card className="border-none h-full shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 flex flex-col h-full">
                   <Users2 className="h-12 w-12 text-secondary mb-6" />
                   <h3 className="text-2xl font-bold text-primary mb-4">

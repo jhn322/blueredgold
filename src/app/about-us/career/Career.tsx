@@ -98,7 +98,7 @@ export default function CareersPage() {
               },
             ].map((item, index) => (
               <FadeIn key={index} delay={0.1 * index}>
-                <Card className="h-full bg-card border-none shadow-md hover:shadow-lg transition-shadow">
+                <Card className="h-full bg-card border-none hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="mb-2">{item.icon}</div>
                     <CardTitle className="text-xl text-primary">

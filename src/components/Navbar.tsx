@@ -305,7 +305,7 @@ const Navbar = () => {
               isNested
                 ? 'left-[calc(100%-1px)] top-[-0.5rem]'
                 : 'left-0 top-[calc(100%-1px)]'
-            } bg-secondary shadow-lg py-2 min-w-[200px] z-50 rounded-xl`}
+            } bg-secondary shadow-md py-2 min-w-[200px] z-50 rounded-xl`}
           >
             {item.children.map((child) => (
               <NavLink

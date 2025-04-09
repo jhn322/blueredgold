@@ -1,23 +1,30 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Images } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
-interface CarouselItem {
+export interface CarouselItem {
   image: string;
-  category: string;
-  buttonText: string;
+  category?: string;
+  buttonText?: string;
+  title?: string;
+  subtitle?: string;
+  link?: string;
 }
 
 interface ImageCarouselProps {
   className?: string;
+  items?: CarouselItem[];
+  autoSwitch?: boolean;
+  autoSwitchInterval?: number;
 }
 
-const carouselItems: CarouselItem[] = [
+const defaultCarouselItems: CarouselItem[] = [
   {
     image: '/image-carousel/production.webp',
     category: 'Production',
@@ -45,18 +52,88 @@ const carouselItems: CarouselItem[] = [
   },
 ];
 
-export const ImageCarousel = ({ className }: ImageCarouselProps) => {
+export const ImageCarousel = ({
+  className,
+  items = defaultCarouselItems,
+  autoSwitch = false,
+  autoSwitchInterval = 6000,
+}: ImageCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % carouselItems.length);
+  const handleNext = useCallback(() => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % items.length);
+  }, [isAnimating, items.length]);
+
+  const handlePrev = useCallback(() => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setSlideDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+  }, [isAnimating, items.length]);
+
+  // Auto-switch functionality
+  useEffect(() => {
+    if (!autoSwitch) return;
+
+    const intervalId = setInterval(() => {
+      handleNext();
+    }, autoSwitchInterval);
+
+    return () => clearInterval(intervalId);
+  }, [autoSwitch, autoSwitchInterval, handleNext]);
+
+  // Animation variants with better timing and transitions
+  const slideVariants = {
+    enterFromLeft: {
+      x: '-100%',
+      opacity: 1,
+    },
+    enterFromRight: {
+      x: '100%',
+      opacity: 1,
+    },
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 150, damping: 25, mass: 1.2 },
+        duration: 0.6,
+      },
+    },
+    exitToLeft: {
+      x: '-100%',
+      opacity: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 150, damping: 25, mass: 1.2 },
+        duration: 0.6,
+      },
+    },
+    exitToRight: {
+      x: '100%',
+      opacity: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 150, damping: 25, mass: 1.2 },
+        duration: 0.6,
+      },
+    },
   };
 
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + carouselItems.length) % carouselItems.length
-    );
-  };
+  // Preload next and previous images for smoother transitions
+  useEffect(() => {
+    const nextIndex = (currentIndex + 1) % items.length;
+    const prevIndex = (currentIndex - 1 + items.length) % items.length;
+
+    const nextImage = new window.Image();
+    nextImage.src = items[nextIndex].image;
+
+    const prevImage = new window.Image();
+    prevImage.src = items[prevIndex].image;
+  }, [currentIndex, items]);
 
   return (
     <div className="space-y-4">
@@ -69,47 +146,74 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
         )}
       >
         {/* Background Image Layer */}
-        <div className="absolute inset-0 pointer-events-none">
-          <AnimatePresence mode="wait">
+        <div className="absolute inset-0">
+          <AnimatePresence
+            mode="sync"
+            custom={slideDirection}
+            onExitComplete={() => setIsAnimating(false)}
+          >
             <motion.div
               key={currentIndex}
-              initial={{ scale: 1.2 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="absolute inset-0"
+              custom={slideDirection}
+              variants={slideVariants}
+              initial={slideDirection > 0 ? 'enterFromRight' : 'enterFromLeft'}
+              animate="center"
+              exit={slideDirection > 0 ? 'exitToLeft' : 'exitToRight'}
+              className="absolute inset-0 z-10"
             >
-              <Image
-                src={carouselItems[currentIndex].image}
-                alt={`${carouselItems[currentIndex].category} background`}
-                fill
-                className="object-cover"
-                sizes="100vw"
-                priority
-              />
+              <div className="absolute inset-0">
+                <Image
+                  src={items[currentIndex].image}
+                  alt={
+                    items[currentIndex].title ||
+                    items[currentIndex].category ||
+                    'Carousel image'
+                  }
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
+              </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         </div>
 
         {/* Interactive Layer */}
-        <div className="absolute inset-0 flex flex-col justify-end">
+        <div className="absolute inset-0 flex flex-col justify-end z-20">
           {/* Content */}
           <div className="p-6 relative">
             <div className="space-y-4">
               <AnimatePresence mode="wait">
-                <motion.h3
-                  key={`title-${currentIndex}`}
+                <motion.div
+                  key={`content-${currentIndex}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-white text-lg sm:text-2xl font-semibold select-text"
+                  className="space-y-2"
                 >
-                  PRESS IMAGES:{' '}
-                  {carouselItems[currentIndex].category.toUpperCase()}
-                </motion.h3>
+                  {items[currentIndex].category && (
+                    <h3 className="text-white text-lg sm:text-2xl font-semibold select-text">
+                      PRESS IMAGES: {items[currentIndex].category.toUpperCase()}
+                    </h3>
+                  )}
+
+                  {items[currentIndex].title && (
+                    <h3 className="text-white text-xl sm:text-3xl font-bold select-text">
+                      {items[currentIndex].title}
+                    </h3>
+                  )}
+
+                  {items[currentIndex].subtitle && (
+                    <p className="text-white/90 text-sm sm:text-base">
+                      {items[currentIndex].subtitle}
+                    </p>
+                  )}
+                </motion.div>
               </AnimatePresence>
 
               <AnimatePresence mode="wait">
@@ -121,28 +225,48 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
                   transition={{ duration: 0.5 }}
                   className="hidden sm:block"
                 >
-                  <Button
-                    variant="secondary"
-                    onClick={() =>
-                      window.open(
-                        'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',
-                        '_blank'
-                      )
-                    }
-                  >
-                    {carouselItems[currentIndex].buttonText}
-                  </Button>
+                  {items[currentIndex].link ? (
+                    <Link
+                      href={items[currentIndex].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="secondary" className="group">
+                        <span>
+                          {items[currentIndex].buttonText || 'Learn More'}
+                        </span>
+                        <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      variant="secondary"
+                      onClick={() =>
+                        window.open(
+                          'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',
+                          '_blank'
+                        )
+                      }
+                      className="group"
+                    >
+                      <span>
+                        {items[currentIndex].buttonText || 'View Gallery'}
+                      </span>
+                      <Images className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
 
           {/* Navigation - Desktop */}
-          <div className="absolute inset-y-0 left-0 right-0 pointer-events-none hidden sm:block">
+          <div className="absolute inset-y-0 left-0 right-0 pointer-events-none hidden sm:block z-30">
             <div className="relative h-full flex items-center justify-between px-4">
               <button
                 onClick={handlePrev}
-                className="pointer-events-auto rounded-full bg-black/40 backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-black/60 transition-colors"
+                disabled={isAnimating}
+                className="pointer-events-auto rounded-full bg-black/40 backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-black/60 transition-colors disabled:opacity-50"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="h-6 w-6 text-white" />
@@ -150,7 +274,8 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
 
               <button
                 onClick={handleNext}
-                className="pointer-events-auto rounded-full bg-black/40 backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-black/60 transition-colors"
+                disabled={isAnimating}
+                className="pointer-events-auto rounded-full bg-black/40 backdrop-blur-sm w-12 h-12 p-0 flex items-center justify-center hover:bg-black/60 transition-colors disabled:opacity-50"
                 aria-label="Next slide"
               >
                 <ChevronRight className="h-6 w-6 text-white" />
@@ -159,11 +284,17 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
           </div>
 
           {/* Dots - Desktop */}
-          <div className="absolute bottom-0 right-0 gap-2 p-4 hidden sm:flex">
-            {carouselItems.map((_, index) => (
+          <div className="absolute bottom-0 right-0 gap-2 p-4 hidden sm:flex z-30">
+            {items.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  if (isAnimating) return;
+                  setIsAnimating(true);
+                  setSlideDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
+                }}
+                disabled={isAnimating}
                 className={cn(
                   'h-2 w-2 rounded-full transition-all',
                   index === currentIndex
@@ -180,21 +311,28 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
       {/* Mobile Controls - Outside Carousel */}
       <div className="sm:hidden">
         {/* Mobile Navigation Container */}
-        <div className="bg-muted rounded-full p-2 -mt-6 mx-4 flex items-center justify-between">
+        <div className="bg-muted/30 rounded-full p-2 mt-12 mx-auto w-fit flex items-center justify-between shadow-sm">
           <button
             onClick={handlePrev}
-            className="rounded-full bg-black/10 hover:bg-black/20 w-10 h-10 flex items-center justify-center transition-colors"
+            disabled={isAnimating}
+            className="rounded-full bg-black/5 hover:bg-black/10 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-5 w-5 text-black" />
           </button>
 
           {/* Mobile Dots */}
-          <div className="flex gap-2">
-            {carouselItems.map((_, index) => (
+          <div className="flex gap-2 mx-3">
+            {items.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  if (isAnimating) return;
+                  setIsAnimating(true);
+                  setSlideDirection(index > currentIndex ? 1 : -1);
+                  setCurrentIndex(index);
+                }}
+                disabled={isAnimating}
                 className={cn(
                   'h-2 w-2 rounded-full transition-all',
                   index === currentIndex
@@ -208,7 +346,8 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
 
           <button
             onClick={handleNext}
-            className="rounded-full bg-black/10 hover:bg-black/20 w-10 h-10 flex items-center justify-center transition-colors"
+            disabled={isAnimating}
+            className="rounded-full bg-black/5 hover:bg-black/10 w-10 h-10 flex items-center justify-center transition-colors disabled:opacity-50"
             aria-label="Next slide"
           >
             <ChevronRight className="h-5 w-5 text-black" />
@@ -216,19 +355,37 @@ export const ImageCarousel = ({ className }: ImageCarouselProps) => {
         </div>
 
         {/* Mobile Button */}
-        <div className="px-4 mt-8 mb-12">
-          <Button
-            variant="secondary"
-            className="w-full shadow-sm hover:shadow-md transition-shadow"
-            onClick={() =>
-              window.open(
-                'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',
-                '_blank'
-              )
-            }
-          >
-            {carouselItems[currentIndex].buttonText}
-          </Button>
+        <div className="mt-8">
+          {items[currentIndex].link ? (
+            <Link
+              href={items[currentIndex].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+            >
+              <Button
+                variant="secondary"
+                className="w-full shadow-sm hover:shadow-md transition-shadow group"
+              >
+                <span>{items[currentIndex].buttonText || 'Learn More'}</span>
+                <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              variant="secondary"
+              className="w-full shadow-sm hover:shadow-md transition-shadow group"
+              onClick={() =>
+                window.open(
+                  'https://lightroom.adobe.com/shares/f39de67076da4f21ad523e558d3a3ae6',
+                  '_blank'
+                )
+              }
+            >
+              <span>{items[currentIndex].buttonText || 'View Gallery'}</span>
+              <Images className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          )}
         </div>
       </div>
     </div>

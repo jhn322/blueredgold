@@ -64,7 +64,7 @@ export default function NotFound() {
             mt-[200px] sm:mt-[300px] md:mt-[300px]
           "
         >
-          <div className="inline-block px-6 py-2 backdrop-blur-sm bg-white/70 rounded-lg">
+          <div className="inline-block px-6 py-2 backdrop-blur-sm bg-white/70 rounded-xl">
             <CardTitle
               className="text-card-foreground text-4xl font-bold sm:text-6xl"
               aria-label="404"
@@ -77,7 +77,7 @@ export default function NotFound() {
           </div>
         </div>
         <CardDescription className="text-muted-foreground text-base sm:text-lg relative z-10 max-w-sm mx-auto">
-          <span className="inline-block px-4 py-2 backdrop-blur-sm bg-white/70 rounded-lg">
+          <span className="inline-block px-4 py-2 backdrop-blur-sm bg-white/70 rounded-xl">
             Sorry, we could not find the page you were looking for. Please check
             the URL or return to the home page.
           </span>
@@ -123,7 +123,7 @@ export default function NotFound() {
 
         <CardContent className="pt-8 relative z-10">
           <div
-            className="h-2 w-32 mx-auto bg-gradient-to-r from-primary via-accent to-secondary"
+            className="h-2 w-32 mx-auto rounded-full bg-gradient-to-r from-primary via-accent to-secondary"
             aria-hidden="true"
             role="presentation"
           />
