@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageCarousel } from '@/components/ui/image-carousel';
 import { ExploreSolution } from '@/components/ui/explore-solution';
@@ -152,8 +152,9 @@ export default function PressPage() {
                   rel="noopener noreferrer"
                   aria-label="Download high-res images for print (137mb) from Google Drive"
                 >
-                  <Button variant="default">
-                    Download high-res images for print (137MB)
+                  <Button variant="default" className="group">
+                    High-res images for print (137MB)
+                    <Download className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
                   </Button>
                 </Link>
               </div>

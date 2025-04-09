@@ -123,7 +123,7 @@ export default function NotFound() {
 
         <CardContent className="pt-8 relative z-10">
           <div
-            className="h-2 w-32 mx-auto bg-gradient-to-r from-primary via-accent to-secondary"
+            className="h-2 w-32 mx-auto rounded-full bg-gradient-to-r from-primary via-accent to-secondary"
             aria-hidden="true"
             role="presentation"
           />
