@@ -298,7 +298,7 @@ export default async function RecipePage({ params }: Props) {
         <article itemScope itemType="https://schema.org/Recipe">
           <header className="mb-8">
             {recipe.category && (
-              <Badge className="mb-4 bg-primary hover:bg-primary/90 text-white">
+              <Badge className="mb-4 bg-primary text-white">
                 {recipe.category.title}
               </Badge>
             )}
