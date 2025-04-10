@@ -88,9 +88,10 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
   publishedAt
 }`;
 
-// Use correct params type for Next.js App Router
+// Use correct params type for Next.js App Router, including optional searchParams
 type Props = {
   params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 // Hjälpfunktion för att hämta recept baserat på slug
