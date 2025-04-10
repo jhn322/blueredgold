@@ -90,7 +90,7 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
 
 // Use correct params type for Next.js App Router
 type Props = {
-  params: { slug: string } | Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 // Hjälpfunktion för att hämta recept baserat på slug
