@@ -88,9 +88,9 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
   publishedAt
 }`;
 
-// Use correct params type for Next.js App Router, including optional searchParams
+// Define params explicitly as a Promise to satisfy the PageProps constraint
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   searchParams?: { [key: string]: string | string[] | undefined };
 };
 
