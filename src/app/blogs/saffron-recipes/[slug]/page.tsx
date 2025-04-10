@@ -7,12 +7,9 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import {
-  PortableText,
-  PortableTextReactComponents,
-  PortableTextMarkComponentProps,
-  PortableTextTypeComponentProps,
-} from '@portabletext/react';
+import { FadeIn } from '@/components/ui/fade-in';
+import ClientOnly from '@/components/ClientOnly';
+import SanityPortableText from '@/components/PortableTextComponent';
 import type { Metadata } from 'next';
 import type { PortableTextBlock } from '@portabletext/types';
 import { format } from 'date-fns';
@@ -27,74 +24,6 @@ interface SanityImage {
   };
   alt?: string;
 }
-
-// Definiera portaltext-komponenter
-const portableTextComponents: Partial<PortableTextReactComponents> = {
-  types: {
-    image: ({ value }: PortableTextTypeComponentProps<SanityImage>) => {
-      return (
-        <div className="my-8">
-          <Image
-            src={urlFor(value).url()}
-            alt={value.alt || 'Recipe image'}
-            width={800}
-            height={600}
-            className="rounded-md object-cover"
-          />
-          {value.alt && (
-            <p className="mt-2 text-center text-sm text-muted-foreground">
-              {value.alt}
-            </p>
-          )}
-        </div>
-      );
-    },
-  },
-  marks: {
-    link: ({ children, value }: PortableTextMarkComponentProps) => {
-      const rel = !value?.href.startsWith('/')
-        ? 'noopener noreferrer'
-        : undefined;
-      return (
-        <a
-          href={value?.href}
-          rel={rel}
-          className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
-        >
-          {children}
-        </a>
-      );
-    },
-  },
-  block: {
-    h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-primary mt-10 mb-4">{children}</h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-2xl font-bold text-primary mt-8 mb-4">{children}</h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-xl font-bold text-primary mt-6 mb-3">{children}</h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-lg font-bold text-primary mt-5 mb-2">{children}</h4>
-    ),
-  },
-  list: {
-    bullet: ({ children }) => (
-      <ul className="mt-4 mb-6 list-disc pl-6 text-black marker:text-secondary">
-        {children}
-      </ul>
-    ),
-    number: ({ children }) => (
-      <ol className="mt-4 mb-6 list-decimal pl-6 text-black">{children}</ol>
-    ),
-  },
-  listItem: {
-    bullet: ({ children }) => <li className="mt-2">{children}</li>,
-    number: ({ children }) => <li className="mt-2">{children}</li>,
-  },
-};
 
 // Gröq query för att hämta ett recept baserat på slug
 const recipeQuery = `*[_type == "recipe" && slug.current == $slug][0]{
@@ -274,124 +203,63 @@ export default async function RecipePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(recipeSchema) }}
       />
       <main className="max-w-5xl mx-auto py-8 pt-48 px-4 sm:px-6">
-        <nav aria-label="Back to recipes" className="mb-6">
-          <Link
-            href="/blogs/saffron-recipes"
-            className="group inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-all duration-300 mb-6 px-4 py-1.5 rounded-full border border-primary hover:border-primary/40 hover:bg-primary/5"
-          >
-            <ChevronLeft
-              className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1"
-              aria-hidden="true"
-            />
-            Back to Saffron Recipes
-          </Link>
-        </nav>
+        <ClientOnly>
+          <FadeIn>
+            <nav aria-label="Back to recipes" className="mb-6">
+              <Link
+                href="/blogs/saffron-recipes"
+                className="group inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-all duration-300 mb-6 px-4 py-1.5 rounded-full border border-primary hover:border-primary/40 hover:bg-primary/5"
+              >
+                <ChevronLeft
+                  className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1"
+                  aria-hidden="true"
+                />
+                Back to Saffron Recipes
+              </Link>
+            </nav>
+          </FadeIn>
+        </ClientOnly>
 
         {isShowingFallback && (
-          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-700">
-            <p>
-              <strong>Note:</strong> The recipe you were looking for could not
-              be found. We&apos;re showing you one of our popular recipes
-              instead.
-            </p>
-          </div>
+          <ClientOnly>
+            <FadeIn delay={50}>
+              <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-700">
+                <p>
+                  <strong>Note:</strong> The recipe you were looking for could
+                  not be found. We&apos;re showing you one of our popular
+                  recipes instead.
+                </p>
+              </div>
+            </FadeIn>
+          </ClientOnly>
         )}
 
         <article itemScope itemType="https://schema.org/Recipe">
-          <header className="mb-8">
-            {recipe.category && (
-              <Badge className="mb-4 bg-primary text-white">
-                {recipe.category.title}
-              </Badge>
-            )}
+          <ClientOnly>
+            <FadeIn delay={100}>
+              <header className="mb-8">
+                {recipe.category && (
+                  <Badge className="mb-4 bg-primary text-white">
+                    {recipe.category.title}
+                  </Badge>
+                )}
 
-            <h1
-              itemProp="name"
-              className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-primary font-display"
-            >
-              {recipe.title}
-            </h1>
-
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mt-4">
-              {recipe.author && (
-                <div
-                  className="flex items-center gap-2"
-                  itemProp="author"
-                  itemScope
-                  itemType="https://schema.org/Person"
+                <h1
+                  itemProp="name"
+                  className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl text-primary font-display"
                 >
-                  <Avatar className="h-8 w-8">
-                    {recipe.author.image ? (
-                      <AvatarImage
-                        src={urlFor(recipe.author.image)
-                          .width(96)
-                          .height(96)
-                          .url()}
-                        alt={recipe.author.name}
-                        itemProp="image"
-                      />
-                    ) : (
-                      <AvatarFallback>
-                        <User className="h-4 w-4" />
-                      </AvatarFallback>
-                    )}
-                  </Avatar>
-                  <span itemProp="name">{recipe.author.name}</span>
-                </div>
-              )}
-              <time
-                dateTime={recipe.publishedAt}
-                itemProp="datePublished"
-                className="flex items-center gap-1"
-              >
-                <CalendarDays className="h-4 w-4" aria-hidden="true" />
-                {publishDate}
-              </time>
-              {recipe.estimatedReadingTime && (
-                <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" aria-hidden="true" />
-                  <span>{recipe.estimatedReadingTime} min read</span>
-                </div>
-              )}
-            </div>
-          </header>
+                  {recipe.title}
+                </h1>
 
-          <Separator className="my-8" />
-
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_250px]">
-            <div className="recipe-content">
-              <figure className="mb-8">
-                <Image
-                  src={urlFor(recipe.mainImage).width(1200).height(800).url()}
-                  alt={recipe.title}
-                  width={1200}
-                  height={800}
-                  className="rounded-lg object-cover w-full"
-                  priority
-                />
-              </figure>
-
-              <div
-                className="prose prose-lg max-w-none text-black"
-                itemProp="recipeInstructions"
-              >
-                <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
-                  <h2 className="text-primary text-xl font-medium mb-4">
-                    Overview
-                  </h2>
-                  <p className="text-foreground/90">{recipe.description}</p>
-                </div>
-                <PortableText
-                  value={recipe.body}
-                  components={portableTextComponents}
-                />
-              </div>
-
-              <footer className="mt-10">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mt-4">
                   {recipe.author && (
-                    <div className="flex items-center gap-4">
-                      <Avatar className="h-10 w-10">
+                    <div
+                      className="flex items-center gap-2"
+                      itemProp="author"
+                      itemScope
+                      itemType="https://schema.org/Person"
+                    >
+                      <Avatar className="h-8 w-8">
                         {recipe.author.image ? (
                           <AvatarImage
                             src={urlFor(recipe.author.image)
@@ -399,6 +267,7 @@ export default async function RecipePage({ params }: Props) {
                               .height(96)
                               .url()}
                             alt={recipe.author.name}
+                            itemProp="image"
                           />
                         ) : (
                           <AvatarFallback>
@@ -406,60 +275,152 @@ export default async function RecipePage({ params }: Props) {
                           </AvatarFallback>
                         )}
                       </Avatar>
-                      <div>
-                        <p className="text-sm font-medium">Written by</p>
-                        <p className="font-semibold">{recipe.author.name}</p>
-                      </div>
+                      <span itemProp="name">{recipe.author.name}</span>
                     </div>
                   )}
-
-                  <ShareButton
-                    title={recipe.title}
-                    description={recipe.description}
-                  />
+                  <time
+                    dateTime={recipe.publishedAt}
+                    itemProp="datePublished"
+                    className="flex items-center gap-1"
+                  >
+                    <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                    {publishDate}
+                  </time>
+                  {recipe.estimatedReadingTime && (
+                    <div className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
+                      <span>{recipe.estimatedReadingTime} min read</span>
+                    </div>
+                  )}
                 </div>
-              </footer>
+              </header>
+            </FadeIn>
+          </ClientOnly>
+
+          <Separator className="my-8" />
+
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_250px]">
+            <div className="recipe-content">
+              <ClientOnly>
+                <FadeIn delay={200}>
+                  <figure className="mb-8">
+                    <Image
+                      src={urlFor(recipe.mainImage)
+                        .width(1200)
+                        .height(800)
+                        .url()}
+                      alt={recipe.title}
+                      width={1200}
+                      height={800}
+                      className="rounded-lg object-cover w-full"
+                      priority
+                    />
+                  </figure>
+                </FadeIn>
+              </ClientOnly>
+
+              <ClientOnly>
+                <FadeIn delay={300}>
+                  <div
+                    className="prose prose-lg max-w-none text-black"
+                    itemProp="recipeInstructions"
+                  >
+                    <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
+                      <h2 className="text-primary text-xl font-medium mb-4">
+                        Overview
+                      </h2>
+                      <p className="text-foreground/90">{recipe.description}</p>
+                    </div>
+                    <SanityPortableText value={recipe.body} />
+                  </div>
+                </FadeIn>
+              </ClientOnly>
+
+              <ClientOnly>
+                <FadeIn delay={400}>
+                  <footer className="mt-10">
+                    <div className="flex items-center justify-between">
+                      {recipe.author && (
+                        <div className="flex items-center gap-4">
+                          <Avatar className="h-10 w-10">
+                            {recipe.author.image ? (
+                              <AvatarImage
+                                src={urlFor(recipe.author.image)
+                                  .width(96)
+                                  .height(96)
+                                  .url()}
+                                alt={recipe.author.name}
+                              />
+                            ) : (
+                              <AvatarFallback>
+                                <User className="h-4 w-4" />
+                              </AvatarFallback>
+                            )}
+                          </Avatar>
+                          <div>
+                            <p className="text-sm font-medium">Written by</p>
+                            <p className="font-semibold">
+                              {recipe.author.name}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      <ShareButton
+                        title={recipe.title}
+                        description={recipe.description}
+                      />
+                    </div>
+                  </footer>
+                </FadeIn>
+              </ClientOnly>
             </div>
 
             <div className="hidden lg:block">
               <div className="sticky top-24">
-                <aside aria-label="Related content" className="mt-6">
-                  <section className="rounded-lg border border-primary bg-muted/20 p-4 shadow-sm">
-                    <h2 className="mb-4 font-medium text-primary">
-                      Related Recipes
-                    </h2>
-                    {relatedRecipes.length > 0 ? (
-                      <div className="space-y-4">
-                        {relatedRecipes.map((relatedRecipe: RelatedRecipe) => (
-                          <article
-                            key={relatedRecipe._id}
-                            className="space-y-1"
-                          >
-                            <Link
-                              href={`/blogs/saffron-recipes/${relatedRecipe.slug.current}`}
-                              className="line-clamp-2 font-medium hover:text-primary transition-colors"
-                            >
-                              {relatedRecipe.title}
-                            </Link>
-                            <time
-                              dateTime={relatedRecipe.publishedAt}
-                              className="block text-xs text-muted-foreground"
-                            >
-                              {format(
-                                new Date(relatedRecipe.publishedAt),
-                                'MMMM d, yyyy'
-                              )}
-                            </time>
-                          </article>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-sm text-muted-foreground">
-                        No related recipes found.
-                      </p>
-                    )}
-                  </section>
-                </aside>
+                <ClientOnly>
+                  <FadeIn delay={500}>
+                    <aside aria-label="Related content" className="mt-6">
+                      <section className="rounded-lg border border-primary bg-muted/20 p-4 shadow-sm">
+                        <h2 className="mb-4 font-medium text-primary">
+                          Related Recipes
+                        </h2>
+                        {relatedRecipes.length > 0 ? (
+                          <div className="space-y-4">
+                            {relatedRecipes.map(
+                              (relatedRecipe: RelatedRecipe) => (
+                                <article
+                                  key={relatedRecipe._id}
+                                  className="space-y-1"
+                                >
+                                  <Link
+                                    href={`/blogs/saffron-recipes/${relatedRecipe.slug.current}`}
+                                    className="line-clamp-2 font-medium hover:text-primary transition-colors"
+                                  >
+                                    {relatedRecipe.title}
+                                  </Link>
+                                  <time
+                                    dateTime={relatedRecipe.publishedAt}
+                                    className="block text-xs text-muted-foreground"
+                                  >
+                                    {format(
+                                      new Date(relatedRecipe.publishedAt),
+                                      'MMMM d, yyyy'
+                                    )}
+                                  </time>
+                                </article>
+                              )
+                            )}
+                          </div>
+                        ) : (
+                          <p className="text-sm text-muted-foreground">
+                            No related recipes found.
+                          </p>
+                        )}
+                      </section>
+                    </aside>
+                  </FadeIn>
+                </ClientOnly>
               </div>
             </div>
           </div>
