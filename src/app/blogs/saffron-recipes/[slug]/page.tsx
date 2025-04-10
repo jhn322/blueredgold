@@ -88,9 +88,13 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
   publishedAt
 }`;
 
-type Props = {
-  params: { slug: string | Promise<string> };
-};
+// Use correct params type for Next.js App Router
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
+}
 
 // Hjälpfunktion för att hämta recept baserat på slug
 async function getRecipeFromSlug(slug: string): Promise<Recipe> {
@@ -124,10 +128,10 @@ async function getRelatedRecipes(slug: string, category: string) {
   return recipes;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  // Await params before accessing its properties
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug as string;
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const slug = params.slug;
   const recipe = await getRecipeFromSlug(slug);
 
   return {
@@ -157,10 +161,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function RecipePage({ params }: Props) {
-  // Await params before accessing its properties
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug as string;
+export default async function RecipePage({ params }: PageProps) {
+  const slug = params.slug;
   const requestedSlug = slug; // Save original slug
   const recipe = await getRecipeFromSlug(slug);
   let relatedRecipes = [];
