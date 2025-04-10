@@ -80,7 +80,9 @@ export const portableTextComponents: Partial<PortableTextReactComponents> = {
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="mt-4 mb-6 list-decimal pl-6 text-black">{children}</ol>
+      <ol className="mt-4 mb-6 list-decimal pl-6 text-black marker:text-primary">
+        {children}
+      </ol>
     ),
   },
   listItem: {
