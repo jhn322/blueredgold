@@ -8,15 +8,31 @@ import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { PortableText } from '@portabletext/react';
+import {
+  PortableText,
+  PortableTextReactComponents,
+  PortableTextMarkComponentProps,
+  PortableTextTypeComponentProps,
+} from '@portabletext/react';
 import type { Metadata } from 'next';
+import type { PortableTextBlock } from '@portabletext/types';
 import { format } from 'date-fns';
 import { ShareButton } from './ShareButton';
 
+// Define interfaces for Sanity types
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
 // Definiera portaltext-komponenter
-const portableTextComponents = {
+const portableTextComponents: Partial<PortableTextReactComponents> = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: PortableTextTypeComponentProps<SanityImage>) => {
       return (
         <div className="my-8">
           <Image
@@ -36,13 +52,13 @@ const portableTextComponents = {
     },
   },
   marks: {
-    link: ({ children, value }: any) => {
-      const rel = !value.href.startsWith('/')
+    link: ({ children, value }: PortableTextMarkComponentProps) => {
+      const rel = !value?.href.startsWith('/')
         ? 'noopener noreferrer'
         : undefined;
       return (
         <a
-          href={value.href}
+          href={value?.href}
           rel={rel}
           className="font-medium text-primary underline underline-offset-4 hover:text-primary/80"
         >
@@ -80,8 +96,8 @@ interface Recipe {
   title: string;
   description: string;
   publishedAt: string;
-  body: any; // PortableText innehåll
-  mainImage: any;
+  body: PortableTextBlock[]; // PortableText innehåll
+  mainImage: SanityImage;
   slug: {
     current: string;
   };
@@ -91,11 +107,21 @@ interface Recipe {
   };
   author?: {
     name: string;
-    image: any;
+    image: SanityImage;
     slug: {
       current: string;
     };
   };
+}
+
+// Define a type for related recipes
+interface RelatedRecipe {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  publishedAt: string;
 }
 
 // Relaterade recept query
@@ -107,7 +133,7 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
 }`;
 
 type Props = {
-  params: { slug: string };
+  params: { slug: string | Promise<string> };
 };
 
 // Hjälpfunktion för att hämta recept baserat på slug
@@ -143,7 +169,8 @@ async function getRelatedRecipes(slug: string, category: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug = params.slug;
+  const slug =
+    typeof params.slug === 'string' ? params.slug : await params.slug;
   const recipe = await getRecipeFromSlug(slug);
 
   return {
@@ -174,7 +201,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function RecipePage({ params }: Props) {
-  const slug = params.slug;
+  const slug =
+    typeof params.slug === 'string' ? params.slug : await params.slug;
   const requestedSlug = slug; // Spara ursprunglig slug
   const recipe = await getRecipeFromSlug(slug);
   let relatedRecipes = [];
@@ -234,7 +262,8 @@ export default async function RecipePage({ params }: Props) {
           <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-700">
             <p>
               <strong>Note:</strong> The recipe you were looking for could not
-              be found. We're showing you one of our popular recipes instead.
+              be found. We&apos;re showing you one of our popular recipes
+              instead.
             </p>
           </div>
         )}
@@ -372,7 +401,7 @@ export default async function RecipePage({ params }: Props) {
                     </h2>
                     {relatedRecipes.length > 0 ? (
                       <div className="space-y-4">
-                        {relatedRecipes.map((relatedRecipe: any) => (
+                        {relatedRecipes.map((relatedRecipe: RelatedRecipe) => (
                           <article
                             key={relatedRecipe._id}
                             className="space-y-1"
