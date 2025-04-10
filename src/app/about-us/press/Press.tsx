@@ -215,7 +215,7 @@ export default function PressPage() {
                         High-res images for print (137MB)
                       </span>
                       <Download className="relative z-10 ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </Button>
                   </Link>
                 </div>
