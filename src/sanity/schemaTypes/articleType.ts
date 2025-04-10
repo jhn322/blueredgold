@@ -1,5 +1,5 @@
-import { DocumentIcon } from '@sanity/icons'
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { DocumentIcon } from '@sanity/icons';
+import { defineField, defineType } from 'sanity';
 
 export const articleType = defineType({
   name: 'article',
@@ -47,15 +47,14 @@ export const articleType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-        })
-      ]
+        }),
+      ],
     }),
     defineField({
       name: 'category',
       title: 'Category',
       type: 'reference',
       to: { type: 'category' },
-     
     }),
     defineField({
       name: 'publishedAt',
@@ -76,14 +75,13 @@ export const articleType = defineType({
       media: 'mainImage',
     },
     prepare(selection) {
-      const { author, category } = selection
-      return { 
-        ...selection, 
-        subtitle: [
-          category && `${category}`,
-          author && `by ${author}`
-        ].filter(Boolean).join(' • ')
-      }
+      const { author, category } = selection;
+      return {
+        ...selection,
+        subtitle: [category && `${category}`, author && `by ${author}`]
+          .filter(Boolean)
+          .join(' • '),
+      };
     },
   },
-}) 
+});
