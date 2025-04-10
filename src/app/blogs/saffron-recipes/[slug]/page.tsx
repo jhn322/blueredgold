@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { ChevronLeft, CalendarDays, Clock, User } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -66,6 +65,34 @@ const portableTextComponents: Partial<PortableTextReactComponents> = {
         </a>
       );
     },
+  },
+  block: {
+    h1: ({ children }) => (
+      <h1 className="text-3xl font-bold text-primary mt-10 mb-4">{children}</h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-bold text-primary mt-8 mb-4">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl font-bold text-primary mt-6 mb-3">{children}</h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-lg font-bold text-primary mt-5 mb-2">{children}</h4>
+    ),
+  },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="mt-4 mb-6 list-disc pl-6 text-black marker:text-secondary">
+        {children}
+      </ul>
+    ),
+    number: ({ children }) => (
+      <ol className="mt-4 mb-6 list-decimal pl-6 text-black">{children}</ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }) => <li className="mt-2">{children}</li>,
+    number: ({ children }) => <li className="mt-2">{children}</li>,
   },
 };
 
@@ -246,16 +273,16 @@ export default async function RecipePage({ params }: Props) {
       />
       <main className="max-w-5xl mx-auto py-8 pt-48 px-4 sm:px-6">
         <nav aria-label="Back to recipes" className="mb-6">
-          <Button
-            variant="ghost"
-            asChild
-            className="pl-0 text-muted-foreground"
+          <Link
+            href="/blogs/saffron-recipes"
+            className="group inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-all duration-300 mb-6 px-4 py-1.5 rounded-full border border-primary hover:border-primary/40 hover:bg-primary/5"
           >
-            <Link href="/blogs/saffron-recipes">
-              <ChevronLeft className="mr-2 h-4 w-4" aria-hidden="true" />
-              Back to Saffron Recipes
-            </Link>
-          </Button>
+            <ChevronLeft
+              className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1"
+              aria-hidden="true"
+            />
+            Back to Saffron Recipes
+          </Link>
         </nav>
 
         {isShowingFallback && (
@@ -343,10 +370,10 @@ export default async function RecipePage({ params }: Props) {
               </figure>
 
               <div
-                className="prose prose-lg max-w-none"
+                className="prose prose-lg max-w-none text-black"
                 itemProp="recipeInstructions"
               >
-                <div className="mb-8 bg-muted/30 p-6 rounded-lg border border-primary/10">
+                <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
                   <h2 className="text-primary text-xl font-medium mb-4">
                     Overview
                   </h2>
@@ -395,7 +422,7 @@ export default async function RecipePage({ params }: Props) {
             <div className="hidden lg:block">
               <div className="sticky top-24">
                 <aside aria-label="Related content" className="mt-6">
-                  <section className="rounded-lg border bg-card p-4 shadow-sm">
+                  <section className="rounded-lg border border-primary bg-muted/20 p-4 shadow-sm">
                     <h2 className="mb-4 font-medium text-primary">
                       Related Recipes
                     </h2>

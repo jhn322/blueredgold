@@ -105,7 +105,7 @@ export default function SaffronRecipesPage() {
           <FadeIn>
             <Link
               href="/premium-saffron/food-beverages"
-              className="group inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 mb-6 px-4 py-2 rounded-full hover:bg-primary/5"
+              className="group inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-all duration-300 mb-6 px-4 py-1.5 rounded-full border border-primary hover:border-primary/40 hover:bg-primary/5"
             >
               <ChevronLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               Back to Food & Beverages
