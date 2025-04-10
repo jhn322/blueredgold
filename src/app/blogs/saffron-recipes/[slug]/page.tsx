@@ -196,8 +196,9 @@ async function getRelatedRecipes(slug: string, category: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const slug =
-    typeof params.slug === 'string' ? params.slug : await params.slug;
+  // Await params before accessing its properties
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug as string;
   const recipe = await getRecipeFromSlug(slug);
 
   return {
@@ -228,9 +229,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function RecipePage({ params }: Props) {
-  const slug =
-    typeof params.slug === 'string' ? params.slug : await params.slug;
-  const requestedSlug = slug; // Spara ursprunglig slug
+  // Await params before accessing its properties
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug as string;
+  const requestedSlug = slug; // Save original slug
   const recipe = await getRecipeFromSlug(slug);
   let relatedRecipes = [];
 
