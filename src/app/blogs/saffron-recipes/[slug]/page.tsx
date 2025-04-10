@@ -88,10 +88,10 @@ const relatedRecipesQuery = `*[_type == "recipe" && slug.current != $slug && cat
   publishedAt
 }`;
 
-// Define params explicitly as a Promise to satisfy the PageProps constraint
+// Define params and searchParams explicitly as Promises to satisfy the PageProps constraint
 type Props = {
   params: Promise<{ slug: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 // Hjälpfunktion för att hämta recept baserat på slug
