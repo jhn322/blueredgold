@@ -321,22 +321,18 @@ export default async function RecipePage({ params }: Props) {
                 </FadeIn>
               </ClientOnly>
 
-              <ClientOnly>
-                <FadeIn delay={300}>
-                  <div
-                    className="prose prose-lg max-w-none text-black"
-                    itemProp="recipeInstructions"
-                  >
-                    <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
-                      <h2 className="text-primary text-xl font-medium mb-4">
-                        Overview
-                      </h2>
-                      <p className="text-foreground/90">{recipe.description}</p>
-                    </div>
-                    <SanityPortableText value={recipe.body} />
-                  </div>
-                </FadeIn>
-              </ClientOnly>
+              <div
+                className="prose prose-lg max-w-none text-black"
+                itemProp="recipeInstructions"
+              >
+                <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
+                  <h2 className="text-primary text-xl font-medium mb-4">
+                    Overview
+                  </h2>
+                  <p className="text-foreground/90">{recipe.description}</p>
+                </div>
+                <SanityPortableText value={recipe.body} />
+              </div>
 
               <ClientOnly>
                 <FadeIn delay={400}>
