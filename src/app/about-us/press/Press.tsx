@@ -153,7 +153,7 @@ export default function PressPage() {
                             )}
                           </motion.div>
 
-                          <h3 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                          <h3 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
                             {article.title}
                           </h3>
 

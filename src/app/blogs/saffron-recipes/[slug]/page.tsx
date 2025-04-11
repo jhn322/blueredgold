@@ -13,7 +13,7 @@ import SanityPortableText from '@/components/PortableTextComponent';
 import type { Metadata } from 'next';
 import type { PortableTextBlock } from '@portabletext/types';
 import { format } from 'date-fns';
-import { ShareButton } from './ShareButton';
+import { ShareButton } from '@/components/ShareButton';
 
 // Define interfaces for Sanity types
 interface SanityImage {
@@ -367,6 +367,7 @@ export default async function RecipePage({ params }: Props) {
                       <ShareButton
                         title={recipe.title}
                         description={recipe.description}
+                        buttonText="Share Recipe"
                       />
                     </div>
                   </footer>
