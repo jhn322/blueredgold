@@ -105,16 +105,44 @@ const infiniteXAnimation = {
   },
 };
 
-const shimmerAnimation = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: [0, 1, 0],
-    x: ['-100%', '100%', '300%'],
+// Subtle animation effects
+const subtleParallaxAnimation = {
+  animate: {
+    scale: [1, 1.03, 1],
     transition: {
-      duration: 2.5,
+      duration: 20,
       repeat: Infinity,
       ease: 'easeInOut',
-      repeatDelay: 2,
+    },
+  },
+};
+
+const colorShiftAnimation = {
+  animate: {
+    background: [
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0))',
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05))',
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0))',
+    ],
+    transition: {
+      duration: 15,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const glowPulseAnimation = {
+  animate: {
+    boxShadow: [
+      '0 0 0px rgba(255, 215, 0, 0.3)',
+      '0 0 15px rgba(255, 215, 0, 0.5)',
+      '0 0 0px rgba(255, 215, 0, 0.3)',
+    ],
+    transition: {
+      duration: 8,
+      repeat: Infinity,
+      ease: 'easeInOut',
     },
   },
 };
@@ -305,18 +333,35 @@ export default function FoodBeveragesPage() {
 
             <FadeIn delay={200}>
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/food-beverages/food-1.webp"
-                  alt="Premium saffron cooking"
-                  fill
-                  className="object-cover"
-                />
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-transparent"
-                  variants={shimmerAnimation}
-                  initial="hidden"
-                  animate="visible"
+                  className="absolute inset-0"
+                  variants={subtleParallaxAnimation}
+                  animate="animate"
+                >
+                  <Image
+                    src="/food-beverages/food-1.webp"
+                    alt="Premium saffron cooking"
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+
+                {/* Subtle color shift overlay */}
+                <motion.div
+                  className="absolute inset-0 mix-blend-overlay"
+                  variants={colorShiftAnimation}
+                  animate="animate"
                 />
+
+                {/* Soft glow effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl"
+                  variants={glowPulseAnimation}
+                  animate="animate"
+                />
+
+                {/* Subtle vignette effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
             </FadeIn>
           </div>
