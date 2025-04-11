@@ -14,7 +14,7 @@ export function ShareButton({
 }) {
   return (
     <ClientOnly>
-      <FadeIn delay={100}>
+      <FadeIn delay={100} translateY={1}>
         <Button
           variant="outline"
           size="sm"
