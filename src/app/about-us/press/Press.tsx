@@ -10,33 +10,35 @@ import { ChevronRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ImageCarousel } from '@/components/ui/image-carousel';
 import { ExploreSolution } from '@/components/ui/explore-solution';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { useState, useEffect } from 'react';
 
-// Temporary mock data until Sanity is implemented
-interface PressArticle {
-  id: string;
+// Interface for articles from Sanity
+interface Article {
+  _id: string;
   title: string;
-  date: Date;
-  imageUrl: string;
-  slug: string;
+  description: string;
+  publishedAt: string;
+  mainImage: SanityImageSource;
+  slug: {
+    current: string;
+  };
+  category: {
+    title: string;
+  };
 }
 
-const mockPressArticles: PressArticle[] = [
-  {
-    id: '1',
-    title:
-      "(SWE) Press release: Pioneering the future of Saffron as Sweden's next major export",
-    date: new Date('2024-01-05'),
-    imageUrl: '/blogs/articles/press-1.webp',
-    slug: 'pioneering-saffron-future',
-  },
-  {
-    id: '2',
-    title: 'Revolutionizing Saffron Cultivation with Cutting-Edge Technology',
-    date: new Date('2023-12-15'),
-    imageUrl: '/blogs/articles/press-2.webp',
-    slug: 'revolutionizing-saffron-cultivation',
-  },
-];
+// GROQ query to fetch latest 3 press articles
+const pressArticlesQuery = `*[_type == "article"] | order(publishedAt desc)[0...3] {
+  _id,
+  title,
+  publishedAt,
+  slug,
+  mainImage,
+  category->{ title }
+}`;
 
 const infiniteXAnimation = {
   animate: {
@@ -50,6 +52,24 @@ const infiniteXAnimation = {
 };
 
 export default function PressPage() {
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const data = await client.fetch<Article[]>(pressArticlesQuery);
+        setArticles(data);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background">
       {/* Press Articles Section */}
@@ -75,65 +95,91 @@ export default function PressPage() {
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {mockPressArticles.map((article, index) => (
-              <FadeIn key={article.id} delay={index * 200}>
-                <Link
-                  href={`/blogs/articles/${article.slug}`}
-                  className="group"
-                >
-                  <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {isLoading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }).map((_, index) => (
+                <FadeIn key={`skeleton-${index}`} delay={index * 200}>
+                  <Card className="overflow-hidden border border-primary/10 bg-muted/20">
                     <CardContent className="p-0 relative">
-                      <div className="relative aspect-[16/9] overflow-hidden">
-                        <Image
-                          src={article.imageUrl}
-                          alt={article.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        {/* Hover effect - zoom line */}
-                        <motion.div
-                          className="absolute bottom-0 left-0 h-1 bg-primary origin-left"
-                          initial={{ scaleX: 0 }}
-                          whileHover={{ scaleX: 1 }}
-                          transition={{ duration: 0.4 }}
-                        />
-                      </div>
-
-                      <div className="p-6 bg-background relative h-[180px] flex flex-col">
-                        <motion.div
-                          className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
-                          initial={{ y: 20, opacity: 0 }}
-                          whileInView={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2 }}
-                          viewport={{ once: true }}
-                        >
-                          {format(article.date, 'MMM d, yyyy')}
-                        </motion.div>
-
-                        <h2 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-auto">
-                          {article.title}
-                        </h2>
-
-                        <div className="mt-4 flex items-center text-primary/80 text-sm font-medium">
-                          <span>Read article</span>
-                          <motion.div
-                            variants={infiniteXAnimation}
-                            animate="animate"
-                            className="ml-2"
-                          >
-                            <ChevronRight className="h-4 w-4" />
-                          </motion.div>
-                        </div>
+                      <div className="relative aspect-square bg-muted animate-pulse"></div>
+                      <div className="p-6 bg-background">
+                        <div className="h-6 bg-muted animate-pulse rounded-full w-3/4 mb-4"></div>
+                        <div className="h-4 bg-muted animate-pulse rounded-full w-1/2"></div>
                       </div>
                     </CardContent>
                   </Card>
-                </Link>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))
+            ) : articles.length > 0 ? (
+              articles.map((article, index) => (
+                <FadeIn key={article._id} delay={index * 200}>
+                  <Link
+                    href={`/blogs/articles/${article.slug.current}`}
+                    className="group"
+                  >
+                    <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
+                      <CardContent className="p-0 relative">
+                        <div className="relative aspect-square overflow-hidden">
+                          <Image
+                            src={urlFor(article.mainImage).url()}
+                            alt={article.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                          {/* Hover effect - zoom line */}
+                          <motion.div
+                            className="absolute bottom-0 left-0 h-1 bg-primary origin-left"
+                            initial={{ scaleX: 0 }}
+                            whileHover={{ scaleX: 1 }}
+                            transition={{ duration: 0.4 }}
+                          />
+                        </div>
+
+                        <div className="p-6 bg-background relative">
+                          <motion.div
+                            className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            viewport={{ once: true }}
+                          >
+                            {format(
+                              new Date(article.publishedAt),
+                              'MMM d, yyyy'
+                            )}
+                          </motion.div>
+
+                          <h3 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                            {article.title}
+                          </h3>
+
+                          <div className="mt-4 flex items-center text-primary/80 text-sm font-medium">
+                            <span>Read article</span>
+                            <motion.div
+                              variants={infiniteXAnimation}
+                              animate="animate"
+                              className="ml-2"
+                            >
+                              <ChevronRight className="h-4 w-4" />
+                            </motion.div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </FadeIn>
+              ))
+            ) : (
+              <div className="col-span-3 text-center py-8">
+                <p className="text-lg text-muted-foreground">
+                  No articles found. Check back soon!
+                </p>
+              </div>
+            )}
           </div>
 
           <FadeIn delay={200}>
@@ -215,7 +261,7 @@ export default function PressPage() {
                         High-res images for print (137MB)
                       </span>
                       <Download className="relative z-10 ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </Button>
                   </Link>
                 </div>

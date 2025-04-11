@@ -11,6 +11,9 @@ import { motion } from 'framer-motion';
 import { ExploreSolution } from '@/components/ui/explore-solution';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
 import { useEffect, useState } from 'react';
+import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // StarFall animation
 const StarFall = () => {
@@ -71,38 +74,25 @@ const StarFall = () => {
   );
 };
 
-// Temporary mock data until Sanity is implemented
-interface FoodBeveragesRecipe {
-  id: string;
+// Interface for recipes from Sanity
+interface Recipe {
+  _id: string;
   title: string;
-  date: Date;
-  imageUrl: string;
-  slug: string;
+  publishedAt: string;
+  slug: {
+    current: string;
+  };
+  mainImage: SanityImageSource;
 }
 
-const mockFoodBeveragesRecipes: FoodBeveragesRecipe[] = [
-  {
-    id: '1',
-    title: 'Swedish Saffron Pancakes: A Gotland specialty',
-    date: new Date('2023-12-25'),
-    imageUrl: '/blogs/saffron-recipes/saffron-1.webp',
-    slug: 'swedish-saffron-pancakes',
-  },
-  {
-    id: '2',
-    title: "Johan Heibert's Lussekatter Recipe with BlueRedGold Saffron",
-    date: new Date('2023-12-13'),
-    imageUrl: '/blogs/saffron-recipes/saffron-2.webp',
-    slug: 'johan-heiberts-lussekatter',
-  },
-  {
-    id: '3',
-    title: 'Saffron Kladdkaka: A Modern Twist on a Classic Favorite',
-    date: new Date('2023-01-12'),
-    imageUrl: '/blogs/saffron-recipes/saffron-3.webp',
-    slug: 'saffron-kladdkaka',
-  },
-];
+// GROQ query to fetch recipes
+const recipesQuery = `*[_type == "recipe"] | order(publishedAt desc)[0...3]{
+  _id,
+  title,
+  publishedAt,
+  slug,
+  mainImage
+}`;
 
 const infiniteXAnimation = {
   animate: {
@@ -115,21 +105,67 @@ const infiniteXAnimation = {
   },
 };
 
-const shimmerAnimation = {
-  hidden: { opacity: 0, x: -100 },
-  visible: {
-    opacity: [0, 1, 0],
-    x: ['-100%', '100%', '300%'],
+// Subtle animation effects
+const subtleParallaxAnimation = {
+  animate: {
+    scale: [1, 1.03, 1],
     transition: {
-      duration: 2.5,
+      duration: 20,
       repeat: Infinity,
       ease: 'easeInOut',
-      repeatDelay: 2,
+    },
+  },
+};
+
+const colorShiftAnimation = {
+  animate: {
+    background: [
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0))',
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05))',
+      'linear-gradient(45deg, rgba(255, 215, 0, 0.05), rgba(255, 255, 255, 0))',
+    ],
+    transition: {
+      duration: 15,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+const glowPulseAnimation = {
+  animate: {
+    boxShadow: [
+      '0 0 0px rgba(255, 215, 0, 0.3)',
+      '0 0 15px rgba(255, 215, 0, 0.5)',
+      '0 0 0px rgba(255, 215, 0, 0.3)',
+    ],
+    transition: {
+      duration: 8,
+      repeat: Infinity,
+      ease: 'easeInOut',
     },
   },
 };
 
 export default function FoodBeveragesPage() {
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      try {
+        const data = await client.fetch<Recipe[]>(recipesQuery);
+        setRecipes(data);
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchRecipes();
+  }, []);
+
   return (
     <main className="min-h-screen bg-background overflow-hidden">
       {/* Hero Section */}
@@ -172,64 +208,90 @@ export default function FoodBeveragesPage() {
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {mockFoodBeveragesRecipes.map((recipe, index) => (
-              <FadeIn key={recipe.id} delay={index * 200}>
-                <Link
-                  href={`/blogs/saffron-recipes/${recipe.slug}`}
-                  className="group"
-                >
-                  <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
+            {isLoading ? (
+              // Loading skeleton
+              Array.from({ length: 3 }).map((_, index) => (
+                <FadeIn key={`skeleton-${index}`} delay={index * 200}>
+                  <Card className="overflow-hidden border border-primary/10 bg-muted/20">
                     <CardContent className="p-0 relative">
-                      <div className="relative aspect-square overflow-hidden">
-                        <Image
-                          src={recipe.imageUrl}
-                          alt={recipe.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        {/* Overlay gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        {/* Hover effect - zoom line */}
-                        <motion.div
-                          className="absolute bottom-0 left-0 h-1 bg-primary origin-left"
-                          initial={{ scaleX: 0 }}
-                          whileHover={{ scaleX: 1 }}
-                          transition={{ duration: 0.4 }}
-                        />
-                      </div>
-
-                      <div className="p-6 bg-background relative">
-                        <motion.div
-                          className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
-                          initial={{ y: 20, opacity: 0 }}
-                          whileInView={{ y: 0, opacity: 1 }}
-                          transition={{ delay: 0.2 }}
-                          viewport={{ once: true }}
-                        >
-                          {format(recipe.date, 'MMM d, yyyy')}
-                        </motion.div>
-
-                        <h3 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300">
-                          {recipe.title}
-                        </h3>
-
-                        <div className="mt-4 flex items-center text-primary/80 text-sm font-medium">
-                          <span>Read recipe</span>
-                          <motion.div
-                            variants={infiniteXAnimation}
-                            animate="animate"
-                            className="ml-2"
-                          >
-                            <ChevronRight className="h-4 w-4" />
-                          </motion.div>
-                        </div>
+                      <div className="relative aspect-square bg-muted animate-pulse"></div>
+                      <div className="p-6 bg-background">
+                        <div className="h-6 bg-muted animate-pulse rounded-full w-3/4 mb-4"></div>
+                        <div className="h-4 bg-muted animate-pulse rounded-full w-1/2"></div>
                       </div>
                     </CardContent>
                   </Card>
-                </Link>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              ))
+            ) : recipes.length > 0 ? (
+              recipes.map((recipe, index) => (
+                <FadeIn key={recipe._id} delay={index * 200}>
+                  <Link
+                    href={`/blogs/saffron-recipes/${recipe.slug.current}`}
+                    className="group"
+                  >
+                    <Card className="overflow-hidden border border-primary/10 bg-muted/20 transition-all duration-300 hover:bg-muted/80">
+                      <CardContent className="p-0 relative">
+                        <div className="relative aspect-square overflow-hidden">
+                          <Image
+                            src={urlFor(recipe.mainImage).url()}
+                            alt={recipe.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                          {/* Hover effect - zoom line */}
+                          <motion.div
+                            className="absolute bottom-0 left-0 h-1 bg-primary origin-left"
+                            initial={{ scaleX: 0 }}
+                            whileHover={{ scaleX: 1 }}
+                            transition={{ duration: 0.4 }}
+                          />
+                        </div>
+
+                        <div className="p-6 bg-background relative">
+                          <motion.div
+                            className="absolute -top-6 right-4 px-3 py-1 bg-primary text-white text-sm font-medium rounded-full"
+                            initial={{ y: 20, opacity: 0 }}
+                            whileInView={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            viewport={{ once: true }}
+                          >
+                            {format(
+                              new Date(recipe.publishedAt),
+                              'MMM d, yyyy'
+                            )}
+                          </motion.div>
+
+                          <h3 className="text-lg font-bold mt-2 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+                            {recipe.title}
+                          </h3>
+
+                          <div className="mt-4 flex items-center text-primary/80 text-sm font-medium">
+                            <span>Read recipe</span>
+                            <motion.div
+                              variants={infiniteXAnimation}
+                              animate="animate"
+                              className="ml-2"
+                            >
+                              <ChevronRight className="h-4 w-4" />
+                            </motion.div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </FadeIn>
+              ))
+            ) : (
+              <div className="col-span-3 text-center py-8">
+                <p className="text-lg text-muted-foreground">
+                  No recipes found. Check back soon!
+                </p>
+              </div>
+            )}
           </div>
 
           <FadeIn delay={200}>
@@ -271,18 +333,35 @@ export default function FoodBeveragesPage() {
 
             <FadeIn delay={200}>
               <div className="relative h-[400px] w-full rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/food-beverages/food-1.webp"
-                  alt="Premium saffron cooking"
-                  fill
-                  className="object-cover"
-                />
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-transparent"
-                  variants={shimmerAnimation}
-                  initial="hidden"
-                  animate="visible"
+                  className="absolute inset-0"
+                  variants={subtleParallaxAnimation}
+                  animate="animate"
+                >
+                  <Image
+                    src="/food-beverages/food-1.webp"
+                    alt="Premium saffron cooking"
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+
+                {/* Subtle color shift overlay */}
+                <motion.div
+                  className="absolute inset-0 mix-blend-overlay"
+                  variants={colorShiftAnimation}
+                  animate="animate"
                 />
+
+                {/* Soft glow effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl"
+                  variants={glowPulseAnimation}
+                  animate="animate"
+                />
+
+                {/* Subtle vignette effect */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
             </FadeIn>
           </div>

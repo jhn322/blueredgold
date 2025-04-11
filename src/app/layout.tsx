@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import LayoutWrapper from '../components/LayoutWrapper';
+import { Toaster } from 'sonner';
 
 const satoshi = localFont({
   src: [
@@ -113,11 +113,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${satoshi.variable} ${switzer.variable}`}>
       <body className="antialiased font-sans">
-        <header>
-          <Navbar />
-        </header>
-        {children}
-        <Footer />
+        <LayoutWrapper>{children}</LayoutWrapper>
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );
