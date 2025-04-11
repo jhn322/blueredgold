@@ -2,13 +2,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
-import { PortableText } from '@portabletext/react';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, CalendarDays, Clock, User } from 'lucide-react';
 import { FadeIn } from '@/components/ui/fade-in';
-import { ShareButton } from './ShareButton';
+import { ShareButton } from '@/components/ShareButton';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
@@ -357,7 +356,10 @@ export default async function ArticlePage({ params }: Props) {
                         </div>
                       )}
 
-                      <ShareButton title={article.title} />
+                      <ShareButton
+                        title={article.title}
+                        buttonText="Share Article"
+                      />
                     </div>
                   </footer>
                 </FadeIn>
