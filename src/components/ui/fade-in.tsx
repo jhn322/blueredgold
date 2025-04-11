@@ -19,7 +19,6 @@ export const FadeIn = ({
   delay = 0,
   threshold,
   rootMargin,
-  translateY = 10,
 }: FadeInProps) => {
   const { elementRef, isVisible } = useIntersectionObserver({
     threshold,
@@ -31,9 +30,7 @@ export const FadeIn = ({
       ref={elementRef}
       className={cn(
         'transition-all duration-700 ease-out',
-        isVisible
-          ? 'translate-y-0 opacity-100'
-          : `translate-y-${translateY} opacity-0`,
+        isVisible ? 'translate-y-0 opacity-100' : `translate-y-10 opacity-0`,
         className
       )}
       style={{ transitionDelay: `${delay}ms` }}
