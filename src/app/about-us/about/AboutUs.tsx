@@ -486,6 +486,23 @@ function TeamMemberCard({
         </div>
       )}
 
+      {/* LinkedIn btn*/}
+      <div className="mt-auto pb-4">
+        {linkedIn && (
+          <Link
+            href={linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Visit ${name}'s LinkedIn profile`}
+          >
+            <Button variant="default" className="text-sm">
+              <Linkedin className="mr-2 h-4 w-4" />
+              Connect
+            </Button>
+          </Link>
+        )}
+      </div>
+
       {/* Content container */}
       <div className="flex flex-col flex-grow w-full">
         <div className="space-y-3 max-w-sm mx-auto">
@@ -497,23 +514,6 @@ function TeamMemberCard({
             <p className="text-sm text-foreground/60">{description}</p>
           )}
           <p className="text-sm text-foreground/60">{role}</p>
-        </div>
-
-        {/* LinkedIn btn*/}
-        <div className="mt-auto pt-4">
-          {linkedIn && (
-            <Link
-              href={linkedIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${name}'s LinkedIn profile`}
-            >
-              <Button variant="default" className="text-sm">
-                <Linkedin className="mr-2 h-4 w-4" />
-                Connect
-              </Button>
-            </Link>
-          )}
         </div>
       </div>
     </div>
@@ -618,7 +618,7 @@ const teamMembers: TeamMember[] = [
     title: 'Advisor Robotics and investor.',
     role: '30+ years experience in senior positions within ABB, SKF, etc. with a focus on robotics and automation.',
     image: '/about/team/tommy.webp',
-    linkedIn: 'https://www.linkedin.com/in/arca-kromwijk-26951971/', // TODO: Not the correct linkedin profile
+    linkedIn: 'https://www.linkedin.com/in/tommy-g-klein-a42b3425/',
   },
 ];
 
