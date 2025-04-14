@@ -7,6 +7,7 @@ import { FadeIn } from './fade-in';
 import { Button } from './button';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { scrollToElement } from '@/lib/scroll-utils';
 
 interface ParallaxHeroProps {
   imageSrc: string;
@@ -37,18 +38,6 @@ export function ParallaxHero({
 
   // Transform the background position based on scroll
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-
-  const handleSmoothScroll = (href: string) => {
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      const heroHeight =
-        containerRef.current?.getBoundingClientRect().height || 0;
-      window.scrollTo({
-        top: heroHeight - 100,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <section
@@ -106,7 +95,7 @@ export function ParallaxHero({
                           ? 'border-white text-black hover:bg-white/10'
                           : 'text-black'
                       }`}
-                      onClick={() => handleSmoothScroll(button.href)}
+                      onClick={() => scrollToElement(button.href)}
                     >
                       <span className="relative z-10 flex items-center">
                         {button.icon && (

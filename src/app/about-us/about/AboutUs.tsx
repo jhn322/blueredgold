@@ -186,14 +186,15 @@ export default function AboutUsContent() {
       </section>
 
       {/* Team Section */}
-      <section className="bg-background py-8" aria-labelledby="team-heading">
+      <section
+        id="team-section"
+        className="bg-background py-8"
+        aria-labelledby="team-heading"
+      >
         <div className="container max-w-4xl mx-auto">
           <div className="mb-16">
             <FadeIn>
-              <h2
-                id="team-section"
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6"
-              >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
                 BlueRedGold Team Operations
               </h2>
             </FadeIn>

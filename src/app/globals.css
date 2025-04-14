@@ -30,6 +30,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -62,9 +63,35 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Lägg till margin ovanför element som är mål för ankarlänkar */
+  /* Detta förhindrar att innehåll hamnar under fixed navbar */
+  :target {
+    scroll-margin-top: 86px;
+    /* Exakt höjd från Navbar-komponenten (h-[86px]) */
+  }
+
+  /* För element med #id som ankarpunkter */
+  [id] {
+    scroll-margin-top: 86px;
+    /* Samma värde som ovan */
+  }
+
+  /** Scroll Snap (inactive)*/
+  /* html {
+    scroll-snap-type: y proximity;
+
+  }
+
+  h1,
+  section {
+    scroll-snap-align: start;
+    scroll-margin-top: 86px;
+  } */
 }
 
 @layer base {
@@ -111,6 +138,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
