@@ -1,4 +1,4 @@
-# BlueRedGold - Company Website
+# BlueRedGold
 
 A modern, responsive company website built with Next.js 15, TypeScript, Tailwind CSS and Shadcn. The website features a blog section powered by Sanity CMS and follows best practices for performance, accessibility, and maintainability.
 
@@ -9,6 +9,7 @@ A modern, responsive company website built with Next.js 15, TypeScript, Tailwind
 - Type-safe development with TypeScript
 - Modern-looking UI components with Radix UI and Tailwind CSS
 - Blog section powered by Sanity CMS
+- Contact form with client-side validation and email confirmation (via Brevo)
 - Smooth animations with Framer Motion
 - SEO optimized
 - Accessibility focused
@@ -48,6 +49,9 @@ Fill in the required environment variables in `.env`:
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_TOKEN=your_sanity_api_token
+NEXT_PUBLIC_BASE_URL=http://localhost:3000 # Or your deployment URL
+BREVO_API_KEY=your_brevo_api_key
+EMAIL_RECIPIENT=your_admin_email@example.com # Email address to receive contact form notifications
 ```
 
 4. Run the development server:
@@ -92,17 +96,24 @@ blueredgold/
 │   │   │   ├── press/
 │   │   │   └── sustainability/
 |   |   |       ├── esg/
+│   │   ├── api/
+│   │   │   ├── contact/
+│   │   │   └── send-confirmation/
 │   │   ├── blogs/
 |   |   |   |── articles/
 │   │   │   ├── news/
 │   │   │   ├── saffron-recipes/
 │   │   │   ├── science/
 │   │   │   └── updates/
+│   │   ├── contact-us/
+│   │   │   └── thank-you/
 │   │   ├── premium-saffron/
 │   │   │   ├── food-beverages/
 │   │   │   └── medical-cosmetics/
 │   │   ├── privacy-policy/
-│   │   │── technology/
+│   │   ├── studio/
+│   │   │   └── [[...tool]]/
+│   │   ├── technology/
 │   │   │   ├── data/
 │   │   │   ├── growing/
 │   │   │   └── harvesting/
@@ -115,13 +126,18 @@ blueredgold/
 │   │   ├── animations/
 │   │   ├── landing-page/
 │   │   ├── ui/
+|   |   ├── ClientOnly.tsx
 │   │   ├── Footer.tsx
-│   │   └── Navbar.tsx
+|   |   ├── LayoutWrapper.tsx
+|   |   ├── Navbar.tsx
+|   |   ├── PortableTextComponent.tsx
+│   │   └── ShareButton.tsx
 │   ├── fonts/
 │   ├── hooks/
-│   └── lib/
-├── .env
+|   ├── lib/
+│   └── sanity/
 ├── .env.example
+├── .env.local
 ├── .gitignore
 ├── .prettierrc
 ├── components.json
@@ -174,6 +190,7 @@ graph TD
 - **Styling**: Tailwind CSS
 - **UI Components**: Radix UI, Shadcn UI
 - **CMS**: Sanity
+- **Email API**: Brevo (Sendinblue)
 - **Animations**: Framer Motion
 - **Development Tools**: ESLint, Prettier
 
@@ -193,7 +210,7 @@ npm install -g @sanity/cli
 npm run sanity
 ```
 
-3. Access the Sanity Studio at `http://localhost:3333`
+3. Access the Sanity Studio at `localhost:3000/studio or domain.com/studio`
 
 ## 🚀 Deployment
 
