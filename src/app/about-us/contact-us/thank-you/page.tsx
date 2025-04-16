@@ -1,13 +1,14 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '@/components/ui/fade-in';
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 
-export default function ThankYouPage() {
+// Separate component that uses useSearchParams
+function ThankYouContent() {
   const searchParams = useSearchParams();
 
   // Get form data from URL params
@@ -170,5 +171,26 @@ export default function ThankYouPage() {
         </FadeIn>
       </div>
     </div>
+  );
+}
+
+// Loading fallback component
+function ThankYouLoading() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-primary/10 to-background flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-lg">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={<ThankYouLoading />}>
+      <ThankYouContent />
+    </Suspense>
   );
 }
