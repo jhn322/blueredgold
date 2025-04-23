@@ -254,6 +254,24 @@ const Navbar = () => {
 
   const currentCategory = navigationStack[navigationStack.length - 1] || null;
 
+  // Helper function to find the first navigable path within an item
+  const findFirstPath = (item: NavItem): string | undefined => {
+    if (item.path) {
+      return item.path;
+    }
+
+    if ('children' in item && item.children) {
+      for (const child of item.children) {
+        const childPath = findFirstPath(child);
+        if (childPath) {
+          return childPath;
+        }
+      }
+    }
+
+    return undefined;
+  };
+
   const NavLink = ({
     item,
     className = '',
@@ -264,39 +282,47 @@ const Navbar = () => {
     isNested?: boolean;
   }) => {
     const [isHovered, setIsHovered] = useState(false);
+    // Find the first available path for parent items
+    const firstPath =
+      !item.path && 'children' in item ? findFirstPath(item) : undefined;
+
+    const linkClasses = `flex items-center gap-2 px-4 py-2 ${
+      className || 'text-secondary hover:text-accent'
+    } transition-colors`;
+    const content = (
+      <>
+        {item.icon}
+        <span>{item.name}</span>
+        {'children' in item && item.children && (
+          <ChevronDown
+            className={`w-5 h-5 transition-transform duration-200 ${
+              isNested ? '-rotate-90' : ''
+            } ${
+              isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
+            }`}
+          />
+        )}
+      </>
+    );
 
     return (
       <div
-        className={`relative group ${className}`}
+        className={`relative group ${isNested ? '' : className}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {item.path ? (
-          <Link
-            href={item.path}
-            className={`flex items-center gap-2 px-4 py-2 ${
-              className || 'text-secondary hover:text-accent'
-            } transition-colors`}
-          >
-            {item.icon}
-            <span>{item.name}</span>
+          <Link href={item.path} className={linkClasses}>
+            {content}
+          </Link>
+        ) : firstPath ? (
+          // Parent item with a navigable first child path
+          <Link href={firstPath} className={linkClasses}>
+            {content}
           </Link>
         ) : (
-          <div
-            className={`flex items-center gap-2 px-4 py-2 cursor-pointer ${
-              className || 'text-secondary hover:text-accent'
-            } transition-colors`}
-          >
-            {item.icon}
-            <span>{item.name}</span>
-            <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 ${
-                isNested ? '-rotate-90' : ''
-              } ${
-                isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
-              }`}
-            />
-          </div>
+          // Parent item without a navigable path
+          <div className={`${linkClasses} cursor-default`}>{content}</div>
         )}
 
         {'children' in item && item.children && isHovered && (
