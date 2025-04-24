@@ -30,10 +30,10 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent
                 className="prose prose-lg max-w-none
-    prose-a:text-secondary
+    prose-a:text-primary
     prose-a:underline 
     prose-a:underline-offset-2
-    hover:prose-a:text-secondary/80
+    hover:prose-a:text-primary/80
     prose-li:marker:text-gray-600     
     prose-ul:list-disc
   "

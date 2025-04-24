@@ -225,7 +225,7 @@ export default async function RecipePage({ params }: Props) {
         {isShowingFallback && (
           <ClientOnly>
             <FadeIn delay={50}>
-              <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-700">
+              <div className="mb-6 p-4 bg-purple-50 border border-purple-200 rounded-xl text-purple-700">
                 <p>
                   <strong>Note:</strong> The recipe you were looking for could
                   not be found. We&apos;re showing you one of our popular
@@ -314,7 +314,7 @@ export default async function RecipePage({ params }: Props) {
                       alt={recipe.title}
                       width={1200}
                       height={800}
-                      className="rounded-lg object-cover w-full"
+                      className="rounded-xl object-cover w-full"
                       priority
                     />
                   </figure>
@@ -325,7 +325,7 @@ export default async function RecipePage({ params }: Props) {
                 className="prose prose-lg max-w-none text-black"
                 itemProp="recipeInstructions"
               >
-                <div className="mb-8 bg-muted/20 p-6 rounded-lg border border-primary/20">
+                <div className="mb-8 bg-muted/20 p-6 rounded-xl border border-primary/20">
                   <h2 className="text-primary text-xl font-medium mb-4">
                     Overview
                   </h2>
@@ -380,7 +380,7 @@ export default async function RecipePage({ params }: Props) {
                 <ClientOnly>
                   <FadeIn delay={500}>
                     <aside aria-label="Related content" className="mt-6">
-                      <section className="rounded-lg border border-primary bg-muted/20 p-4 shadow-sm">
+                      <section className="rounded-xl border border-primary bg-muted/20 p-4 shadow-sm">
                         <h2 className="mb-4 font-medium text-primary">
                           Related Recipes
                         </h2>

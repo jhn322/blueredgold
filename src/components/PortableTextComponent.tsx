@@ -75,7 +75,7 @@ export const portableTextComponents: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="mt-4 mb-6 list-disc pl-6 text-black marker:text-secondary">
+      <ul className="mt-4 mb-6 list-disc pl-6 text-black marker:text-primary">
         {children}
       </ul>
     ),
