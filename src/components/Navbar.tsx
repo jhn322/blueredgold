@@ -287,7 +287,7 @@ const Navbar = () => {
       !item.path && 'children' in item ? findFirstPath(item) : undefined;
 
     const linkClasses = `flex items-center gap-2 px-4 py-2 ${
-      className || 'text-secondary hover:text-accent'
+      className || 'text-background hover:text-secondary'
     } transition-colors`;
     const content = (
       <>
@@ -331,7 +331,7 @@ const Navbar = () => {
               isNested
                 ? 'left-[calc(100%-1px)] top-[-0.5rem]'
                 : 'left-0 top-[calc(100%-1px)]'
-            } bg-secondary shadow-md py-2 min-w-[200px] z-50 rounded-xl`}
+            } bg-background shadow-md py-2 min-w-[200px] z-50 rounded-xl`}
           >
             {item.children.map((child) => (
               <NavLink
@@ -394,7 +394,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 w-full z-50">
         <nav
           className={`flex items-center justify-between px-4 md:px-8 h-[86px] transition-all duration-300 ${
-            isAtTop ? 'bg-transparent' : 'bg-primary shadow-md'
+            isAtTop ? 'bg-primary' : 'bg-primary shadow-md' // bg-transparent if want transparent navbar at top
           }`}
         >
           {/* Logo */}
@@ -418,7 +418,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div
             className={`hidden lg:flex items-center justify-center flex-1 gap-4 ${
-              isAtTop ? 'text-primary' : 'text-secondary'
+              isAtTop ? 'text-primary' : 'text-background'
             }`}
           >
             {navItems.map((item) => (
@@ -429,7 +429,7 @@ const Navbar = () => {
           {/* Menu Icon */}
           <div className="w-[120px] flex justify-end">
             <button
-              className={`flex items-center justify-center focus:outline-none text-secondary`}
+              className={`flex items-center justify-center focus:outline-none text-background`}
               onClick={toggleMenu}
               aria-label="Toggle menu"
               tabIndex={0}
@@ -448,7 +448,7 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             <motion.div
-              className="absolute top-0 right-0 h-full bg-secondary w-full md:w-[40%] flex flex-col overflow-hidden"
+              className="absolute top-0 right-0 h-full bg-background w-full md:w-[40%] flex flex-col overflow-hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
