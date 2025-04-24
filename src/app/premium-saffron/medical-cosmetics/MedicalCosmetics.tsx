@@ -169,7 +169,7 @@ const MedicalCosmetics = () => {
       <section id="compounds" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-primary">
               Key Saffron Compounds & Their Benefits
             </h2>
           </FadeIn>
@@ -192,7 +192,7 @@ const MedicalCosmetics = () => {
         <div className="container mx-auto px-4">
           <FadeIn>
             <div className="max-w-4xl mx-auto mb-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary">
                 Research & Studies
               </h2>
               <p className="text-lg text-foreground/80">

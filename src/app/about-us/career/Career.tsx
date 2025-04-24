@@ -208,7 +208,7 @@ export default function CareersPage() {
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-display text-primary">
                 Ready to Join Our Team?
               </h2>
             </FadeIn>

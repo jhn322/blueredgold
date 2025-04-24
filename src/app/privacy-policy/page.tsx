@@ -19,7 +19,7 @@ export default function PrivacyPolicy() {
       <main className="mx-auto py-12">
         <div className="max-w-3xl mx-auto">
           <header>
-            <h1 className="text-4xl font-bold mb-8 text-center">
+            <h1 className="text-4xl font-bold mb-8 text-center text-primary">
               Integritetspolicy
             </h1>
           </header>
@@ -47,7 +47,7 @@ export default function PrivacyPolicy() {
                   enligt dataskyddsförordningen (GDPR).
                 </p>
 
-                <h2 className="text-2xl font-bold mt-8 mb-4">
+                <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
                   Kortfattad översikt
                 </h2>
                 <p>
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
                   <a href="mailto:info@offertu.fi">info@offertu.fi</a>
                 </p>
 
-                <h2 className="text-2xl font-bold mt-8 mb-4">
+                <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
                   Vår integritetspolicy
                 </h2>
                 <p>
@@ -286,7 +286,7 @@ export default function PrivacyPolicy() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mt-8 mb-4">
+                  <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
                     Integritetsskyddsmyndigheten
                   </h2>
                   <p>
@@ -311,7 +311,7 @@ export default function PrivacyPolicy() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mt-8 mb-4">
+                  <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
                     Slutord och Sammanfattning
                   </h2>
                   <p>
@@ -331,7 +331,7 @@ export default function PrivacyPolicy() {
                 </section>
 
                 <section>
-                  <h2 className="text-2xl font-bold mt-8 mb-4">
+                  <h2 className="text-2xl font-bold mt-8 mb-4 text-primary">
                     Mer information
                   </h2>
                   <p>

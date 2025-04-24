@@ -39,7 +39,7 @@ export default function InvestorRelations() {
           <div className="absolute inset-0 bg-primary/5 z-0"></div>
           <div className="container relative z-10 max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center mb-12">
-              <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-primary">
                 Investor Relations
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-foreground/80">
@@ -105,7 +105,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-white">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight text-primary">
               Latest Investor News
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -127,7 +127,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Financial Highlights
             </h2>
             <p className="text-lg mb-12 max-w-3xl text-foreground/80">
@@ -309,7 +309,7 @@ export default function InvestorRelations() {
           <div className="container max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
                   Stock Information
                 </h2>
                 <p className="text-lg mb-8 text-foreground/80">
@@ -367,7 +367,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Leadership Team
             </h2>
             <p className="text-lg mb-12 max-w-3xl text-foreground/80">
@@ -438,7 +438,7 @@ export default function InvestorRelations() {
           <div className="container max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
                   ESG & Sustainability
                 </h2>
                 <p className="text-lg mb-8 text-foreground/80">
@@ -543,7 +543,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-center">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-center text-primary">
               Frequently Asked Questions
             </h2>
             <p className="text-lg mb-12 text-center text-foreground/80">
@@ -627,7 +627,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-white">
           <div className="container max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Investor Contact
             </h2>
             <p className="text-lg mb-12 text-foreground/80">
