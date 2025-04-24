@@ -175,7 +175,7 @@ export default function CareersPage() {
             </FadeIn>
 
             <FadeIn delay={0.3}>
-              <div className="relative h-[500px] rounded-xl overflow-hidden shadow-xl">
+              <div className="relative h-[500px] rounded-xl overflow-hidden shadow-md">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80 z-10"></div>
                 <div className="absolute inset-0">
                   <Image
