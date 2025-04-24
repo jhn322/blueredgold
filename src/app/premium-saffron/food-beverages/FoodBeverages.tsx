@@ -495,46 +495,6 @@ export default function FoodBeveragesPage() {
             </FadeIn>
           </div>
         </div>
-
-        {/* Floating particles effect */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-3 h-3 bg-primary/70 rounded-full z-10"
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.7, 1, 0.7],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-4 h-4 bg-primary/60 rounded-full z-10"
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.6, 0.9, 0.6],
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 0.5,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-primary/80 rounded-full z-10"
-          animate={{
-            y: [0, -35, 0],
-            opacity: [0.8, 1, 0.8],
-          }}
-          transition={{
-            duration: 4.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-        />
       </section>
 
       {/* Collaboration Section */}

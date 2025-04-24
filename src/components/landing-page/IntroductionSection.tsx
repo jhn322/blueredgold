@@ -14,9 +14,11 @@ export const IntroductionSection = () => {
                 Our Vision
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight bg-gradient-to-r from-brandGold via-brandRed to-brandBlue inline-block text-transparent bg-clip-text">
               BlueRedGold,{' '}
-              <span className="text-primary">Evolving for Excellence</span>
+              <span className="text-transparent bg-clip-text">
+                Evolving for Excellence
+              </span>
             </h2>
             <div className="w-24 h-1 bg-primary mx-auto mb-8"></div>
             <h3 className="text-2xl md:text-3xl font-semibold mb-6 text-foreground/90">

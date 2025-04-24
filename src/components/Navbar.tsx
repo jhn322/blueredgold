@@ -254,6 +254,24 @@ const Navbar = () => {
 
   const currentCategory = navigationStack[navigationStack.length - 1] || null;
 
+  // Helper function to find the first navigable path within an item
+  const findFirstPath = (item: NavItem): string | undefined => {
+    if (item.path) {
+      return item.path;
+    }
+
+    if ('children' in item && item.children) {
+      for (const child of item.children) {
+        const childPath = findFirstPath(child);
+        if (childPath) {
+          return childPath;
+        }
+      }
+    }
+
+    return undefined;
+  };
+
   const NavLink = ({
     item,
     className = '',
@@ -264,39 +282,47 @@ const Navbar = () => {
     isNested?: boolean;
   }) => {
     const [isHovered, setIsHovered] = useState(false);
+    // Find the first available path for parent items
+    const firstPath =
+      !item.path && 'children' in item ? findFirstPath(item) : undefined;
+
+    const linkClasses = `flex items-center gap-2 px-4 py-2 ${
+      className || 'text-background hover:text-secondary'
+    } transition-colors`;
+    const content = (
+      <>
+        {item.icon}
+        <span>{item.name}</span>
+        {'children' in item && item.children && (
+          <ChevronDown
+            className={`w-5 h-5 transition-transform duration-200 ${
+              isNested ? '-rotate-90' : ''
+            } ${
+              isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
+            }`}
+          />
+        )}
+      </>
+    );
 
     return (
       <div
-        className={`relative group ${className}`}
+        className={`relative group ${isNested ? '' : className}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {item.path ? (
-          <Link
-            href={item.path}
-            className={`flex items-center gap-2 px-4 py-2 ${
-              className || 'text-secondary hover:text-accent'
-            } transition-colors`}
-          >
-            {item.icon}
-            <span>{item.name}</span>
+          <Link href={item.path} className={linkClasses}>
+            {content}
+          </Link>
+        ) : firstPath ? (
+          // Parent item with a navigable first child path
+          <Link href={firstPath} className={linkClasses}>
+            {content}
           </Link>
         ) : (
-          <div
-            className={`flex items-center gap-2 px-4 py-2 cursor-pointer ${
-              className || 'text-secondary hover:text-accent'
-            } transition-colors`}
-          >
-            {item.icon}
-            <span>{item.name}</span>
-            <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 ${
-                isNested ? '-rotate-90' : ''
-              } ${
-                isHovered ? (isNested ? 'rotate-[-90deg]' : 'rotate-180') : ''
-              }`}
-            />
-          </div>
+          // Parent item without a navigable path
+          <div className={`${linkClasses} cursor-default`}>{content}</div>
         )}
 
         {'children' in item && item.children && isHovered && (
@@ -305,7 +331,7 @@ const Navbar = () => {
               isNested
                 ? 'left-[calc(100%-1px)] top-[-0.5rem]'
                 : 'left-0 top-[calc(100%-1px)]'
-            } bg-secondary shadow-md py-2 min-w-[200px] z-50 rounded-xl`}
+            } bg-background shadow-md py-2 min-w-[200px] z-50 rounded-xl`}
           >
             {item.children.map((child) => (
               <NavLink
@@ -368,7 +394,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 w-full z-50">
         <nav
           className={`flex items-center justify-between px-4 md:px-8 h-[86px] transition-all duration-300 ${
-            isAtTop ? 'bg-transparent' : 'bg-primary shadow-md'
+            isAtTop ? 'bg-primary' : 'bg-primary shadow-md' // bg-transparent if want transparent navbar at top
           }`}
         >
           {/* Logo */}
@@ -392,7 +418,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div
             className={`hidden lg:flex items-center justify-center flex-1 gap-4 ${
-              isAtTop ? 'text-primary' : 'text-secondary'
+              isAtTop ? 'text-primary' : 'text-background'
             }`}
           >
             {navItems.map((item) => (
@@ -403,7 +429,7 @@ const Navbar = () => {
           {/* Menu Icon */}
           <div className="w-[120px] flex justify-end">
             <button
-              className={`flex items-center justify-center focus:outline-none text-secondary`}
+              className={`flex items-center justify-center focus:outline-none text-background`}
               onClick={toggleMenu}
               aria-label="Toggle menu"
               tabIndex={0}
@@ -422,7 +448,7 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             <motion.div
-              className="absolute top-0 right-0 h-full bg-secondary w-full md:w-[40%] flex flex-col overflow-hidden"
+              className="absolute top-0 right-0 h-full bg-background w-full md:w-[40%] flex flex-col overflow-hidden"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
