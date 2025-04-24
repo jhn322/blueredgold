@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssTypography from '@tailwindcss/typography';
 
 export default {
   darkMode: ['class'],
@@ -22,51 +24,60 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: '#FFF2D7',
-        foreground: '#290D0D',
+        background: '#F8F5FF',
+        foreground: '#241825',
         primary: {
-          DEFAULT: '#290D0D',
-          foreground: '#FFF2D7',
+          DEFAULT: '#4B2676',
+          foreground: '#F8F5FF',
         },
         secondary: {
-          DEFAULT: '#DA914D',
-          foreground: '#290D0D',
+          DEFAULT: '#FFCD28',
+          foreground: '#241825',
         },
         accent: {
-          DEFAULT: '#8B4513',
-          foreground: '#FFF2D7',
+          DEFAULT: '#93D2FF',
+          foreground: '#F8F5FF',
         },
         tertiary: {
-          DEFAULT: '#290D0D',
-          foreground: '#FFF2D7',
+          DEFAULT: '#B94C65',
+          foreground: '#F8F5FF',
         },
         destructive: {
-          DEFAULT: '#B22222',
-          foreground: '#FFF2D7',
+          DEFAULT: '#CF3E3E',
+          foreground: '#F8F5FF',
         },
         dark: {
-          DEFAULT: '#290D0D',
-          foreground: '#FFF2D7',
+          DEFAULT: '#241825',
+          foreground: '#F8F5FF',
         },
         muted: {
-          DEFAULT: '#F5E6D3',
-          foreground: '#290D0D',
+          DEFAULT: '#E7E1F2',
+          foreground: '#241825',
         },
         card: {
-          DEFAULT: '#FFF2D7',
-          foreground: '#290D0D',
+          DEFAULT: '#FFF',
+          foreground: '#241825',
         },
         success: {
-          DEFAULT: '#2E8B57',
-          foreground: '#FFF2D7',
+          DEFAULT: '#2D9964',
+          foreground: '#F8F5FF',
         },
         white: {
-          DEFAULT: '#FFF2D7',
-          foreground: '#290D0D',
+          DEFAULT: '#F8F5FF',
+          foreground: '#241825',
         },
         black: {
-          DEFAULT: '#290D0D',
-          foreground: '#FFF2D7',
+          DEFAULT: '#241825',
+          foreground: '#F8F5FF',
+        },
+        brandBlue: {
+          DEFAULT: '#0069B4',
+        },
+        brandRed: {
+          DEFAULT: '#CA0C16',
+        },
+        brandGold: {
+          DEFAULT: '#F9B112',
         },
       },
       fontFamily: {
@@ -75,13 +86,35 @@ export default {
       },
       keyframes: {
         spin: {
-          '0%': { transform: 'translate(-50%, -50%) scale(1.4) rotate(0turn)' },
+          '0%': {
+            transform: 'translate(-50%, -50%) scale(1.4) rotate(0turn)',
+          },
           '100%': {
             transform: 'translate(-50%, -50%) scale(1.4) rotate(1turn)',
           },
         },
+        'accordion-down': {
+          from: {
+            height: '0',
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)',
+          },
+          to: {
+            height: '0',
+          },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  plugins: [tailwindcssAnimate, tailwindcssTypography],
 } satisfies Config;
