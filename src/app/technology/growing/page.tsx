@@ -77,7 +77,7 @@ export default function GrowingPage() {
                       <p className="text-foreground/70">{message}</p>
                       <p className="mt-2 text-foreground/70">
                         Expected completion:{' '}
-                        <span className="font-medium text-secondary">
+                        <span className="font-medium text-primary">
                           {estimatedTime}
                         </span>
                       </p>
