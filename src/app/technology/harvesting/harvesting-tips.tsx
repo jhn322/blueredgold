@@ -23,15 +23,16 @@ export default function HarvestingTips() {
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300 }}
+            className="h-full"
           >
-            <Card className="h-full border-none shadow-md">
-              <CardHeader className="pb-2">
+            <Card className="border-none shadow-md h-full flex flex-col">
+              <CardHeader className="pb-2 flex-none">
                 <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <ThumbsUp className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Best Practices</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
                   <li>• Harvest on dry mornings after dew has evaporated</li>
                   <li>• Use a small pair of scissors for precise cutting</li>
@@ -48,15 +49,16 @@ export default function HarvestingTips() {
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300 }}
+            className="h-full"
           >
-            <Card className="h-full border-none shadow-md">
-              <CardHeader className="pb-2">
+            <Card className="border-none shadow-md h-full flex flex-col">
+              <CardHeader className="pb-2 flex-none">
                 <div className="bg-tertiary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <AlertTriangle className="h-6 w-6 text-tertiary" />
                 </div>
                 <CardTitle className="text-xl">Common Mistakes</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
                   <li>
                     • Harvesting too late in the day when flowers are fully open
@@ -77,15 +79,16 @@ export default function HarvestingTips() {
           <motion.div
             whileHover={{ y: -5 }}
             transition={{ type: 'spring', stiffness: 300 }}
+            className="h-full"
           >
-            <Card className="h-full border-none shadow-md">
-              <CardHeader className="pb-2">
+            <Card className="border-none shadow-md h-full flex flex-col">
+              <CardHeader className="pb-2 flex-none">
                 <div className="bg-secondary/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Lightbulb className="h-6 w-6 text-secondary" />
                 </div>
                 <CardTitle className="text-xl">Pro Tips</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
                   <li>
                     • Use a food dehydrator on lowest setting for consistent
