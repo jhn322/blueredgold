@@ -112,7 +112,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${satoshi.variable} ${switzer.variable}`}>
+    <html
+      lang="en"
+      className={`${satoshi.variable} ${switzer.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased font-sans">
         <ToastProvider>
           <LayoutWrapper>{children}</LayoutWrapper>
