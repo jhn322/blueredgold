@@ -25,20 +25,41 @@ export default function HarvestingTips() {
             transition={{ type: 'spring', stiffness: 300 }}
             className="h-full"
           >
-            <Card className="border-none shadow-md h-full flex flex-col">
+            <Card className="border-none shadow-md h-full flex flex-col bg-purple-100 dark:bg-purple-900/20">
               <CardHeader className="pb-2 flex-none">
-                <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <div className="bg-primary/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <ThumbsUp className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-xl">Best Practices</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
-                  <li>• Harvest on dry mornings after dew has evaporated</li>
-                  <li>• Use a small pair of scissors for precise cutting</li>
-                  <li>• Keep harvested flowers in a cool basket</li>
-                  <li>• Process flowers within 24 hours of harvesting</li>
-                  <li>• Wear clean cotton gloves to prevent oil transfer</li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">✓</span>
+                    <span>
+                      Harvest on dry mornings after dew has evaporated
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">✓</span>
+                    <span>
+                      Use a small pair of scissors for precise cutting
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">✓</span>
+                    <span>Keep harvested flowers in a cool basket</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">✓</span>
+                    <span>Process flowers within 24 hours of harvesting</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">✓</span>
+                    <span>
+                      Wear clean cotton gloves to prevent oil transfer
+                    </span>
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -51,24 +72,39 @@ export default function HarvestingTips() {
             transition={{ type: 'spring', stiffness: 300 }}
             className="h-full"
           >
-            <Card className="border-none shadow-md h-full flex flex-col">
+            <Card className="border-none shadow-md h-full flex flex-col bg-red-100 dark:bg-red-900/20">
               <CardHeader className="pb-2 flex-none">
-                <div className="bg-tertiary/10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <div className="bg-tertiary/30 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <AlertTriangle className="h-6 w-6 text-tertiary" />
                 </div>
                 <CardTitle className="text-xl">Common Mistakes</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
-                  <li>
-                    • Harvesting too late in the day when flowers are fully open
+                  <li className="flex items-start">
+                    <span className="text-tertiary mr-2">✗</span>
+                    <span>
+                      Harvesting too late in the day when flowers are fully open
+                    </span>
                   </li>
-                  <li>• Including yellow stamens with red stigmas</li>
-                  <li>
-                    • Drying in direct sunlight (destroys color and aroma)
+                  <li className="flex items-start">
+                    <span className="text-tertiary mr-2">✗</span>
+                    <span>Including yellow stamens with red stigmas</span>
                   </li>
-                  <li>• Storing in plastic containers (traps moisture)</li>
-                  <li>• Handling stigmas with wet or oily hands</li>
+                  <li className="flex items-start">
+                    <span className="text-tertiary mr-2">✗</span>
+                    <span>
+                      Drying in direct sunlight (destroys color and aroma)
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-tertiary mr-2">✗</span>
+                    <span>Storing in plastic containers (traps moisture)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-tertiary mr-2">✗</span>
+                    <span>Handling stigmas with wet or oily hands</span>
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -81,29 +117,44 @@ export default function HarvestingTips() {
             transition={{ type: 'spring', stiffness: 300 }}
             className="h-full"
           >
-            <Card className="border-none shadow-md h-full flex flex-col">
+            <Card className="border-none shadow-md h-full flex flex-col bg-yellow-100 dark:bg-yellow-900/20">
               <CardHeader className="pb-2 flex-none">
-                <div className="bg-secondary/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                <div className="bg-secondary/30 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                   <Lightbulb className="h-6 w-6 text-secondary" />
                 </div>
                 <CardTitle className="text-xl">Pro Tips</CardTitle>
               </CardHeader>
               <CardContent className="flex-grow">
                 <ul className="space-y-2 text-foreground/70">
-                  <li>
-                    • Use a food dehydrator on lowest setting for consistent
-                    drying
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-2">★</span>
+                    <span>
+                      Use a food dehydrator on lowest setting for consistent
+                      drying
+                    </span>
                   </li>
-                  <li>
-                    • Keep a harvest journal to track yield year over year
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-2">★</span>
+                    <span>
+                      Keep a harvest journal to track yield year over year
+                    </span>
                   </li>
-                  <li>• Stagger plantings to extend your harvest season</li>
-                  <li>
-                    • Store in amber glass containers to protect from light
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-2">★</span>
+                    <span>Stagger plantings to extend your harvest season</span>
                   </li>
-                  <li>
-                    • Add a few grains of rice to storage container to absorb
-                    moisture
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-2">★</span>
+                    <span>
+                      Store in amber glass containers to protect from light
+                    </span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-2">★</span>
+                    <span>
+                      Add a few grains of rice to storage container to absorb
+                      moisture
+                    </span>
                   </li>
                 </ul>
               </CardContent>
