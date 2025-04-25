@@ -111,7 +111,7 @@ const galleryItems: GalleryItem[] = [
   },
 ];
 
-export default function GrowingGrid() {
+export default function ImageGrid() {
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
   // Group items into three columns to create the staggered effect

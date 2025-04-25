@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
-import SaffronGrid from './growing-grid';
+import SaffronGrid from '../../../components/ui/image-grid';
 import SaffronProcess from './growing-process';
 import SaffronBenefits from './growing-benefits';
 import SaffronFAQ from './growing-faq';
