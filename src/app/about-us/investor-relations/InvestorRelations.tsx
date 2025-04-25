@@ -39,7 +39,7 @@ export default function InvestorRelations() {
           <div className="absolute inset-0 bg-primary/5 z-0"></div>
           <div className="container relative z-10 max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center mb-12">
-              <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight">
+              <h1 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight text-primary">
                 Investor Relations
               </h1>
               <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-foreground/80">
@@ -105,7 +105,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-white">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight text-primary">
               Latest Investor News
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -127,7 +127,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Financial Highlights
             </h2>
             <p className="text-lg mb-12 max-w-3xl text-foreground/80">
@@ -170,7 +170,7 @@ export default function InvestorRelations() {
                   />
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm">
                   <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
                     <p className="text-foreground/50">
                       Interactive Chart Placeholder
@@ -225,7 +225,7 @@ export default function InvestorRelations() {
                   />
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm">
                   <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
                     <p className="text-foreground/50">
                       Quarterly Chart Placeholder
@@ -253,7 +253,7 @@ export default function InvestorRelations() {
               </TabsContent>
 
               <TabsContent value="5year" className="space-y-4">
-                <div className="bg-white p-6 rounded-lg shadow-sm">
+                <div className="bg-white p-6 rounded-xl shadow-sm">
                   <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
                     <p className="text-foreground/50">
                       5-Year Trend Chart Placeholder
@@ -309,7 +309,7 @@ export default function InvestorRelations() {
           <div className="container max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
                   Stock Information
                 </h2>
                 <p className="text-lg mb-8 text-foreground/80">
@@ -319,25 +319,25 @@ export default function InvestorRelations() {
                 </p>
 
                 <div className="space-y-6">
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-xl">
                     <span className="font-medium">Stock Price</span>
                     <span className="text-xl font-bold">$142.68</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-xl">
                     <span className="font-medium">Change</span>
                     <span className="text-xl font-bold text-success">
                       +$3.42 (2.46%)
                     </span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-xl">
                     <span className="font-medium">Market Cap</span>
                     <span className="text-xl font-bold">$128.5B</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-xl">
                     <span className="font-medium">52-Week Range</span>
                     <span className="text-xl font-bold">$98.76 - $156.32</span>
                   </div>
-                  <div className="flex justify-between items-center p-4 bg-muted rounded-lg">
+                  <div className="flex justify-between items-center p-4 bg-muted rounded-xl">
                     <span className="font-medium">Dividend Yield</span>
                     <span className="text-xl font-bold">1.8%</span>
                   </div>
@@ -351,7 +351,7 @@ export default function InvestorRelations() {
                 </div>
               </div>
 
-              <div className="bg-muted p-6 rounded-lg">
+              <div className="bg-muted p-6 rounded-xl">
                 <div className="aspect-square bg-white rounded-md flex items-center justify-center">
                   <p className="text-foreground/50">
                     Interactive Stock Chart Placeholder
@@ -367,7 +367,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Leadership Team
             </h2>
             <p className="text-lg mb-12 max-w-3xl text-foreground/80">
@@ -438,7 +438,7 @@ export default function InvestorRelations() {
           <div className="container max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
                   ESG & Sustainability
                 </h2>
                 <p className="text-lg mb-8 text-foreground/80">
@@ -497,7 +497,7 @@ export default function InvestorRelations() {
               </div>
 
               <div className="grid grid-cols-2 gap-6">
-                <div className="aspect-square bg-muted rounded-lg overflow-hidden">
+                <div className="aspect-square bg-muted rounded-xl overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=400"
                     alt="Sustainability Initiative"
@@ -506,7 +506,7 @@ export default function InvestorRelations() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="aspect-square bg-muted rounded-lg overflow-hidden">
+                <div className="aspect-square bg-muted rounded-xl overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=400"
                     alt="Community Engagement"
@@ -515,7 +515,7 @@ export default function InvestorRelations() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="aspect-square bg-muted rounded-lg overflow-hidden">
+                <div className="aspect-square bg-muted rounded-xl overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=400"
                     alt="Diversity and Inclusion"
@@ -524,7 +524,7 @@ export default function InvestorRelations() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="aspect-square bg-muted rounded-lg overflow-hidden">
+                <div className="aspect-square bg-muted rounded-xl overflow-hidden">
                   <Image
                     src="/placeholder.svg?height=400&width=400"
                     alt="Governance Structure"
@@ -543,7 +543,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-primary/5">
           <div className="container max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-center">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-center text-primary">
               Frequently Asked Questions
             </h2>
             <p className="text-lg mb-12 text-center text-foreground/80">
@@ -627,7 +627,7 @@ export default function InvestorRelations() {
       <FadeIn>
         <section className="px-4 py-20 bg-white">
           <div className="container max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 tracking-tight text-primary">
               Investor Contact
             </h2>
             <p className="text-lg mb-12 text-foreground/80">

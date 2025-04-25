@@ -42,7 +42,7 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
               toast.variant === 'destructive'
                 ? 'destructive-foreground'
                 : 'foreground'
-            } px-6 py-4 rounded-lg shadow-lg transition-opacity duration-300 border ${
+            } px-6 py-4 rounded-xl shadow-lg transition-opacity duration-300 border ${
               toast.variant === 'destructive'
                 ? 'border-destructive'
                 : 'border-border'

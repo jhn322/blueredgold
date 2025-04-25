@@ -55,7 +55,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-primary border-t">
+    <footer className="w-full bg-primary">
       <div className="container px-4 py-8 md:py-12">
         <div className="flex flex-col space-y-8">
           {/* Logo and Brand */}

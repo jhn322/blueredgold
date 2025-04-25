@@ -5,7 +5,7 @@ import { AutomationSection } from '../components/landing-page/AutomationSection'
 import { SeparatorSection } from '../components/landing-page/SeparatorSection';
 import { TeamAndSolutionSection } from '../components/landing-page/TeamAndSolutionSection';
 import type { Metadata } from 'next';
-
+import { ExploreSolution } from '@/components/ui/explore-solution';
 export const metadata: Metadata = {
   // * Metadata ärvs från layout.tsx
   // Lägg till specifik metadata här om det behövs
@@ -23,6 +23,7 @@ export default function Home() {
         <SeparatorSection />
         <AutomationSection />
         <TeamAndSolutionSection />
+        <ExploreSolution />
       </div>
     </main>
   );

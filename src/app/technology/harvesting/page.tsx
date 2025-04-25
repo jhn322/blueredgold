@@ -1,177 +1,196 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ChevronLeft, Clock, Scissors, Sun, Leaf } from 'lucide-react';
+
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Loader2 } from 'lucide-react';
+import { FadeIn } from '../../../components/ui/fade-in';
+import { ParallaxHero } from '@/components/ui/parallax-hero';
+import HarvestingSteps from './harvesting-steps';
+import HarvestingTips from './harvesting-tips';
+import { ExploreSolution } from '@/components/ui/explore-solution';
 
-export default function HarvestingPage() {
-  const [loading, setLoading] = useState(true);
+export const metadata: Metadata = {
+  title: 'Harvesting',
+  description:
+    'Learn the art of harvesting saffron, from picking flowers to drying threads. Discover expert techniques for maximum yield and quality.',
+  keywords: [
+    'saffron harvesting',
+    'how to harvest saffron',
+    'drying saffron',
+    'saffron threads',
+    'saffron stigmas',
+    'saffron processing',
+  ],
+  openGraph: {
+    title: 'Harvesting',
+    description:
+      'Learn the art of harvesting saffron, from picking flowers to drying threads. Discover expert techniques for maximum yield and quality.',
+  },
+};
 
-  const title = 'Coming Soon';
-  const subtitle = "We're working on something amazing";
-  const message =
-    'This page is under construction. Please check back later for updates.';
-  const estimatedTime = 'when it is ready.';
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function HarvestingSaffronPage() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4">
-      <AnimatePresence mode="wait">
-        {loading ? (
-          <motion.div
-            key="loading"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center"
-          >
-            <Loader2 className="h-12 w-12 animate-spin text-primary" />
-            <p className="mt-4 text-foreground">Loading...</p>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="content"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex w-full max-w-4xl flex-col items-center"
-          >
-            <Card className="w-full overflow-hidden bg-white/80 backdrop-blur-sm">
-              <CardContent className="p-0">
-                <div className="flex flex-col-reverse items-center justify-between gap-8 p-6 md:flex-row md:p-8">
-                  <div className="flex flex-col space-y-4 text-center md:text-left">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2, duration: 0.5 }}
-                    >
-                      <h1 className="font-display text-3xl font-bold tracking-tight text-primary md:text-4xl lg:text-5xl">
-                        {title}
-                      </h1>
-                    </motion.div>
+    <main className="min-h-screen bg-background">
+      <ParallaxHero
+        imageSrc="/technology/harvesting/harvesting-hero.webp"
+        imageAlt="Saffron harvesting process"
+        videoSrc="/technology/harvesting/harvesting-hero.mp4"
+        title="Harvesting Saffron"
+        subtitle="The delicate art of collecting the world's most precious spice"
+        buttons={[
+          {
+            text: 'Learn More',
+            href: '#harvesting-saffron',
+            smoothScroll: true,
+          },
+        ]}
+      />
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.3, duration: 0.5 }}
-                    >
-                      <p className="text-xl text-primary/80">{subtitle}</p>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.5 }}
-                    >
-                      <p className="text-foreground/70">{message}</p>
-                      <p className="mt-2 text-foreground/70">
-                        Expected completion:{' '}
-                        <span className="font-medium text-primary">
-                          {estimatedTime}
-                        </span>
-                      </p>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5, duration: 0.5 }}
-                    >
-                      <Button asChild>
-                        <Link href="/">Back to Home</Link>
-                      </Button>
-                    </motion.div>
-                  </div>
-
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{
-                      delay: 0.2,
-                      duration: 0.7,
-                      type: 'spring',
-                      stiffness: 100,
-                    }}
-                    className="relative h-64 w-64 md:h-80 md:w-80"
-                  >
-                    <div className="relative h-full w-full">
-                      <motion.div
-                        animate={{
-                          y: [0, -10, 0],
-                        }}
-                        transition={{
-                          repeat: Number.POSITIVE_INFINITY,
-                          duration: 3,
-                          ease: 'easeInOut',
-                        }}
-                        className="absolute inset-0"
-                      >
-                        <Image
-                          src="/illustration/flower/flower8.webp"
-                          alt="Purple Crocus Flower"
-                          fill
-                          className="object-contain"
-                          priority
-                        />
-                      </motion.div>
-
-                      {[...Array(4)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{
-                            opacity: 0.7,
-                            x: Math.random() * 60 - 30,
-                            y: Math.random() * 60 - 30,
-                            scale: Math.random() * 0.4 + 0.1,
-                          }}
-                          animate={{
-                            opacity: [0.7, 0.3, 0.7],
-                            y: [0, -100, -200],
-                            x: [
-                              0,
-                              Math.random() * 40 - 20,
-                              Math.random() * 80 - 40,
-                            ],
-                          }}
-                          transition={{
-                            repeat: Number.POSITIVE_INFINITY,
-                            duration: Math.random() * 5 + 5,
-                            delay: Math.random() * 5,
-                            ease: 'easeOut',
-                          }}
-                          className="absolute left-1/2 top-1/2 h-3 w-3 rounded-full bg-secondary/30 blur-sm"
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="mt-8 text-center text-sm text-foreground/60"
+      <FadeIn>
+        <section id="harvesting-saffron" className="container py-16 md:py-24">
+          <div className="flex items-center mb-12">
+            <Link
+              href="/technology/growing"
+              className="flex items-center text-primary hover:text-primary/80 transition-colors"
             >
-              <p>
-                © {new Date().getFullYear()} BlueRedGold. All rights reserved.
+              <ChevronLeft className="h-5 w-5 mr-2" />
+              <span className="font-medium">Back to Growing Saffron</span>
+            </Link>
+          </div>
+
+          <div className="space-y-4 mb-12">
+            <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">
+                The Process
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
+              The Art of Harvesting Saffron
+            </h2>
+            <p className="text-lg md:text-xl max-w-3xl text-foreground/80">
+              Harvesting is the most critical stage in saffron production. Learn
+              the techniques to maximize both yield and quality.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-foreground/70 mb-6">
+                The harvesting process is where the true value of saffron is
+                realized. Each flower contains just three red stigmas, making
+                this one of the most labor-intensive crops in the world. But
+                with proper technique, you can ensure the highest quality
+                product.
               </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+
+              <div className="grid gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="bg-primary/10 p-2 rounded-full mt-0.5">
+                    <Clock className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Timing is Everything</h3>
+                    <p className="text-foreground/70">
+                      Harvest in the early morning when flowers are just
+                      beginning to open.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="bg-primary/10 p-2 rounded-full mt-0.5">
+                    <Scissors className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Gentle Handling</h3>
+                    <p className="text-foreground/70">
+                      Use tweezers or your fingertips to carefully remove the
+                      stigmas without damaging them.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="bg-primary/10 p-2 rounded-full mt-0.5">
+                    <Sun className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Proper Drying</h3>
+                    <p className="text-foreground/70">
+                      Dry stigmas in a warm, dark place to preserve color,
+                      flavor, and aroma.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-md">
+              <Image
+                src="/technology/harvesting/harvesting-1.webp"
+                alt="Harvesting saffron threads from flowers"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      <FadeIn>
+        <HarvestingSteps />
+      </FadeIn>
+
+      <FadeIn>
+        <HarvestingTips />
+      </FadeIn>
+
+      <FadeIn>
+        <section className="container py-16 md:py-24">
+          <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative h-64 md:h-auto">
+                <Image
+                  src="/technology/harvesting/harvesting-2.webp"
+                  alt="Saffron corms ready for planting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                  Ready to Start Growing?
+                </h3>
+                <p className="text-foreground/70 mb-6">
+                  Now that you understand the harvesting process, learn how to
+                  grow your own saffron from the beginning with our
+                  comprehensive growing guide.
+                </p>
+                <div>
+                  <Link href="/technology/growing">
+                    <Button size="lg" className="group">
+                      Explore Saffron Growing
+                      <Leaf className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+      {/* Explore section */}
+      <ExploreSolution
+        primaryButton={{
+          text: 'Learn More About Us',
+          href: '/about-us/about',
+        }}
+        secondaryButton={{
+          text: 'Press Releases',
+          href: '/about-us/press',
+        }}
+      />
+    </main>
   );
 }

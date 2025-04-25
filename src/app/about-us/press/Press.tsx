@@ -14,6 +14,7 @@ import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { useState, useEffect } from 'react';
+import { ParallaxHero } from '@/components/ui/parallax-hero';
 
 // Interface for articles from Sanity
 interface Article {
@@ -72,8 +73,15 @@ export default function PressPage() {
 
   return (
     <main className="min-h-screen bg-background">
+      <ParallaxHero
+        imageSrc="/press/press-hero.webp"
+        imageAlt="Press and Media"
+        title="Press & Media"
+        subtitle="Stay updated with the latest news and developments from BlueRedGold"
+      />
+
       {/* Press Articles Section */}
-      <section className="pt-48 pb-16">
+      <section className="pt-24 pb-16">
         <div className="container max-w-7xl">
           <FadeIn>
             <div className="flex justify-between items-center mb-12">

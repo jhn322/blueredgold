@@ -56,7 +56,7 @@ function ThankYouContent() {
 
         <FadeIn delay={200}>
           <div className="text-center max-w-lg mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
               Thank You!
             </h1>
             <p className="text-xl mb-8">
@@ -70,7 +70,9 @@ function ThankYouContent() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="bg-card rounded-xl p-8 mb-8 shadow-md"
             >
-              <h2 className="text-xl font-medium mb-4">Submission Summary</h2>
+              <h2 className="text-xl font-medium mb-4 text-primary">
+                Submission Summary
+              </h2>
               <p className="mb-6">
                 Here&apos;s an overview of your submitted information:
               </p>

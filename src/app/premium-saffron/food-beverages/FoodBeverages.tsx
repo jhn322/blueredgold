@@ -319,6 +319,11 @@ export default function FoodBeveragesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
               <div className="space-y-6">
+                <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                  <span className="text-sm font-medium text-primary">
+                    Our Values
+                  </span>
+                </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-display">
                   Our Culinary Roots: Where Flavor Meets Innovation
                 </h2>
@@ -572,7 +577,7 @@ export default function FoodBeveragesPage() {
       <ExploreSolution
         primaryButton={{
           text: 'Growing Saffron',
-          href: '/premium-saffron/growing-saffron',
+          href: '/',
         }}
         secondaryButton={{
           text: 'Medical & Cosmetics',

@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton"
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Loading() {
   return (
@@ -18,9 +18,9 @@ export default function Loading() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Skeleton className="h-64 rounded-lg" />
-            <Skeleton className="h-64 rounded-lg" />
-            <Skeleton className="h-64 rounded-lg" />
+            <Skeleton className="h-64 rounded-xl" />
+            <Skeleton className="h-64 rounded-xl" />
+            <Skeleton className="h-64 rounded-xl" />
           </div>
         </div>
       </section>
@@ -31,7 +31,7 @@ export default function Loading() {
           <Skeleton className="h-12 w-64 mb-12" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="rounded-lg overflow-hidden">
+              <div key={item} className="rounded-xl overflow-hidden">
                 <Skeleton className="h-48 w-full" />
                 <div className="p-6">
                   <Skeleton className="h-4 w-24 mb-3" />
@@ -61,13 +61,13 @@ export default function Loading() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <Skeleton className="h-40 rounded-lg" />
-            <Skeleton className="h-40 rounded-lg" />
-            <Skeleton className="h-40 rounded-lg" />
-            <Skeleton className="h-40 rounded-lg" />
+            <Skeleton className="h-40 rounded-xl" />
+            <Skeleton className="h-40 rounded-xl" />
+            <Skeleton className="h-40 rounded-xl" />
+            <Skeleton className="h-40 rounded-xl" />
           </div>
 
-          <Skeleton className="h-80 w-full rounded-lg mb-8" />
+          <Skeleton className="h-80 w-full rounded-xl mb-8" />
 
           <div className="flex flex-wrap gap-4">
             <Skeleton className="h-10 w-40" />
@@ -77,5 +77,5 @@ export default function Loading() {
         </div>
       </section>
     </div>
-  )
+  );
 }
