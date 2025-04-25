@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Clock, Scissors, Sun, Leaf } from 'lucide-react';
+import { ChevronLeft, Clock, Scissors, Sun, Leaf } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { FadeIn } from '../../../components/ui/fade-in';
 import { ParallaxHero } from '@/components/ui/parallax-hero';
 import HarvestingSteps from './harvesting-steps';
 import HarvestingTips from './harvesting-tips';
+import { ExploreSolution } from '@/components/ui/explore-solution';
 
 export const metadata: Metadata = {
   title: 'Harvesting',
@@ -62,7 +63,7 @@ export default function HarvestingSaffronPage() {
               href="/technology/growing"
               className="flex items-center text-primary hover:text-primary/80 transition-colors"
             >
-              <ArrowLeft className="h-5 w-5 mr-2" />
+              <ChevronLeft className="h-5 w-5 mr-2" />
               <span className="font-medium">Back to Growing Saffron</span>
             </Link>
           </div>
@@ -183,6 +184,17 @@ export default function HarvestingSaffronPage() {
           </div>
         </section>
       </FadeIn>
+      {/* Explore section */}
+      <ExploreSolution
+        primaryButton={{
+          text: 'Learn More About Us',
+          href: '/about-us/about',
+        }}
+        secondaryButton={{
+          text: 'Press Releases',
+          href: '/about-us/press',
+        }}
+      />
     </main>
   );
 }

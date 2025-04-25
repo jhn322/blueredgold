@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Leaf, Droplets, Sun, ChevronRight } from 'lucide-react';
+import { Leaf, Droplets, Sun, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
@@ -187,7 +187,7 @@ export default function GrowingSaffronPage() {
                   <Link href="/technology/harvesting">
                     <Button size="lg" className="group">
                       Explore Harvesting Guide
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                 </div>
@@ -210,16 +210,7 @@ export default function GrowingSaffronPage() {
       </FadeIn>
 
       {/* Explore section */}
-      <ExploreSolution
-        primaryButton={{
-          text: 'Food & Beverages',
-          href: '/premium-saffron/food-beverages',
-        }}
-        secondaryButton={{
-          text: 'Medical & Cosmetics',
-          href: '/premium-saffron/medical-cosmetics',
-        }}
-      />
+      <ExploreSolution />
     </main>
   );
 }

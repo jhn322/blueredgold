@@ -68,7 +68,7 @@ export function ExploreSolution({
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white text-black hover:bg-black/10"
+                      className="border-white text-black hover:bg-black/10 hover:text-black hover:border-black"
                     >
                       {secondaryButton.text}
                     </Button>

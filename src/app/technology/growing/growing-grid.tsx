@@ -327,7 +327,7 @@ const GalleryCard = ({
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 pointer-events-none" />
         <div className="absolute bottom-0 left-0 right-0">
           <div
-            className={`${item.type === 'info' ? 'bg-secondary/70' : 'bg-primary/70'} rounded-t-xl py-6 px-4 text-white`}
+            className={`${item.type === 'info' ? 'bg-secondary/70 text-black' : 'bg-primary/70 text-white'} rounded-t-xl py-6 px-4`}
           >
             <div className="flex justify-center mb-2">{getIcon(item.id)}</div>
             <h3 className="text-center text-lg font-medium">{item.title}</h3>
