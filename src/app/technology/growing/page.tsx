@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Leaf, Droplets, Sun } from 'lucide-react';
-
+import { ArrowRight, Leaf, Droplets, Sun, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { FadeIn } from '@/components/ui/fade-in';
@@ -11,6 +10,7 @@ import SaffronGrid from './growing-grid';
 import SaffronProcess from './growing-process';
 import SaffronBenefits from './growing-benefits';
 import SaffronFAQ from './growing-faq';
+import { ExploreSolution } from '@/components/ui/explore-solution';
 
 export const metadata: Metadata = {
   title: 'Growing',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
       'Learn everything about growing saffron, from planting corms to cultivation techniques. Discover the secrets to successful saffron production.',
     images: [
       {
-        url: '/growing-hero.webp',
+        url: '/technology/growing/growing-hero.webp',
         width: 1200,
         height: 630,
         alt: 'Saffron field in bloom',
@@ -44,8 +44,9 @@ export default function GrowingSaffronPage() {
   return (
     <main className="min-h-screen bg-background">
       <ParallaxHero
-        imageSrc="/growing-hero.webp"
+        imageSrc="/technology/growing/growing-hero.jpg"
         imageAlt="Saffron field in bloom"
+        videoSrc="/technology/growing/growing-hero.mp4"
         title="Growing Saffron"
         subtitle="The complete guide to cultivating the world's most precious spice"
         buttons={[
@@ -60,13 +61,18 @@ export default function GrowingSaffronPage() {
       <FadeIn>
         <section className="container py-16 md:py-24">
           <div className="space-y-4 text-center mb-12">
+            <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">
+                Cultivation
+              </span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
               The Golden Spice
             </h2>
             <p className="text-lg md:text-xl max-w-3xl mx-auto text-foreground/80">
               Saffron, the world&apos;s most precious spice, has been cultivated
-              for thousands of years. Learn how to grow this remarkable treasure
-              in your own garden.
+              for thousands of years. Learn how to grow this remarkable
+              treasure.
             </p>
           </div>
 
@@ -126,7 +132,7 @@ export default function GrowingSaffronPage() {
               <Link href="/technology/harvesting">
                 <Button size="lg" className="group">
                   Discover Harvesting Techniques
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
@@ -188,7 +194,7 @@ export default function GrowingSaffronPage() {
               </div>
               <div className="relative h-64 md:h-auto">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/technology/growing/art-of-harvesting.webp"
                   alt="Harvesting saffron threads from flowers"
                   fill
                   className="object-cover"
@@ -202,6 +208,18 @@ export default function GrowingSaffronPage() {
       <FadeIn>
         <SaffronFAQ />
       </FadeIn>
+
+      {/* Explore section */}
+      <ExploreSolution
+        primaryButton={{
+          text: 'Food & Beverages',
+          href: '/premium-saffron/food-beverages',
+        }}
+        secondaryButton={{
+          text: 'Medical & Cosmetics',
+          href: '/premium-saffron/medical-cosmetics',
+        }}
+      />
     </main>
   );
 }

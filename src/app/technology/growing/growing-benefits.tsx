@@ -59,7 +59,7 @@ export default function GrowingBenefits() {
                 className="absolute inset-0 z-0"
                 style={{
                   backgroundImage:
-                    "url('/placeholder.svg?height=1000&width=800')",
+                    "url('/technology/growing/growing-benefits.webp')",
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}

@@ -40,8 +40,9 @@ export default function HarvestingSaffronPage() {
   return (
     <main className="min-h-screen bg-background">
       <ParallaxHero
-        imageSrc="/harvesting-hero.webp"
+        imageSrc="/technology/harvesting/harvesting-hero.webp"
         imageAlt="Saffron harvesting process"
+        videoSrc="/technology/harvesting/harvesting-hero.mp4"
         title="Harvesting Saffron"
         subtitle="The delicate art of collecting the world's most precious spice"
         buttons={[

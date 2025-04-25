@@ -572,7 +572,7 @@ export default function FoodBeveragesPage() {
       <ExploreSolution
         primaryButton={{
           text: 'Growing Saffron',
-          href: '/premium-saffron/growing-saffron',
+          href: '/',
         }}
         secondaryButton={{
           text: 'Medical & Cosmetics',

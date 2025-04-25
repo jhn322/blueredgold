@@ -8,10 +8,12 @@ import { Button } from './button';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { scrollToElement } from '@/lib/scroll-utils';
+import { useVideoLoading } from '@/hooks/useVideoLoading';
 
 interface ParallaxHeroProps {
   imageSrc: string;
   imageAlt: string;
+  videoSrc?: string;
   title: string;
   subtitle: string;
   buttons?: {
@@ -26,11 +28,16 @@ interface ParallaxHeroProps {
 export function ParallaxHero({
   imageSrc,
   imageAlt,
+  videoSrc,
   title,
   subtitle,
   buttons,
 }: ParallaxHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useVideoLoading({
+    rootMargin: '50%',
+    threshold: 0.1,
+  });
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
@@ -53,15 +60,31 @@ export function ParallaxHero({
           scale: 1.2,
         }}
       >
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-          quality={90}
-        />
+        {videoSrc ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster={imageSrc}
+            className="w-full h-full object-cover"
+          >
+            <source src={videoSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+            quality={90}
+          />
+        )}
         <div className="absolute inset-0 bg-black/50" />
       </motion.div>
 
