@@ -26,14 +26,6 @@ export const metadata: Metadata = {
     title: 'Harvesting',
     description:
       'Learn the art of harvesting saffron, from picking flowers to drying threads. Discover expert techniques for maximum yield and quality.',
-    images: [
-      {
-        url: '/harvesting-hero.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Harvesting saffron threads',
-      },
-    ],
   },
 };
 
@@ -50,7 +42,6 @@ export default function HarvestingSaffronPage() {
           {
             text: 'Learn More',
             href: '#harvesting-saffron',
-            icon: <Scissors className="h-4 w-4" />,
             smoothScroll: true,
           },
         ]}
@@ -69,6 +60,11 @@ export default function HarvestingSaffronPage() {
           </div>
 
           <div className="space-y-4 mb-12">
+            <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">
+                The Process
+              </span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
               The Art of Harvesting Saffron
             </h2>
@@ -132,7 +128,7 @@ export default function HarvestingSaffronPage() {
 
             <div className="relative h-[400px] rounded-xl overflow-hidden shadow-md">
               <Image
-                src="/placeholder.svg?height=800&width=600"
+                src="/technology/harvesting/harvesting-1.webp"
                 alt="Harvesting saffron threads from flowers"
                 fill
                 className="object-cover"
@@ -156,7 +152,7 @@ export default function HarvestingSaffronPage() {
             <div className="grid md:grid-cols-2 gap-0">
               <div className="relative h-64 md:h-auto">
                 <Image
-                  src="/placeholder.svg?height=600&width=800"
+                  src="/technology/harvesting/harvesting-2.webp"
                   alt="Saffron corms ready for planting"
                   fill
                   className="object-cover"

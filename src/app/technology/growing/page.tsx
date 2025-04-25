@@ -29,14 +29,6 @@ export const metadata: Metadata = {
     title: 'Growing',
     description:
       'Learn everything about growing saffron, from planting corms to cultivation techniques. Discover the secrets to successful saffron production.',
-    images: [
-      {
-        url: '/technology/growing/growing-hero.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Saffron field in bloom',
-      },
-    ],
   },
 };
 
@@ -63,7 +55,7 @@ export default function GrowingSaffronPage() {
           <div className="space-y-4 text-center mb-12">
             <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
               <span className="text-sm font-medium text-primary">
-                Cultivation
+                Cultivation Process
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
@@ -143,6 +135,9 @@ export default function GrowingSaffronPage() {
       <FadeIn>
         <section className="container py-16 md:py-24">
           <div className="space-y-4 text-center mb-12">
+            <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+              <span className="text-sm font-medium text-primary">Gallery</span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
               Visual Guide to Saffron
             </h2>

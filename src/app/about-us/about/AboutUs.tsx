@@ -312,6 +312,11 @@ export default function AboutUsContent() {
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <FadeIn>
+              <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                <span className="text-sm font-medium text-primary">
+                  Our Partners
+                </span>
+              </div>
               <h2
                 id="partners-heading"
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 text-left"

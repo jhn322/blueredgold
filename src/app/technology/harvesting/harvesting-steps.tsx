@@ -9,25 +9,25 @@ const steps = [
     title: '1. Flower Collection',
     description:
       "Harvest flowers in the early morning when they're just beginning to open. Gently pick the entire flower by hand.",
-    image: '/placeholder.svg?height=600&width=600',
+    image: '/technology/harvesting/harvesting-steps-1.webp',
   },
   {
     title: '2. Stigma Extraction',
     description:
       'Carefully open each flower and remove the three red stigmas using tweezers or your fingertips. Leave the yellow stamens behind.',
-    image: '/placeholder.svg?height=600&width=600',
+    image: '/technology/harvesting/harvesting-steps-2.webp',
   },
   {
     title: '3. Drying Process',
     description:
       'Spread the stigmas in a thin layer on a paper-lined tray in a warm, dark place. Dry for 24-48 hours until they become brittle.',
-    image: '/placeholder.svg?height=600&width=600',
+    image: '/technology/harvesting/harvesting-steps-3.webp',
   },
   {
     title: '4. Storage',
     description:
       'Once completely dry, store saffron threads in an airtight container away from light, heat, and moisture for up to two years.',
-    image: '/placeholder.svg?height=600&width=600',
+    image: '/technology/harvesting/harvesting-steps-4.webp',
   },
 ];
 

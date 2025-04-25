@@ -51,47 +51,52 @@ export default function CareersPage() {
       <section className="py-20 bg-muted">
         <div className="container">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center font-display">
-              Why Join Our Team?
-            </h2>
+            <section className="text-center">
+              <div className="inline-block mb-4 px-4 py-1 bg-primary/10 rounded-full">
+                <span className="text-sm font-medium text-primary">
+                  Work Environment
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 text-center font-display">
+                Why Join Our Team?
+              </h2>
+            </section>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Globe className="h-10 w-10 text-secondary" />,
+                icon: <Globe className="h-10 w-10 text-primary" />,
                 title: 'Revolutionary Agriculture',
                 description:
                   'Be part of the first-ever industrial-grade, controlled indoor cultivation and year-round saffron production in Sweden.',
               },
               {
-                icon: <Users className="h-10 w-10 text-secondary" />,
+                icon: <Users className="h-10 w-10 text-primary" />,
                 title: 'Innovation First',
                 description:
                   'Join a team pioneering robotics and automation in agriculture, making Sweden competitive in global saffron production.',
               },
               {
-                icon: <Rocket className="h-10 w-10 text-secondary" />,
+                icon: <Rocket className="h-10 w-10 text-primary" />,
                 title: 'Sustainable Impact',
                 description:
                   'Contribute to reducing saffron imports and help establish Sweden as a credible saffron exporter on the global market.',
               },
               {
-                icon: <HeartHandshake className="h-10 w-10 text-secondary" />,
+                icon: <HeartHandshake className="h-10 w-10 text-primary" />,
                 title: 'Work-Life Balance',
                 description:
                   'Flexible schedules and policies that respect your time outside of work.',
               },
               {
-                icon: <Lightbulb className="h-10 w-10 text-secondary" />,
+                icon: <Lightbulb className="h-10 w-10 text-primary" />,
                 title: 'Continuous Learning',
                 description:
                   'Access to resources, workshops, and mentorship to help you grow professionally.',
               },
               {
-                icon: (
-                  <BriefcaseBusiness className="h-10 w-10 text-secondary" />
-                ),
+                icon: <BriefcaseBusiness className="h-10 w-10 text-primary" />,
                 title: 'Competitive Benefits',
                 description:
                   'Comprehensive packages that reward your contributions and support your wellbeing.',
@@ -101,7 +106,7 @@ export default function CareersPage() {
                 <Card className="h-full bg-card border-none hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="mb-2">{item.icon}</div>
-                    <CardTitle className="text-xl text-primary">
+                    <CardTitle className="text-xl text-black">
                       {item.title}
                     </CardTitle>
                   </CardHeader>
