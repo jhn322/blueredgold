@@ -125,7 +125,7 @@ export async function POST(req: Request) {
 
     // Send notification email to admin
     const adminEmailResult = await sendEmail({
-      to: process.env.EMAIL_RECIPIENT || 'johan@semurai.se',
+      to: process.env.EMAIL_RECIPIENT || 'johan.soderlund96@gmail.com',
       subject: 'New Contact Form Submission - BlueRedGold',
       htmlContent: adminHtmlContent,
       textContent: adminPlainTextContent,
